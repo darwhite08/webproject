@@ -1,0 +1,46 @@
+<%- include('../main-comp/header') %>
+<div class="login-page bg-gray-100 flex items-center justify-center h-screen mx-auto mx-10">
+    <div class=" flex flex-col bg-white p-8 rounded-lg shadow-md w-full sm:w-96">
+        <img class="self-center" src="../../public/media/animeDoodles/deku.png" alt="">
+        <!-- Login Header -->
+        <div class="flex flex-col justify-center items-center mb-4">
+            <h1 class="text-3xl  font-bold text-gray-700">Welcome Back!</h1>
+            <p class="text-sm">Please enter the details to sign in</p>
+        </div>
+
+        <!-- <form>
+            <div class="mb-4">
+                <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Username</label>
+                <input type="text" id="username" name="username"
+                    class="border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:border-blue-500">
+            </div>
+            <div class="">
+                <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                <input type="password" id="password" name="password"
+                    class="border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:border-blue-500">
+            </div>
+            <div class="mb-4 flex flex-col justify-between items-center">
+                <a href="#" class="mt-1 text-sm text-blue-500 hover:underline self-end">Forgot password?</a>
+                <button type="submit"
+                    class="mt-4 w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Login</button>
+            </div>
+        </form> -->
+        <!-- <div class="w-full flex flex-row justify-center items-center">
+            <span class="border-t-2 w-full"></span><span class="py-4 px-2 text-gray-500">or</span><span
+                class="border-t-2 w-full"></span>
+        </div> -->
+        <!-- Google Auth -->
+        <div class="flex flex-col justify-center items-center gap-4 mt-4">
+            <!-- <button type="button" class="gap-4 w-52 py-2.5 flex flex-row px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"><img class="h-6" src="../../public/media/icons/apple.png" alt /><span class=" px-8 border-l-2">Apple ID</span></button> -->
+            <button type="button" class="gap-4 w-52  py-2.5 flex flex-row px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"><img class=" h-6" src="../../public/media/icons/google.png" alt /><span class="px-8 border-l-2" ><a href="/auth/google">Google</a></span></button>
+            <!-- <button type="button" class="gap-4 w-52  py-2.5 flex flex-row px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"><img class=" h-6" src="../../public/media/icons/facebook.png" alt /><span class="px-8 border-l-2">Facebook</span></button> -->
+    
+          </div>
+
+        <div class="mt-4 text-center">
+            <span class="text-gray-500">Don't have an account? <a  class="text-blue-500 hover:underline">Sign
+                    up</a></span>
+        </div>
+    </div>
+</div>
+<%- include('../main-comp/footer') %>

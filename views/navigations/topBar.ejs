@@ -1,0 +1,168 @@
+<div class="hidden fixed top-0 w-full z-50 md:flex lg:flex" id="topBarContainer">
+    <div
+        class="flex   flex-row justify-between static  bg-white text-white texl-xl  py-4 gap-4 px-10 w-full  shadow-lg border-b-2">
+        <!-- Logo -->
+        <div class="left-0">
+            <h1 class="font-bold text-sm bg-blue-700 rounded-full px-4 py-2"><a href="/">Anime Unwatched.</a></h1>
+        </div>
+        <div class="flex flex-row gap-4 items-center text-gray-800">
+            <a class="me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                href="/">Home</a>
+                <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                href="/blog">Blog</a>
+                <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                href="/blog">About us</a>
+            <div class="relative z-50">
+                <button
+                    class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                    value="false" id="animeDropDownContainerButton" onmouseover="drop_down_show();"
+                    onclick="drop_down_hide();">Anime</button>
+                <div id="animeDropDownContainer"
+                    class="absolute hidden top-10 left-0 bg-white text-gray-800 px-4 py-4 w-max rounded-md shadow-xl">
+                    <button
+                        class=" px-5 me-2 mb-2  text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "><a
+                            href="/countdown">Anime Count Down</a></button>
+                    <div class="relative border-dashed ">
+                        <button
+                            class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                            id="upcommingDropdownButton" onmouseover="drop_down_show();" onclick="drop_down_hide();"
+                            href="">Upcomming Anime <i class="fa-solid fa-caret-down"></i></button>
+                        <div id="UpcommingDropdown"
+                            class="hidden flex flex-col absolute top-0 left-44 w-max bg-white shadow-lg px-4 py-4 rounded-md">
+                            <h1
+                                class=" px-5 me-2 mb-2 text-md font-medium text-green-600 focus:outline-none bg-white hover:text-blue-70">
+                                Upcomming Anime</h1>
+                            <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                href="/upcoming/kodomomuke">kodomomuke </a>
+                            <div id="tooltip-default" role="tooltip"
+                                class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                Tooltip content
+                                <div class="tooltip-arrow" data-popper-arrow></div>
+                            </div>
+                            <!-- The kids’ anime genre usually focuses on genres like adventure drama, family, and more -->
+                            <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                href="/upcoming/shonen">Shonen </a>
+                            <!-- The teen anime genre includes action, adventure, and drama themes but can accommodate sci-fi, mystery, sports, etc. too -->
+                            <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                href="/upcoming/shoujo">Shoujo </a>
+                            <!-- The teen girls’ anime basically revolves around romance, comedy, and drama genres, but it can cover supernatural, fantasy, and more themes -->
+                            <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                href="/upcoming/seinen">Seinen </a>
+                            <!--  This adult anime category usually incorporates an action and adventure storyline with graphic content like violence, erotic, horror, etc. -->
+                            <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                href="/upcoming/josei">Josei </a>
+                            <!-- This adult females anime category revolves around romance and drama themes but is also grounded in reality. -->
+                            <div>
+                                <button
+                                    class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                    id="otherDropdownButton" onmouseover="drop_down_show();" onclick="drop_down_hide();"
+                                    href="">Other<i class="fa-solid fa-caret-down"></i></button>
+                                <div id="otherDropdown" class=" hidden flex flex-col">
+                                    <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                        href="/upcoming/mecha">Mecha </a>
+                                    <!-- Involves mechs, which are massive robots or human-controlled robotic machines -->
+                                    <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                        href="/upcoming/sliceoflife">Slice of Life </a>
+                                    <!-- Captures the daily lives of the characters and the drama around them -->
+                                    <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                        href="/upcoming/mahoushoujo">Mahou Shoujo</a>
+                                    <!-- Female protagonists with magical powers -->
+                                    <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                        href="/upcoming/isekai">Isekai </a>
+                                    <!-- Protagonist dies in the real world and gets reincarnated into a magical world/fantasy land -->
+                                    <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                        href="/upcoming/yaoi">Yaoi </a>
+                                    <!-- Romance between men(see our best Boys Love anime list) -->
+                                    <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                        href="/upcoming/yuri">Yuri </a>
+                                    <!-- Romance between women -->
+                                    <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                        href="/upcoming/harem">Harem </a>
+                                    <!-- The protagonist is surrounded by many female characters -->
+                                    <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                        href="/upcoming/ecchi">Ecchi </a>
+                                    <!-- Involves adult comedies and explicit content -->
+                                    <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                        href="/upcoming/idol">Idol </a>
+                                    <!-- Centered around male and female idols -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative ">
+                        <button
+                            class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                            id="bestAnimeListButton" onmouseover="drop_down_show();" onclick="drop_down_hide();"
+                            href="">Best Anime List <i class="fa-solid fa-caret-down"></i></button>
+                        <div id="bestAnimeList"
+                            class="hidden flex flex-col absolute top-0 left-44 w-max bg-white shadow-lg px-4 py-4 rounded-md">
+                            <h1
+                                class=" px-5 me-2 mb-2 text-lg font-medium text-yellow-600 focus:outline-none bg-white hover:text-blue-70">
+                                Best Anime List </h1>
+                            <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                href="/best-anime-list/kodomomuke">kodomomuke </a>
+                            <!-- The kids’ anime genre usually focuses on genres like adventure drama, family, and more -->
+                            <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                href="/best-anime-list/shonen">Shonen </a>
+                            <!-- The teen anime genre includes action, adventure, and drama themes but can accommodate sci-fi, mystery, sports, etc. too -->
+                            <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                href="/best-anime-list/shoujo">Shoujo </a>
+                            <!-- The teen girls’ anime basically revolves around romance, comedy, and drama genres, but it can cover supernatural, fantasy, and more themes -->
+                            <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                href="/best-anime-list/seinen">Seinen </a>
+                            <!--  This adult anime category usually incorporates an action and adventure storyline with graphic content like violence, erotic, horror, etc. -->
+                            <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                href="/best-anime-list/josei">Josei </a>
+                            <!-- This adult females anime category revolves around romance and drama themes but is also grounded in reality. -->
+                            <div class="bg-white">
+                                <butto
+                                    class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                    n id="bestAnimeOtherButton" onmouseover="drop_down_show();"
+                                    onclick="drop_down_hide();">Other</button>
+                                    <div id="bestAnimeOther" class="hidden flex flex-col">
+                                        <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                            class="flex" href="/best-anime-list/mecha">Mecha</a>
+                                        <!-- Involves mechs, which are massive robots or human-controlled robotic machines -->
+                                        <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                            class="flex" href="/best-anime-list/sliceoflife">Slice of Life </a>
+                                        <!-- Captures the daily lives of the characters and the drama around them -->
+                                        <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                            href="/best-anime-list/mahoushoujo">Mahou Shoujo </a>
+                                        <!-- Female protagonists with magical powers -->
+                                        <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                            href="/best-anime-list/isekai">Isekai </a>
+                                        <!-- Protagonist dies in the real world and gets reincarnated into a magical world/fantasy land -->
+                                        <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                            href="/best-anime-list/yaoi">Yaoi </a>
+                                        <!-- Romance between men(see our best Boys Love anime list) -->
+                                        <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                            href="/best-anime-list/yuri">Yuri </a>
+                                        <!-- Romance between women -->
+                                        <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                            href="/best-anime-list/harem">Harem </a>
+                                        <!-- The protagonist is surrounded by many female characters -->
+                                        <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                            href="/best-anime-list/ecchi">Ecchi </a>
+                                        <!-- Involves adult comedies and explicit content -->
+                                        <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                                            href="/best-anime-list/idol">Idol </a>
+                                        <!-- Centered around male and female idols -->
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                href="/community">Community</a>
+            <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
+                href="/action-figures">Action Figures</a>
+        </div>
+        <% if (value) { %>
+            <a href="/user/dash-board"> <img class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
+                     src=<%= profile_picture %>  alt="Bordered avatar"></a>
+            <% } else{ %>       
+                <button  class="right-0 bg-gray-900 rounded-md px-4 cursor-not-allowed" disabled ><a href="/login">Login</a></button>
+                <% } %> 
+    </div>
+</div>

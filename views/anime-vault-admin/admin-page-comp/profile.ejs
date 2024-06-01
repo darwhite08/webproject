@@ -1,0 +1,172 @@
+<div class="bg-gray-100 rounded-lg">
+    <div class="container mx-auto p-5 ">
+        <div class="md:flex no-wrap md:-mx-2 ">
+            <!-- Left Side -->
+            <div class="w-full md:w-3/12 md:mx-2">
+                <!-- Profile Card -->
+                <div class="bg-white p-3  rounded-lg ">
+                    <div class="image overflow-hidden">
+                        <img class="h-auto w-full mx-auto rounded-lg"
+                            src=<%= profilePicture %> alt="">
+                    </div>
+                    <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">Priyanshu Chandra</h1>
+                    <h3 class="text-gray-600 font-lg text-semibold leading-6">Editor</h3>
+                    <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">Lorem ipsum dolor sit amet
+                        consectetur adipisicing elit.
+                        Reprehenderit, eligendi dolorum sequi illum qui unde aspernatur non deserunt</p>
+                    <ul
+                        class="bg-blue-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
+                        <li class="flex items-center py-3 border-b border-indigo-200">
+                            <span>Status</span>
+                            <span class="ml-auto"><span
+                                    class="bg-green-300 py-1 px-2 rounded-lg text-white text-sm"><span class="text-green-800 font-medium">Active</span></span></span>
+                        </li>
+                        <li class="flex items-center py-3">
+                            <span>Member since</span>
+                            <span class="ml-auto">Nov 07, 2016</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End of profile card -->
+                <div class="my-4"></div>
+                <!-- Similar card -->
+                <div class="bg-white p-3 hover:shadow rounded-lg">
+                    <div class="flex items-center space-x-3 font-semibold text-gray-900 text-xl leading-8">
+                        <span class="text-black">
+                            <i class="fa-solid fa-person"></i>
+                        </span>
+                        <span>Similar Profiles</span>
+                    </div>
+                    <div class="grid grid-cols-3">
+                        <div class="text-center my-2">
+                            <img class="h-16 w-16 rounded-full mx-auto"
+                                src="../../../public/media/bestAnimeList/img/animeListBackground.jpg" alt="">
+                            <a href="#" class="text-main-color">Priyanshu</a>
+                        </div>
+                        <div class="text-center my-2">
+                            <img class="h-16 w-16 rounded-full mx-auto"
+                                src="../../../public/media/bestAnimeList/img/animeListBackground.jpg" alt="">
+                            <a href="#" class="text-main-color">Priyanshu</a>
+                        </div>
+                        <div class="text-center my-2">
+                            <img class="h-16 w-16 rounded-full mx-auto"
+                                src="../../../public/media/bestAnimeList/img/animeListBackground.jpg" alt="">
+                            <a href="#" class="text-main-color">Priyanshu</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of friends card -->
+            </div>
+            <!-- Right Side -->
+            <div class="w-full md:w-9/12 mx-2 h-64">
+                <!-- Profile tab -->
+                <!-- About Section -->
+                <div class="bg-white py-4 px-6 shadow-sm rounded-lg">
+                    <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
+                        <span class="tracking-wide text-xl">General information</span>
+                    </div>
+                    <div
+                        class="relative flex flex-col w-full min-w-0 mb-6 break-words border border-dashed bg-clip-border rounded-2xl border-stone-200 bg-light/30 draggable">
+                        <!-- card body -->
+                        <div class="px-9 pt-9 flex-auto min-h-[70px] pb-0 bg-transparent">
+                            <div class="flex flex-wrap mb-6 xl:flex-nowrap">
+                                <!-- profile Image -->
+                                <div class="mb-5 mr-5">
+                                    <div class="relative inline-block shrink-0 rounded-2xl">
+                                        <img class="inline-block shrink-0 rounded-full w-24 h-24 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 "
+                                            src=<%= profilePicture %>
+                                            alt="image" />
+                                        <div class="group/tooltip relative">
+                                            <span
+                                                class="w-[10px] h-[10px] bg-green-700 absolute bg-success rounded-full bottom-4 end-2   border border-white"></span>
+                                            <span
+                                                class="text-xs absolute z-10 transition-opacity duration-300 ease-in-out px-3 py-2 whitespace-nowrap text-center transform bg-white rounded-2xl shadow-sm bottom-0 -mb-2 start-full ml-4 font-medium text-secondary-inverse group-hover/tooltip:opacity-100 opacity-0 block">
+                                                Status: Active </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- profile Image end-->
+                                <div class="grow">
+                                    <div class="flex flex-wrap items-start justify-between mb-2">
+                                        <div class="flex flex-col">
+                                            <div class="flex items-center mb-2">
+                                                <h1 class="text-secondary-inverse hover:text-primary transition-colors duration-200 ease-in-out font-semibold text-[1.5rem] mr-1"
+                                                    href=""> <%= username %></h1>
+                                            </div>
+                                            <div class="flex flex-wrap pr-2 mb-4 font-medium">
+                                                <a class="flex items-center mb-2 mr-5 text-secondary-dark hover:text-primary"
+                                                    href="javascript:void(0)">
+                                                    <span class="mr-1">
+                                                        <i class="fa-solid fa-location-dot"></i>
+                                                    </span> India </a>
+                                                <a class="flex items-center mb-2 mr-5 text-secondary-dark hover:text-primary"
+                                                    href="javascript:void(0)">
+                                                    <span class="mr-1">
+                                                        <i class="fa-solid fa-envelope"></i>
+                                                    </span> <%= email%></a>
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-wrap my-auto">
+                                            <Butt href=""
+                                                class="inline-block px-3 py-2 mr-3 text-base font-medium leading-normal text-center align-middle transition-colors duration-150 ease-in-out border-0 shadow-none cursor-pointer rounded-lg text-white bg-green-500 border-light hover:bg-light-dark active:bg-light-dark focus:bg-light-dark ">
+                                                Edit </Button>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-wrap justify-between">
+                                        <div class="flex flex-wrap items-center">
+                                            <button
+                                                class="mr-3 mb-2 inline-flex items-center justify-center text-secondary-inverse rounded-full bg-neutral-100 hover:bg-neutral-200 transition-all duration-200 ease-in-out px-3 py-1 text-sm font-medium leading-normal">
+                                               Followers none </button>
+                                            <button
+                                                class="mr-3 mb-2 inline-flex items-center justify-center text-secondary-inverse rounded-full bg-neutral-100 hover:bg-neutral-200 transition-all duration-200 ease-in-out px-3 py-1 text-sm font-medium leading-normal">
+                                              Following none </Button>
+                                            <a href=""
+                                                class="mr-3 mb-2 inline-flex items-center justify-center text-secondary-inverse rounded-full bg-neutral-100 hover:bg-neutral-200 transition-all duration-200 ease-in-out px-3 py-1 text-sm font-medium leading-normal">
+                                                48 Posts </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of about section -->
+
+                <div class="my-4"></div>
+
+                <!-- Experience and education -->
+                <div class="bg-white p-3 shadow-sm rounded-lg ">
+                    <div class="flex flex-row justify-between px-10">
+                        <h1 class="text-xl font-medium">Posts </h1>
+                        <button class="bg-gray-400 text-white px-2 py-1 rounded-lg"><i class="fa-solid fa-plus"></i> Add</button>
+                    </div>
+
+                    <div class="border border-dashed mx-4 rounded-lg mt-2">
+                        <div class="grid grid-cols-2 px-6 py-4">
+                            <div>
+                                <div>
+                                    <h1 class="text-lg font-medium">In Progress</h1>
+                                </div>
+                                <div>
+                                    <%- include('tasks/to-do') %>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <h1 class="text-lg font-medium">Done</h1>
+                                </div>
+                                <div>
+                                    <%- include('tasks/done') %>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- End of Experience and education grid -->
+                </div>
+                <!-- End of profile tab -->
+            </div>
+        </div>
+    </div>
+</div>

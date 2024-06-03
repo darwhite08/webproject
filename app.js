@@ -8,6 +8,7 @@ const GoogleStrategy = require("passport-google-oauth2");
 const session = require("express-session");
 const env = require("dotenv");
 const Strategy = require('passport-local')
+const axios = require('axios')
 
 const app = express();
 const port = process.env.PORT || 3000 ;
@@ -34,6 +35,7 @@ const db = new pg.Client({
   database: process.env.PG_DATABASE,
   password: process.env.PG_PASSWORD,
   port: process.env.PG_PORT,
+  ssl: { rejectUnauthorized: false }
 });
 
 
@@ -52,8 +54,9 @@ db.connect()
 
 
 app.get('/',async(req,res) => {
+    res.render('main' ,{tab:"home", user_authenticated:req.isAuthenticated});
 
-  res.render('main' ,{tab:"home"});
+
 });
 
 
@@ -80,13 +83,15 @@ app.get('/blog', async (req, res) => {
 });
 app.get('/countdown', async (req, res) => {
   if (req.isUnauthenticated()) {
-    const result = await db.query("SELECT * FROM best_anime_list_user JOIN best_anime_list ON best_anime_list_user.id = best_anime_list.user_link_id ");
+    const result = await db.query("SELECT * FROM anime_countdown JOIN best_anime_list_user ON anime_countdown.user_content_id = best_anime_list_user.id ");
     res.render('main', { animeList: result.rows, total: result.rows.length, userTrue: false, tab: "countdown" });
   }
   else {
     res.render('main', { userTrue: false, pageSelection: "countdown" });
   }
 });
+
+
 
 var anime = ["kodomomuke","shonen","shoujo","seinen","josei","mecha","sliceOfLife","mahouShoujo","isekai","yaoi","yuri","harem","ecchi","idol"];
 // Don't use VAR here it will create clouser problem
@@ -104,10 +109,14 @@ for (let i = 0; i < anime.length; i++) {
       } else {
         res.render('main', { userTrue: false, pageSelection: anime[i] });
       }
+
+      // const response = await axios.get('https://m.imdb.com/title/tt9054364')
+      // console.log(response.data)
+      
   });
 }
 app.get('/login', async (req, res) => {
-  res.render('Auth/loginPage'); // 
+  res.render('Auth/loginpage'); // 
 });
 
 
@@ -175,8 +184,8 @@ passport.use(
         ]);
         if (result.rows.length === 0) {
           const newUser = await db.query(
-            "INSERT INTO best_anime_list_user (email, user_password,user_image,google_id,user_name) VALUES ($1, $2,$3,$4,$5)",
-            [profile.email, "google", profile.picture, profile.id, profile.displayName]
+            "INSERT INTO best_anime_list_user (email, user_password,user_image,google_id,user_name,user_id) VALUES ($1, $2,$3,$4,$5,$6)",
+            [profile.email, "google", profile.picture, profile.id, profile.displayName ,profile.id ]
           );
           return cb(null, newUser.rows[0]);
         } else {
@@ -192,7 +201,7 @@ passport.use(
 
 passport.serializeUser(function (user, cb) {
   process.nextTick(function () {
-    cb(null, { id: user.id, userId: user.user_id, username: user.user_name, profilePicture: user.user_image, email: user.email, });
+    cb(null, { id: user.id, userId: user.user_id, username: user.user_name, profilePicture: user.user_image, email: user.email,googlr_id:user.google_id });
   });
 });
 

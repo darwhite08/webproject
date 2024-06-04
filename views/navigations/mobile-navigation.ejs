@@ -26,7 +26,7 @@
                 <a href="user/dash-board"><i class="fa-solid fa-user text-white text-lg font-bold"></i></a>
             </button>
         </div>      
-        <button  type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 ">
+        <button onclick="mobile_navigations_toggleopen();" type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 ">
             <i class="fa-solid fa-list text-lg font-bold"></i>
         </button>
         <button  type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 ">
@@ -36,22 +36,50 @@
     </div>
 </div>
 <!-- Best anime list and upcoming anime -->
-<div class="min-h-screen backdrop-blur-md fixed top-0 left-0 w-full h-full hidden  ">
-    <div class="flex items-center justify-center ">
-        <!-- Best Anime list -->
-    
-            <div class="bg-white my-auto  rounded-xl px-20">
-               <div>
-                <h1>Best anime list</h1>
-                <div>
+<div id="mobile-navigation-sidebar" class=" hidden min-h-screen backdrop-blur-sm fixed top-0 left-0 h-full w-full">
+        <!--  Best Anime list -->
+            <div class=" min-h-screen w-3/4 my-auto bg-[url('../../public/media/bestAnimeList/img/animeListBackground.jpg')] bg-center bg-cover">
+               <div class="static bg-black/70 backdrop-blur-md">
+                <button onclick="mobile_navigations_toggleclose();" class="absolute top-2 right-2 text-xl font-bold text-gray-600 z-50 bg-white py-1 px-4 rounded-full">x</button>
 
+                <h1 class="bg-green-100 text-green-600 font-medium text-center backdrop-blur-md">BEST ANIME LIST</h1>
+                <div class="grid grid-cols-2 gap-4 py-5 px-10 text-xs">   
+                    <button class="border-2 rounded-md text-white font-bold"><a class=" py-2 px-1" href="/best-anime-list/kodomomuke">kodomomuke</a></button>
+                    <button class="border-2 rounded-lg text-white font-bold py-1 px-1"><a href="/best-anime-list/shonen">Shonen</a></button>
+                    <button class="border-2 rounded-lg text-white font-bold py-1 px-1"><a href="/best-anime-list/shoujo">Shoujo</a></button>
+                    <button class="border-2 rounded-lg text-white font-bold py-1 px-1"><a href="/best-anime-list/seinen">Seinen</a></button>
+                    <button class="border-2 rounded-lg text-white font-bold py-1 px-1"><a href="/best-anime-list/josei">Josei</a></button>
+                    <button class="border-2 rounded-lg text-white font-bold py-1 px-1"><a href="/best-anime-list/cecha">Mecha</a></button>
+                    <button class="border-2 rounded-lg text-white font-bold py-1 px-1"><a href="/best-anime-list/sliceoflife">Slice of Life</a></button>
+                    <button class="border-2 rounded-lg text-white font-bold py-1 px-1"><a href="/best-anime-list/mahoushoujo">Mahou Shoujo</a></button>
+                    <button class="border-2 rounded-lg text-white font-bold py-1 px-1"><a href="/best-anime-list/isekai">Isekai</a></button>
+                    <button class="border-2 rounded-lg text-white font-bold py-1 px-1"><a href="/best-anime-list/yaoi">Yaoi</a></button>
+                    <button class="border-2 rounded-lg text-white font-bold py-1 px-1"><a href="/best-anime-list/yuri">Yuri</a></button>
+                    <button class="border-2 rounded-lg text-white font-bold py-1 px-1"><a href="/best-anime-list/harem">Harem</a></button>
+                    <button class="border-2 rounded-lg text-white font-bold py-1 px-1"><a href="/best-anime-list/ecchi">Ecchi</a></button>
+                    <button class="border-2 rounded-lg text-white font-bold py-1 px-1"><a href="/best-anime-list/idol">Idol</a></button>
                 </div>
                </div>
-               <div>
-                <h1>Upcoming anime list</h1>
-                <div></div>
+               <div class="bg-black/70 backdrop-blur-md pb-5">
+                <h1 class="bg-green-100 text-green-600 font-medium text-center">UPCOMMING ANIME</h1>
+                <div class="grid grid-cols-2 gap-4 py-5 px-10 text-xs">   
+                    <button class="border-2 rounded-lg text-white py-1 px-1"><a href="">kodomomuke</a></button>
+                    <button class="border-2 rounded-lg text-white py-1 px-1"><a href="">Shonen</a></button>
+                    <button class="border-2 rounded-lg text-white py-1 px-1"><a href="">Shoujo</a></button>
+                    <button class="border-2 rounded-lg text-white py-1 px-1"><a href="">Seinen</a></button>
+                    <button class="border-2 rounded-lg text-white py-1 px-1"><a href="">Josei</a></button>
+                    <button class="border-2 rounded-lg text-white py-1 px-1"><a href="">Mecha</a></button>
+                    <button class="border-2 rounded-lg text-white py-1 px-1"><a href="">Slice of Life</a></button>
+                    <button class="border-2 rounded-lg text-white py-1 px-1"><a href="">Mahou Shoujo</a></button>
+                    <button class="border-2 rounded-lg text-white py-1 px-1"><a href="">Isekai</a></button>
+                    <button class="border-2 rounded-lg text-white py-1 px-1"><a href="">Yaoi</a></button>
+                    <button class="border-2 rounded-lg text-white py-1 px-1"><a href="">Yuri</a></button>
+                    <button class="border-2 rounded-lg text-white py-1 px-1"><a href="">Harem</a></button>
+                    <button class="border-2 rounded-lg text-white py-1 px-1"><a href="">Ecchi</a></button>
+                    <button class="border-2 rounded-lg text-white py-1 px-1"><a href="">Idol</a></button>
+                </div>
                </div>
-            </div>
+             
     
         <!-- upcomming anime -->
         <div></div>

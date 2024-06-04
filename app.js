@@ -5,6 +5,7 @@ const path = require("path");
 const pg = require("pg");
 const passport = require("passport");
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
+
 const session = require("express-session");
 const env = require("dotenv");
 const Strategy = require('passport-local')
@@ -173,7 +174,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "https://www.animeunwatched.com/auth/google/secrets/",
+      callbackURL: "https://localhost:3000/auth/google/secrets",
       userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
     },
     async (accessToken, refreshToken, profile, cb) => {

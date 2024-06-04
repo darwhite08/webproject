@@ -4,7 +4,7 @@ const ejs = require("ejs");
 const path = require("path");
 const pg = require("pg");
 const passport = require("passport");
-const GoogleStrategy = require("passport-google-oauth2");
+var GoogleStrategy = require('passport-google-oauth20').Strategy;
 const session = require("express-session");
 const env = require("dotenv");
 const Strategy = require('passport-local')
@@ -173,7 +173,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "http://localhost:3000/auth/google/secrets",
+      callbackURL: "https://www.animeunwatched.com/auth/google/secrets",
       userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
     },
     async (accessToken, refreshToken, profile, cb) => {
@@ -201,7 +201,7 @@ passport.use(
 
 passport.serializeUser(function (user, cb) {
   process.nextTick(function () {
-    cb(null, { id: user.id, userId: user.user_id, username: user.user_name, profilePicture: user.user_image, email: user.email,googlr_id:user.google_id });
+    cb(null, { id: user.id, userId: user.user_id, username: user.user_name, profilePicture: user.user_image, email: user.email, });
   });
 });
 

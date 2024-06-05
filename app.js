@@ -74,21 +74,24 @@ app.get('/',async(req,res) => {
 // });
 app.get('/blog', async (req, res) => {
   if (req.isUnauthenticated()) {
-    
-    res.render('main', {userTrue:false, tab: "blog"});
+    res.render('maintenance-page')
+    // res.render('main', {userTrue:false, tab: "blog"});
   }
   if (req.isAuthenticated()) {
-    res.render('main', {userTrue:true, tab: "blog" });
+    // res.render('main', {userTrue:true, tab: "blog" });
+    res.render('maintenance-page')
   }
 
 });
 app.get('/countdown', async (req, res) => {
   if (req.isUnauthenticated()) {
-    const result = await db.query("SELECT * FROM anime_countdown JOIN best_anime_list_user ON anime_countdown.user_content_id = best_anime_list_user.id ");
-    res.render('main', { animeList: result.rows, total: result.rows.length, userTrue: false, tab: "countdown" });
-  }
+    // const result = await db.query("SELECT * FROM anime_countdown JOIN best_anime_list_user ON anime_countdown.user_content_id = best_anime_list_user.id ");
+    // res.render('main', { animeList: result.rows, total: result.rows.length, userTrue: false, tab: "countdown" });
+  
+    res.render('maintenance-page')  }
   else {
-    res.render('main', { userTrue: false, pageSelection: "countdown" });
+    // res.render('main', { userTrue: false, pageSelection: "countdown" });
+    res.render('maintenance-page')
   }
 });
 
@@ -100,12 +103,12 @@ for (let i = 0; i < anime.length; i++) {
   app.get(`/best-anime-list/${anime[i]}`, async (req, res) => {
       if (req.isUnauthenticated()) {
       const result = await db.query("SELECT * FROM best_anime_list JOIN best_anime_list_user ON best_anime_list_user.id = best_anime_list.user_id JOIN best_anime_list_content ON best_anime_list_content.id = best_anime_list.content_id WHERE lower(anime_type) = $1  LIMIT 10", [anime[i]]);
-      if (result.length !== 0) {
+      if (result?.rows.length !== 0) {
         console.log(result.row)
         res.render('main', { animeList: result.rows, total: result.rows.length, userTrue: false, tab: "bestanimelist" });
         
-      } else if(result.length === 0) {
-        res.redirect('*');
+      } else if(result.rows.length === 0) {
+        res.render('maintenance-page')
       }
       } else {
         res.render('main', { userTrue: false, pageSelection: anime[i] });
@@ -212,9 +215,12 @@ passport.deserializeUser(function (user, cb) {
   });
 });
 
+// default error
 app.get('*', (req, res) => {
   res.render('error')
 });
+
+// maintanace page
 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

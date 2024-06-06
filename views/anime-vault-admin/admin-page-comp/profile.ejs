@@ -4,16 +4,14 @@
             <!-- Left Side -->
             <div class="w-full md:w-3/12 md:mx-2">
                 <!-- Profile Card -->
-                <div class="bg-white p-3  rounded-lg ">
+                <div class=" bg-white p-3  rounded-lg ">
                     <div class="image overflow-hidden">
                         <img class="h-auto w-full mx-auto rounded-lg"
                             src=<%= profilePicture %> alt="">
                     </div>
-                    <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">Priyanshu Chandra</h1>
-                    <h3 class="text-gray-600 font-lg text-semibold leading-6">Editor</h3>
-                    <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">Lorem ipsum dolor sit amet
-                        consectetur adipisicing elit.
-                        Reprehenderit, eligendi dolorum sequi illum qui unde aspernatur non deserunt</p>
+                    <h1 class="text-gray-900 font-bold text-xl leading-8 my-1"><%= username %></h1>
+                    <h3 class="text-gray-600 font-lg text-semibold leading-6">user</h3>
+                    <!-- <p class="text-sm text-gray-500 hover:text-gray-600 leading-6"></p> -->
                     <ul
                         class="bg-blue-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
                         <li class="flex items-center py-3 border-b border-indigo-200">
@@ -21,16 +19,16 @@
                             <span class="ml-auto"><span
                                     class="bg-green-300 py-1 px-2 rounded-lg text-white text-sm"><span class="text-green-800 font-medium">Active</span></span></span>
                         </li>
-                        <li class="flex items-center py-3">
+                        <!-- <li class="flex items-center py-3">
                             <span>Member since</span>
                             <span class="ml-auto">Nov 07, 2016</span>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
                 <!-- End of profile card -->
                 <div class="my-4"></div>
                 <!-- Similar card -->
-                <div class="bg-white p-3 hover:shadow rounded-lg">
+                <div class="hidden bg-white p-3 hover:shadow rounded-lg">
                     <div class="flex items-center space-x-3 font-semibold text-gray-900 text-xl leading-8">
                         <span class="text-black">
                             <i class="fa-solid fa-person"></i>
@@ -134,8 +132,8 @@
 
                 <div class="my-4"></div>
 
-                <!-- Experience and education -->
-                <div class="bg-white p-3 shadow-sm rounded-lg ">
+                <!-- Posts-->
+                <div class="hidden bg-white p-3 shadow-sm rounded-lg ">
                     <div class="flex flex-row justify-between px-10">
                         <h1 class="text-xl font-medium">Posts </h1>
                         <button class="bg-gray-400 text-white px-2 py-1 rounded-lg"><i class="fa-solid fa-plus"></i> Add</button>
@@ -165,7 +163,7 @@
 
                     <!-- End of Experience and education grid -->
                 </div>
-                <!-- End of profile tab -->
+                <!-- End of Posts -->
             </div>
         </div>
     </div>

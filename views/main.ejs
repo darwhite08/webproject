@@ -1,24 +1,24 @@
 <%- include('main-comp/header') %>
 <!-- Home Tab -->
 <% if (tab === "home") { %>
-    <%- include('navigations/top-bar' ,{value:false}) %>
+    <%- include('navigations/top-bar' ,{value:value}) %>
     <%- include('home') %> 
     <%- include('navigations/bottom-bar' ) %>
     <%- include('navigations/mobile-navigation' ) %> 
     <!-- Blog Tab -->
     <% } else if (tab === "blog"){ %>
-        <%- include('navigations/top-bar' ,{value:userTrue}) %>
+        <%- include('navigations/top-bar' ,{value:value}) %>
         <%- include('anime-vault/blog') %> 
         <%- include('navigations/bottom-bar' ) %>
         <!-- Count Down Tab -->
         <% } else if (tab === "countdown"){ %>
-            <%- include('navigations/top-bar' ,{value:userTrue}) %>
+            <%- include('navigations/top-bar' ,{value:value}) %>
             <%- include('anime-vault/animeCountDown') %>
             <%- include('navigations/bottom-bar' ) %>
             <%- include('navigations/mobile-navigation' ) %> 
             <!-- bestAnimeList Tab -->
         <% } else if (tab==="bestanimelist"){ %>
-            <%- include('navigations/top-bar' ,{value:userTrue}) %>
+            <%- include('navigations/top-bar' ,{value:value}) %>
             <%- include('anime-vault/bestAnimeList') %>
             <%- include('navigations/bottom-bar' ) %>
             <%- include('navigations/mobile-navigation' ) %>  

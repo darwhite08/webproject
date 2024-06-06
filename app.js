@@ -5,7 +5,6 @@ const path = require("path");
 const pg = require("pg");
 const passport = require("passport");
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
-
 const session = require("express-session");
 const env = require("dotenv");
 const Strategy = require('passport-local')
@@ -55,9 +54,13 @@ db.connect()
 
 
 app.get('/',async(req,res) => {
-    res.render('main' ,{tab:"home", user_authenticated:req.isAuthenticated});
 
-
+  if (req.isAuthenticated()) {
+    res.render('main' ,{tab:"home", value:req.isAuthenticated(),profile_picture:req.user.profilePicture});
+  }
+  if (req.isUnauthenticated()) {
+    res.render('main' ,{tab:"home", value:req.isAuthenticated()});
+  }
 });
 
 
@@ -139,7 +142,7 @@ app.get('/user/dash-board', async (req, res) => {
     res.render('main2' , {userTrue: true , profile_picture: req.user.profilePicture, username:req.user.username, email: req.user.email,settings:false,profile:true,content_upload:false});
   }
   else {
-    res.render('Auth/loginPage');
+    res.render('Auth/loginpage');
   }
 });
 // profile router
@@ -177,24 +180,24 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "https://localhost:3000/auth/google/secrets",
-      userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
+      callbackURL: "https://animeunwatched.com/auth/google/secrets",
+      userProfileURL: "https://www.googleapis.com/oauth2/v2/userinfo",
     },
     async (accessToken, refreshToken, profile, cb) => {
       try {
-        console.log(profile);
+        console.log(profile);         
         const result = await db.query("SELECT * FROM best_anime_list_user WHERE email = $1", [
-          profile.email,
+          profile._json.email,
         ]);
         if (result.rows.length === 0) {
           const newUser = await db.query(
-            "INSERT INTO best_anime_list_user (email, user_password,user_image,google_id,user_name,user_id) VALUES ($1, $2,$3,$4,$5,$6)",
-            [profile.email, "google", profile.picture, profile.id, profile.displayName ,profile.id ]
+            "INSERT INTO best_anime_list_user (email, user_password,user_image,google_id,user_name) VALUES ($1, $2,$3,$4,$5)",
+            [profile._json.email, "google", profile._json.picture, profile._json.id, profile.displayName  ]
           );
           return cb(null, newUser.rows[0]);
         } else {
           return cb(null, result.rows[0]);
-        }s
+        }
       } catch (err) {
         return cb(err);
       }

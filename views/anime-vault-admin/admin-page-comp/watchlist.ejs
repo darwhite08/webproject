@@ -1,7 +1,7 @@
-<div>
+<div class="pl-10">
     <!-- Watch list navigation -->
-    <div class="px-10 mt-5 flex flex-row justify-between">
-        <h1>| Watchlist</h1>
+    <div class=" mt-5 flex flex-row justify-between">
+            <h1><i class="fa-solid fa-list-check"></i> Items | Watchlist</h1>
         <div>
 
             <form class="flex items-center max-w-sm mx-auto">
@@ -16,7 +16,7 @@
                 </div>
                 <button type="submit"
                     class="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                  <!-- fontawesome -->d
+                    <i class="fa-solid fa-magnifying-glass"></i>
                     <span class="sr-only">Search</span>
                 </button>
             </form>
@@ -25,7 +25,88 @@
         </div>
         
     </div>
-  <div class="mt-5  w-full bg-[url('../../../public/media/bestAnimeList/img/animeListBackground.jpg')]">
-<h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis dolore repellendus ullam veritatis reprehenderit a dolorum earum. Qui, dicta officia porro ipsam ipsum pariatur ad eum numquam quidem libero saepe!</h1>
+  <div class="mt-2  w-full ">
+    <h1 class="text-2xl font-bold">Watchlist</h1>
+    <div class="pt-2 text-gray-600 text-xs ">
+        <p>Total items</p>
+        <p>updated on date at time</p>
+    </div>
+   <!-- watch list items -->
+    
+
+
+
+   <div class="relative overflow-x-auto  mt-10">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="p">
+                  select
+                </th>
+                <th scope="col" class="px-6 py-3">
+                   anime name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    imdb
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Category
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    type
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Available on
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    added date
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Weight
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <td class="w-4 p-4">
+                    <div class="flex items-center">
+                        <input id="checkbox-table-search-3" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="checkbox-table-search-3" class="sr-only">checkbox</label>
+                    </div>
+                </td>
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    AirTag
+                </th>
+                <td class="px-6 py-4">
+                    Silver
+                </td>
+                <td class="px-6 py-4">
+                    Accessories
+                </td>
+                <td class="px-6 py-4">
+                    Yes
+                </td>
+                <td class="px-6 py-4">
+                    No
+                </td>
+                <td class="px-6 py-4">
+                    $29
+                </td>
+                <td class="px-6 py-4">
+                    53 g
+                </td>
+                <td class="flex items-center px-6 py-4">
+                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Remove</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
   </div>
 </div>

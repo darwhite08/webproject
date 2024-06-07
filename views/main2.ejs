@@ -8,4 +8,13 @@ email:email,settings:true,profile:false,content_upload:false}) %>
 <% }else if(content_upload){%> <%- include('anime-vault-admin/dash-board' , {
 profile_picture: profile_picture, username:username,
 email:email,settings:false,profile:false,content_upload:true}) %>
-<% }%> <%- include('main-comp/footer') %>
+<% }else if(watchlist){%> <%- include('anime-vault-admin/dash-board' , {
+    profile_picture: profile_picture, username:username,
+    email:email,settings:false,profile:false,content_upload:false,watchlist:true}) %>
+    <% }else if(readLater){%> <%- include('anime-vault-admin/dash-board' , {
+        profile_picture: profile_picture, username:username,
+        email:email,settings:false,profile:false,content_upload:false,watchlist:false,readLater:true}) %>
+        <% }else if(calender){%> <%- include('anime-vault-admin/dash-board' , {
+            profile_picture: profile_picture, username:username,
+            email:email,settings:false,profile:false,content_upload:false,watchlist:false,readLater:false,calender:true}) %>
+        <% }%> <%- include('main-comp/footer') %> <%- include('main-comp/footer') %>

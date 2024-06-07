@@ -23,39 +23,7 @@
                                     src=<%= profile_picture %> alt="user photo">
                             </button>
                         </div>
-                        <!-- <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
-                            id="dropdown-user">
-                            <div class="px-4 py-3" role="none">
-                                <p class="text-sm text-gray-900 dark:text-white" role="none"> -->
-                                    <!-- User name -->
-                                <!-- </p>
-                                <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none"> -->
-                                    <!-- user email -->
-                                <!-- </p>
-                            </div>
-                            <ul class="py-1" role="none">
-                                <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                        role="menuitem">Dashboard</a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                        role="menuitem">Settings</a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                        role="menuitem">Earnings</a>
-                                </li>
-                                <li>
-                                    <a href="/"
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                        role="menuitem">Sign out</a>
-                                </li>
-                            </ul>
-                        </div> -->
+           
                     </div>
                 </div>
             </div>
@@ -84,15 +52,18 @@
                         <span class="ms-3">Profile</span>
                     </a>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="/user/dash-board/upload-content"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <i class="fa-solid fa-clock"></i>
                         <span
                             class="flex-1 ms-3 me-2 text-md font-medium text-gray-900 focus:outline-none  hover:bg-gray-100 hover:text-blue-700 focus:z-10">Upload Content</span>
                     </a>
-                </li>
-                <li>
+                </li> -->
+                
+                <!-- Earning -->
+                
+                <!-- <li>
                     <a href="/logout"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <i class="fa-solid fa-right-to-bracket"></i>
@@ -100,26 +71,50 @@
                         <span
                             class="flex-1 px-5 me-2 text-md font-medium text-gray-900 focus:outline-none  hover:bg-gray-100 hover:text-blue-700 focus:z-10">Earning</span>
                     </a>
-                </li>
+                </li> -->
+
+                <!-- watchlist -->
+                
                 <li>
-                    <a href="/logout"
+                    <a href="/user/dash-board/watchlist"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <i class="fa-solid fa-right-to-bracket"></i>
+                        <i class="fa-solid fa-list-check"></i>
     
                         <span
                             class="flex-1 px-5 me-2 text-md font-medium text-gray-900 focus:outline-none  hover:bg-gray-100 hover:text-blue-700 focus:z-10">Watchlist
                         </span>
                     </a>
                 </li>
-
                 <li>
+                    <a href="/user/dash-board/read-later    "
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <i class="fa-solid fa-book-bookmark"></i>
+    
+                        <span
+                            class="flex-1 px-5 me-2 text-md font-medium text-gray-900 focus:outline-none  hover:bg-gray-100 hover:text-blue-700 focus:z-10">Read later
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/user/dash-board/calender"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <i class="fa-solid fa-calendar"></i>
+    
+                        <span
+                            class="flex-1 px-5 me-2 text-md font-medium text-gray-900 focus:outline-none  hover:bg-gray-100 hover:text-blue-700 focus:z-10">Read by date
+                        </span>
+                    </a>
+                </li>
+
+
+                <!-- <li>
                     <a id="animeVaultDashboardSettings" href="/user/dash-board/settings"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <i class="fa-solid fa-gear"></i>
                         <span
                             class="flex-1 px-5 me-2 text-md font-medium text-gray-900 focus:outline-none  hover:bg-gray-100 hover:text-blue-700 focus:z-10">Settings</span>
                     </a>
-                </li> 
+                </li>  -->
                 <li>
                     <a href="/logout"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -166,16 +161,22 @@
     <!-- side bar end -->
     <div class="p-4 sm:ml-64">
         <div>
-            <h1 class="text-gray-800 text-2xl font-bold mt-14">Profile</h1>
+            <h1 class="text-gray-800 text-2xl font-bold pt-14">Profile</h1>
         </div>
-        <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 ">
+        <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg  ">
             <% if (profile){%>
             <%- include('admin-page-comp/profile' ,{  profilePicture:profile_picture,  username:username, email:email}) %>
             <% } else if (settings){%>
                 <%- include('admin-page-comp/settings' ) %>
                 <% } else if (content_upload){%>
                     <%- include('admin-page-comp/upload-content' ) %>
-                    <% }%>
+                    <% } else if (watchlist){%>
+                        <%- include('admin-page-comp/watchlist' ) %>
+                        <% } else if (readLater){%>
+                            <%- include('admin-page-comp/read-later' ) %>
+                            <% } else if (calender){%>
+                                <%- include('admin-page-comp/calender' ) %>
+                                <% }%>
         </div>
     
     </div>

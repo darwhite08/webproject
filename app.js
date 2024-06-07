@@ -10,6 +10,7 @@ const env = require("dotenv");
 const Strategy = require('passport-local')
 const axios = require('axios')
 
+
 const app = express();
 const port = process.env.PORT || 3000 ;
 env.config();
@@ -104,18 +105,25 @@ var anime = ["kodomomuke","shonen","shoujo","seinen","josei","mecha","sliceOfLif
 // Don't use VAR here it will create clouser problem
 for (let i = 0; i < anime.length; i++) {
   app.get(`/best-anime-list/${anime[i]}`, async (req, res) => {
-      if (req.isUnauthenticated()) {
+      if (req.isAuthenticated()) {
       const result = await db.query("SELECT * FROM best_anime_list JOIN best_anime_list_user ON best_anime_list_user.id = best_anime_list.user_id JOIN best_anime_list_content ON best_anime_list_content.id = best_anime_list.content_id WHERE lower(anime_type) = $1  LIMIT 10", [anime[i]]);
       if (result?.rows.length !== 0) {
         console.log(result.row)
-        res.render('main', { animeList: result.rows, total: result.rows.length, userTrue: false, tab: "bestanimelist" });
+        res.render('main', { animeList: result.rows, total: result.rows.length, tab: "bestanimelist" ,value:req.isAuthenticated(),profile_picture:req.user.profilePicture});
         
       } else if(result.rows.length === 0) {
         res.render('maintenance-page')
       }
-      } else {
-        res.render('main', { userTrue: false, pageSelection: anime[i] });
-      }
+      }  if (req.isUnauthenticated()) {
+        const result = await db.query("SELECT * FROM best_anime_list JOIN best_anime_list_user ON best_anime_list_user.id = best_anime_list.user_id JOIN best_anime_list_content ON best_anime_list_content.id = best_anime_list.content_id WHERE lower(anime_type) = $1  LIMIT 10", [anime[i]]);
+        if (result?.rows.length !== 0) {
+          console.log(result.row)
+          res.render('main', { animeList: result.rows, total: result.rows.length, userTrue: false, tab: "bestanimelist",value:req.isAuthenticated()});
+          
+        } else if(result.rows.length === 0) {
+          res.render('maintenance-page')
+        }
+        }
 
       // const response = await axios.get('https://m.imdb.com/title/tt9054364')
       // console.log(response.data)
@@ -126,6 +134,90 @@ app.get('/login', async (req, res) => {
   res.render('Auth/loginpage'); // 
 });
 
+// Dash board router
+app.get('/user/dash-board', async (req, res) => {
+  if (req.isAuthenticated()) {
+    res.render('main2' , {userTrue: true , profile_picture: req.user.profilePicture, username:req.user.username, email: req.user.email,settings:false,profile:true,content_upload:false,watchlist:false,readLater:false,calender:false});
+  }
+  else {
+    res.render('Auth/loginpage');
+  }
+});
+
+// profile router
+
+app.get('/user/dash-board/profile', async (req, res) => {
+  if (req.isAuthenticated()) {
+    res.render('main2' , {userTrue: true , profile_picture: req.user.profilePicture, username:req.user.username, email: req.user.email,settings:false,profile:true,content_upload:false,watchlist:false,readLater:false,calender:false});
+  }
+  else {
+    res.render('Auth/loginPage');
+  }
+});
+
+// watchlist router
+app.get('/user/dash-board/watchlist', async (req, res) => {
+  if (req.isAuthenticated()) {
+    res.render('main2' , {userTrue: true ,  profile_picture: req.user.profilePicture, username:req.user.username, email: req.user.email,settings:false,profile:false,content_upload:false,watchlist:true,readLater:false,calender:false});
+  }
+  else {
+    res.render('Auth/loginPage');
+  }
+});
+
+// readLater router
+app.get('/user/dash-board/read-later', async (req, res) => {
+  if (req.isAuthenticated()) {
+    res.render('main2' , {userTrue: true ,  profile_picture: req.user.profilePicture, username:req.user.username, email: req.user.email,settings:false,profile:false,content_upload:false,watchlist:false,readLater:true,calender:false});
+  }
+  else {
+    res.render('Auth/loginPage');
+  }
+});
+
+
+// calender : pick by date
+app.get('/user/dash-board/calender', async (req, res) => {
+  if (req.isAuthenticated()) {
+    res.render('main2' , {userTrue: true ,  profile_picture: req.user.profilePicture, username:req.user.username, email: req.user.email,settings:false,profile:false,content_upload:false,watchlist:false,readLater:false,calender:true});
+  }
+  else {
+    res.render('Auth/loginPage');
+  }
+});
+// upload content router
+app.get('/user/dash-board/upload-content', async (req, res) => {
+  if (req.isAuthenticated()) {
+    res.render('main2' , {userTrue: true , uploadcontenxt: true, profile_picture: req.user.profilePicture, username:req.user.username, email: req.user.email,settings:false,profile:false,content_upload:true,watchlist:false,readLater:false,calender:false});
+  }
+  else {
+    res.render('Auth/loginPage');
+  }
+});
+// settings router
+app.get('/user/dash-board/settings', async (req, res) => {
+  if (req.isAuthenticated()) {
+    res.render('main2' , {userTrue: true , uploadcontenxt: true, profile_picture: req.user.profilePicture, username:req.user.username, email: req.user.email,settings:true,profile:false,content_upload:false,watchlist:false,readLater:false,calender:false});
+  }
+  else {
+    res.render('Auth/loginPage');
+  }
+})
+// Logout
+app.get('/logout', function(req, res) {
+  req.logout((err)=>{
+    if (err) {
+      console.log(err);
+    }
+    else{
+      res.redirect('/')
+    }
+  });
+});
+
+
+
+// Google Oath
 
 app.get('/auth/google', passport.authenticate("google", {
   scope: ["profile", "email"]
@@ -136,43 +228,7 @@ app.get('/auth/google/secrets', passport.authenticate("google", {
   failureRedirect: "/login"
 }));
 
-// Dash board router
-app.get('/user/dash-board', async (req, res) => {
-  if (req.isAuthenticated()) {
-    res.render('main2' , {userTrue: true , profile_picture: req.user.profilePicture, username:req.user.username, email: req.user.email,settings:false,profile:true,content_upload:false});
-  }
-  else {
-    res.render('Auth/loginpage');
-  }
-});
-// profile router
-
-app.get('/user/dash-board/profile', async (req, res) => {
-  if (req.isAuthenticated()) {
-    res.render('main2' , {userTrue: true , uploadcontenxt: true, profile_picture: req.user.profilePicture, username:req.user.username, email: req.user.email,settings:false,profile:true,content_upload:false});
-  }
-  else {
-    res.render('Auth/loginPage');
-  }
-});
-// upload content router
-app.get('/user/dash-board/upload-content', async (req, res) => {
-  if (req.isAuthenticated()) {
-    res.render('main2' , {userTrue: true , uploadcontenxt: true, profile_picture: req.user.profilePicture, username:req.user.username, email: req.user.email,settings:false,profile:false,content_upload:true});
-  }
-  else {
-    res.render('Auth/loginPage');
-  }
-});
-// settings router
-app.get('/user/dash-board/settings', async (req, res) => {
-  if (req.isAuthenticated()) {
-    res.render('main2' , {userTrue: true , uploadcontenxt: true, profile_picture: req.user.profilePicture, username:req.user.username, email: req.user.email,settings:true,profile:false,content_upload:false});
-  }
-  else {
-    res.render('Auth/loginPage');
-  }
-});
+// 
 
 passport.use(
   "google",

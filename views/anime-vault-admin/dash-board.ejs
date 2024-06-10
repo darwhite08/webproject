@@ -1,14 +1,13 @@
 
-<div id="animeVaultDashBoardContainer">
+<div id="animeVaultDashBoardContainer ">
     <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
         <div class="px-3 py-3 lg:px-5 lg:pl-3">
             <div class="flex items-center justify-between">
                 <div class="flex items-center justify-start rtl:justify-end">
                     <!-- Logo start -->
                     <div class="flex ms-2 md:me-24">
-                        <span
-                            class="px-2 self-center text-md font-semibold sm:text-md whitespace-nowrap dark:text-white bg-blue-700 text-white rounded-full ">Anime
-                            Unwatched.</span>
+                        <button
+                            class="px-2 self-center text-lg font-semibold sm:text-md whitespace-nowrap  "> <i class="fa-solid fa-bars"></i></button>
                     </div>
                     <!-- Logo end -->
                 </div>
@@ -16,9 +15,7 @@
                     <div class="flex items-center ms-3">
                         <div>
                             <button type="button"
-                                class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                                aria-expanded="false" data-dropdown-toggle="dropdown-user">
-                                <span class="sr-only">Open user menu</span>
+                                class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600">
                                 <img class="w-8 h-8 rounded-full"
                                     src=<%= profile_picture %> alt="user photo">
                             </button>
@@ -31,9 +28,9 @@
     </nav>
     
     <!-- side bar start -->
-    <aside id="logo-sidebar  "
+    <aside 
         class="fixed top-0  px-4 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
-        aria-label="Sidebar">
+        >
         
     <div class="flex items-center gap-4 mb-6 border-b border-dashed pb-4">
         <img class="w-10 h-10 rounded-full" src=<%= profile_picture%> alt="">
@@ -45,6 +42,7 @@
     
         <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
             <ul class="space-y-2 font-medium">
+                <!-- profile -->
                 <li>
                     <a href="/user/dash-board/profile" aria-selected="true"
                         class="flex items-center bg-black text-white px-4 p-2 text-gray-900 rounded-xl dark:text-white group">
@@ -52,10 +50,11 @@
                         <span class="ms-3">Profile</span>
                     </a>
                 </li>
+                <!-- upload content -->
                 <!-- <li>
                     <a href="/user/dash-board/upload-content"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <i class="fa-solid fa-clock"></i>
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
                         <span
                             class="flex-1 ms-3 me-2 text-md font-medium text-gray-900 focus:outline-none  hover:bg-gray-100 hover:text-blue-700 focus:z-10">Upload Content</span>
                     </a>
@@ -85,6 +84,7 @@
                         </span>
                     </a>
                 </li>
+                <!-- read later -->
                 <li>
                     <a href="/user/dash-board/read-later    "
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -95,6 +95,7 @@
                         </span>
                     </a>
                 </li>
+                <!-- read by date -->
                 <li>
                     <a href="/user/dash-board/calender"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -106,15 +107,16 @@
                     </a>
                 </li>
 
-
-                <!-- <li>
+<!-- settings -->
+                <li>
                     <a id="animeVaultDashboardSettings" href="/user/dash-board/settings"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <i class="fa-solid fa-gear"></i>
                         <span
                             class="flex-1 px-5 me-2 text-md font-medium text-gray-900 focus:outline-none  hover:bg-gray-100 hover:text-blue-700 focus:z-10">Settings</span>
                     </a>
-                </li>  -->
+                </li> 
+                <!-- logout -->
                 <li>
                     <a href="/logout"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -159,11 +161,8 @@
     
     </aside>
     <!-- side bar end -->
-    <div class="p-4 sm:ml-64">
-        <div>
-            <h1 class="text-gray-800 text-2xl font-bold pt-14">Profile</h1>
-        </div>
-        <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg  ">
+    <div class="px-4 sm:ml-64 sm:pt-20 md:pt-20 lg:pt-20">
+        <div class="px-4 border-2 border-gray-200 border-dashed rounded-lg flex flex-col items-center justify-center  sm:flex-row md:flex-row lg:flex-row ">
             <% if (profile){%>
             <%- include('admin-page-comp/profile' ,{  profilePicture:profile_picture,  username:username, email:email}) %>
             <% } else if (settings){%>

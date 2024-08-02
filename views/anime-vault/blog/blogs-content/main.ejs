@@ -1,0 +1,182 @@
+<div class="bg-gray-200 min-h-screen">
+    <div class=" flex flex-row gap-10 ">
+        <!-- Reaction tab and action tab -->
+        <div class="w-24  fixed top-30 left-0 bg-white  mt-24 ml-4 rounded-3xl  ">
+            <div class="flex flex-col py-10 gap-6 text-xl">
+                <button class="flex flex-col items-center gap-4"> <i
+                        class="fa-solid fa-face-grin-hearts text-violet-900 "></i>
+                    <span class="text-xs font-medium text-gray-500">100.2k views</span></button>
+                <button class="flex flex-col items-center gap-4"><i class="fa-solid fa-heart text-red-400"></i> <span
+                        class="text-xs font-medium text-gray-500">100.2k</span></button>
+                <button class="flex flex-col items-center gap-4"><i class="fa-solid fa-comment"></i> <span
+                        class="text-xs font-medium text-gray-500">100.2k</span></button>
+                <button class="flex flex-col items-center gap-4"><i class="fa-regular fa-bookmark"></i> <span
+                        class="text-xs font-medium text-gray-500">100.2k</span></button>
+                <button><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+        <!-- blog main -->
+        <div class="ml-40 w-full basis-9/12  mt-10   bg-white min-h-screen rounded-t-3xl ">
+            <div>
+                <%- data %>  
+            </div>
+            <!-- comments -->
+            <div class="flex flex-col gap-10 bg-gradient-to-r from-orange-400 to-rose-400 px-20 py-10 mt-10 ">
+                <div class=" ">
+                    <div class="bg-black/90 backdrop-blur-3xl px-10 py-14 rounded-3xl flex flex-row ">
+                        <!-- left section on commments -->
+                        <div class="basis-1/12">
+                            <span class="text-blue-400 text-3xl"><i class="fa-solid fa-message"></i></span>
+                        </div>
+                        <!-- right section on commnets -->
+                        <div class="basis-11/12 ">
+                            <div>
+                                <div>
+                                    <!-- user avtar -->
+                                    <div class="pb-10 ">
+                                        <div class=" relative flex items-center gap-4">
+                                            <img class=" w-10 h-10 rounded-full"
+                                                src="../../../../public/media/bestAnimeList/img/animeListBackground.jpg"
+                                                alt="">
+                                            <div class=" dark:text-white">
+                                                <div class="text-white text-lg  font-medium"><span>Priyanshu
+                                                        Chandra</span> <span class="text-gray-400">commented on</span>
+                                                    <span>Anime unwatched
+                                                        post</span>
+                                                </div>
+                                            </div>
+                                            <span class="absolute top-14 left-5 h-20 w-px  bg-gray-700 "></span>
+                                        </div>
+
+                                        <div>
+                                            <p class="text-white px-14 text-xl">Lorem ipsum dolor sit amet consectetur
+                                                adipisicing
+                                                elit. Alias maxime, harum tenetur facere sed nobis quod magnam hic omnis
+                                                et
+                                                ullam! Suscipit dignissimos dolorum corrupti mollitia vel reprehenderit
+                                                minima amet.</p>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <!-- post comment -->
+                            <div>
+                                <form>
+                                    <div class="flex flex-row  items-center px-3 py-2 rounded-lg ">
+                                        <img class="w-10 h-10 rounded-full"
+                                            src="../../../../public/media/bestAnimeList/img/animeListBackground.jpg"
+                                            alt="Rounded avatar">
+                                        <div class="flex flex-row items-center mr-4">
+                                            <textarea id="chat" rows="1"
+                                                class="w-96 mx-4 p-2.5  text-lg text-white  bg-transparent rounded-lg border-none resize-none focus:outline-none placeholder:font-medium"
+                                                placeholder="write your comment..."></textarea>
+                                            <button class="text-xl"><i
+                                                    class="fa-solid fa-face-smile text-gray-400"></i></button>
+                                        </div>
+                                        <button type="submit"
+                                            class=" w-fit px-6 font-bold py-2 bg-gray-900 shadow-lg text-white rounded-full cursor-pointer ">Post</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class=" ">
+                    <div class="bg-black/90 backdrop-blur-3xl px-10 py-14 rounded-3xl flex flex-row ">
+                        <!-- left section on commments -->
+                        <div class="basis-1/12">
+                            <span class="text-blue-400 text-3xl"><i class="fa-solid fa-message"></i></span>
+                        </div>
+                        <!-- right section on commnets -->
+                        <div class="basis-11/12 ">
+                            <div>
+                                <div>
+                                    <!-- user avtar -->
+                                    <div class="pb-10 ">
+                                        <div class=" relative flex items-center gap-4">
+                                            <img class=" w-10 h-10 rounded-full"
+                                                src="../../../../public/media/bestAnimeList/img/animeListBackground.jpg"
+                                                alt="">
+                                            <div class=" dark:text-white">
+                                                <div class="text-white text-lg  font-medium"><span>Priyanshu
+                                                        Chandra</span> <span class="text-gray-400">commented on</span>
+                                                    <span>Anime unwatched
+                                                        post</span>
+                                                </div>
+                                            </div>
+                                            <span class="absolute top-14 left-5 h-20 w-px  bg-gray-700 "></span>
+                                        </div>
+
+                                        <div>
+                                            <p class="text-white px-14 text-xl">Lorem ipsum dolor sit amet consectetur
+                                                adipisicing
+                                                elit. Alias maxime, harum tenetur facere sed nobis quod magnam hic omnis
+                                                et
+                                                ullam! Suscipit dignissimos dolorum corrupti mollitia vel reprehenderit
+                                                minima amet.</p>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <!-- post comment -->
+                            <div>
+                                <form>
+                                    <div class="flex flex-row  items-center px-3 py-2 rounded-lg ">
+                                        <img class="w-10 h-10 rounded-full"
+                                            src="../../../../public/media/bestAnimeList/img/animeListBackground.jpg"
+                                            alt="Rounded avatar">
+                                        <div class="flex flex-row items-center mr-4">
+                                            <textarea id="chat" rows="1"
+                                                class="w-96 mx-4 p-2.5  text-lg text-white  bg-transparent rounded-lg border-none resize-none focus:outline-none placeholder:font-medium"
+                                                placeholder="write your comment..."></textarea>
+                                            <button class="text-xl"><i
+                                                    class="fa-solid fa-face-smile text-gray-400"></i></button>
+                                        </div>
+                                        <button type="submit"
+                                            class=" w-fit px-6 font-bold py-2 bg-gray-900 shadow-lg text-white rounded-full cursor-pointer ">Post</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- blog reccomendation and others -->
+        <div class="w-full flex flex-col gap-10 basis-3/12 mt-10 mr-10 min-h-screen  ">
+            <div class="bg-white rounded-3xl py-10 px-10">
+                <div class="flex flex-col gap-4">
+                    <div class="flex items-center gap-4 w-full">
+                        <img class="w-10 h-10 rounded-full"
+                            src="../../../../public/media/bestAnimeList/img/animeListBackground.jpg " alt="">
+                        <div class="font-medium dark:text-white">
+                            <div>Jese Leos</div>
+                            <div class="text-sm text-gray-500 dark:text-gray-400">Joined in August 2014</div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center gap-4 px-4 ">
+                        <p class="text-sm text-gray-500 text-justify break-words hypen-auto">Lorem ipsum dolor sit amet,
+                            consectetur adipisicing elit. Non assumenda tempora beatae facere </p>
+                        <div class="flex flex-row gap-4 text-xs">
+                            <span>#this</span>
+                            <span>#this</span>
+                            <span>#this</span>
+                            <span>#this</span>
+                        </div>
+                    </div>
+                    <button class="bg-black text-white w-full rounded-lg py-2 font-medium text-sm">Follow</button>
+                </div>
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </div>
+</div>

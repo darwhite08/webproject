@@ -6,9 +6,7 @@ email:email,settings:false,profile:true,content_upload:false}) %>
 <% }else if(settings){%> <%- include('anime-vault-admin/dash-board' , {
 profile_picture: profile_picture, username:username,
 email:email,settings:true,profile:false,content_upload:false}) %>
-<% }else if(content_upload){%> <%- include('anime-vault-admin/dash-board' , {
-profile_picture: profile_picture, username:username,
-email:email,settings:false,profile:false,content_upload:true}) %>
+<% }else if(content_upload){%> <%- include('anime-vault-admin/dash-board' , {user_data:user_data, settings:false,profile:false,content_upload:true}) %>
 <% }else if(watchlist){%> <%- include('anime-vault-admin/dash-board' , {
     profile_picture: profile_picture, username:username,
     email:email,settings:false,profile:false,content_upload:false,watchlist:true}) %>

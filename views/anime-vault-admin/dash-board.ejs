@@ -1,4 +1,3 @@
-
 <div id="animeVaultDashBoardContainer ">
     <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
         <div class="px-3 py-3 lg:px-5 lg:pl-3">
@@ -6,8 +5,9 @@
                 <div class="flex items-center justify-start rtl:justify-end">
                     <!-- Logo start -->
                     <div class="flex ms-2 md:me-24">
-                        <button
-                            class="px-2 self-center text-lg font-semibold sm:text-md whitespace-nowrap  "> <i class="fa-solid fa-bars"></i></button>
+                        <p
+                            class="  text-white bg-blue-600 rounded-full py-1 px-2 font-medium">
+                            anime unwatched.</p>
                     </div>
                     <!-- Logo end -->
                 </div>
@@ -16,30 +16,28 @@
                         <div>
                             <button type="button"
                                 class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600">
-                                <img class="w-8 h-8 rounded-full"
-                                    src=<%= profile_picture %> alt="user photo">
+                                <img class="w-8 h-8 rounded-full" src=<%=user_data.profilePicture %> lt="user photo">
                             </button>
                         </div>
-           
+
                     </div>
                 </div>
             </div>
         </div>
-    </nav>
-    
+    </nav>s
+
     <!-- side bar start -->
-    <aside 
-        class="fixed top-0  px-4 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
-        >
-        
-    <div class="flex items-center gap-4 mb-6 border-b border-dashed pb-4">
-        <img class="w-10 h-10 rounded-full" src=<%= profile_picture%> alt="">
-        <div class="font-medium text-sm dark:text-white">
-            <div></div>
-            <div class="text-sm text-gray-500 dark:text-gray-400">Joined 2014</div>
+    <aside
+        class="fixed top-0  px-4 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700">
+
+        <div class="flex items-center gap-4 mb-6 border-b border-dashed pb-4">
+            <img class="w-10 h-10 rounded-full" src=<%=user_data.profilePicture%> alt="">
+            <div class="font-medium text-sm dark:text-white">
+                <div></div>
+                <div class="text-sm text-gray-500 dark:text-gray-400">Joined 2014</div>
+            </div>
         </div>
-    </div>
-    
+
         <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
             <ul class="space-y-2 font-medium">
                 <!-- profile -->
@@ -51,18 +49,18 @@
                     </a>
                 </li>
                 <!-- upload content -->
-                <!-- <li>
+                <li>
                     <a href="/user/dash-board/upload-content"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <i class="fa-solid fa-cloud-arrow-up"></i>
                         <span
                             class="flex-1 ms-3 me-2 text-md font-medium text-gray-900 focus:outline-none  hover:bg-gray-100 hover:text-blue-700 focus:z-10">Upload Content</span>
                     </a>
-                </li> -->
-                
+                </li>
+
                 <!-- Earning -->
-                
-                <!-- <li>
+
+                <li>
                     <a href="/logout"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <i class="fa-solid fa-right-to-bracket"></i>
@@ -70,15 +68,15 @@
                         <span
                             class="flex-1 px-5 me-2 text-md font-medium text-gray-900 focus:outline-none  hover:bg-gray-100 hover:text-blue-700 focus:z-10">Earning</span>
                     </a>
-                </li> -->
+                </li>
 
                 <!-- watchlist -->
-                
+
                 <li>
                     <a href="/user/dash-board/watchlist"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <i class="fa-solid fa-list-check"></i>
-    
+
                         <span
                             class="flex-1 px-5 me-2 text-md font-medium text-gray-900 focus:outline-none  hover:bg-gray-100 hover:text-blue-700 focus:z-10">Watchlist
                         </span>
@@ -107,7 +105,7 @@
                     </a>
                 </li>
 
-<!-- settings -->
+                <!-- settings -->
                 <li>
                     <a id="animeVaultDashboardSettings" href="/user/dash-board/settings"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -115,68 +113,90 @@
                         <span
                             class="flex-1 px-5 me-2 text-md font-medium text-gray-900 focus:outline-none  hover:bg-gray-100 hover:text-blue-700 focus:z-10">Settings</span>
                     </a>
-                </li> 
+                </li>
                 <!-- logout -->
                 <li>
                     <a href="/logout"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <i class="fa-solid fa-right-to-bracket"></i>
-    
+
                         <span
                             class="flex-1 px-5 me-2 text-md font-medium text-gray-900 focus:outline-none  hover:bg-gray-100 hover:text-blue-700 focus:z-10">Logout</span>
                     </a>
                 </li>
-                
+
             </ul>
-            <div class="mt-5 flex flex-col">
-                <h1 class="self-start font-bold my-1 ">Note</h1>
-    
-                <div
-                    class="w-full h-52 flex flex-col justify-between bg-yellow-400 rounded-lg border border-yellow-400 mb-6 py-5 px-4">
-                    <div>
-                        <h4 class="text-gray-800 font-medium mb-3">13 things to work on</h4>
-                        <p class="text-gray-800 text-sm">Our interior design experts work with you to create the space that
-                            you have been dreaming about.</p>
-                    </div>
-                    <div>
-                        <div class="flex items-center justify-between text-gray-800">
-                            <p class="text-sm">March 28, 2020</p>
-                            <button
-                                class="w-8 h-8 rounded-full bg-gray-800 text-white flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 ring-offset-yellow-400  focus:ring-black"
-                                aria-label="edit note" role="button">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil"
-                                    width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z"></path>
-                                    <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4"></path>
-                                    <line x1="13.5" y1="6.5" x2="17.5" y2="10.5"></line>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    
+            <!-- Notes -->
+            <%- include('admin-page-comp/note' ) %>
+
         </div>
-    
+
     </aside>
     <!-- side bar end -->
     <div class="px-4 sm:ml-64 sm:pt-20 md:pt-20 lg:pt-20">
-        <div class="px-4 border-2 border-gray-200 border-dashed rounded-lg flex flex-col items-center justify-center  sm:flex-row md:flex-row lg:flex-row ">
+
+        <div
+            class="px-4 border-2 border-gray-200 border-dashed rounded-lg flex flex-col items-center justify-center  sm:flex-row md:flex-row lg:flex-row ">
+
             <% if (profile){%>
-            <%- include('admin-page-comp/profile' ,{  profilePicture:profile_picture,  username:username, email:email}) %>
-            <% } else if (settings){%>
-                <%- include('admin-page-comp/settings' ) %>
-                <% } else if (content_upload){%>
-                    <%- include('admin-page-comp/upload-content' ) %>
-                    <% } else if (watchlist){%>
-                        <%- include('admin-page-comp/watchlist' ) %>
-                        <% } else if (readLater){%>
-                            <%- include('admin-page-comp/read-later' ) %>
-                            <% } else if (calender){%>
-                                <%- include('admin-page-comp/calender' ) %>
-                                <% }%>
+                <%- include('admin-page-comp/profile' ,{ profilePicture:profile_picture, username:username,
+                    email:email}) %>
+                    <% } else if (settings){%>
+                        <%- include('admin-page-comp/settings' ) %>
+                            <% } else if (content_upload){%>
+                                <%- include('admin-page-comp/upload-content' ) %>
+                                    <% } else if (watchlist){%>
+                                        <%- include('admin-page-comp/watchlist' ) %>
+                                            <% } else if (readLater){%>
+                                                <%- include('admin-page-comp/read-later' ) %>
+                                                    <% } else if (calender){%>
+                                                        <%- include('admin-page-comp/calender' ) %>
+                                                            <% }%>
         </div>
-    
+        <!-- mobile navigation -->
+        <nav class="sm:hidden md:hidden lg:hidden block" >
+            <div class="py-10  flex ">
+                <div class=" px-3 pb-4 overflow-y-auto bg-white ">
+                    <ul class="space-y-2 font-medium">
+                        <!-- profile -->
+                        <li>
+                            <a href="/user/dash-board/profile" aria-selected="true"
+                                class="flex items-center bg-black text-white px-4 p-2 text-gray-900 rounded-xl  group">
+                                <i class="fa-solid fa-user"></i>
+                                <span class="ms-3">Profile</span>
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="/user/dash-board/watchlist"
+                                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                                <i class="fa-solid fa-list-check"></i>
+
+                                <span
+                                    class="flex-1 px-5 me-2 text-md font-medium text-gray-900 focus:outline-none  hover:bg-gray-100 hover:text-blue-700 focus:z-10">Watchlist
+                                </span>
+                            </a>
+                        </li>
+                        <!-- logout -->
+                        <li>
+                            <a href="/logout"
+                                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                                <i class="fa-solid fa-right-to-bracket"></i>
+
+                                <span
+                                    class="flex-1 px-5 me-2 text-md font-medium text-gray-900 focus:outline-none  hover:bg-gray-100 hover:text-blue-700 focus:z-10">Logout</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                    <!-- Notes -->
+                    <%- include('admin-page-comp/note' ) %>
+
+                </div>
+            </div>
+
+        </nav>
+
     </div>
 </div>

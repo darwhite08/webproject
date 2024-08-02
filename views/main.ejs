@@ -5,11 +5,14 @@
     <%- include('home') %> 
     <%- include('navigations/bottom-bar' ) %>
     <%- include('navigations/mobile-navigation' ) %> 
-    <!-- Blog Tab -->
-    <% } else if (tab === "blog"){ %>
-        <%- include('navigations/top-bar' ,{value:value}) %>
-        <%- include('anime-vault/blog') %> 
-        <%- include('navigations/bottom-bar' ) %>
+    <!-- Blog dashboard -->
+    <% } else if (tab === "blog-dashboard"){ %>
+        <%- include('anime-vault/blog/blog-topbar' ,{value:value}) %>
+        <%- include('anime-vault/blog/blog-dashboard/blog-dashboard-main') %> 
+        <!-- Blog content -->
+        <% } else if (tab === "blog"){ %>
+            <%- include('anime-vault/blog/blog-topbar' ,{value:value}) %>
+            <%- include('anime-vault/blog/blogs-content/main',{data:data}) %> 
         <!-- Count Down Tab -->
         <% } else if (tab === "countdown"){ %>
             <%- include('navigations/top-bar' ,{value:value}) %>
@@ -22,6 +25,27 @@
             <%- include('anime-vault/bestAnimeList') %>
             <%- include('navigations/bottom-bar' ) %>
             <%- include('navigations/mobile-navigation' ) %>  
-                <% } %> 
-
+            <!-- Upcoming Anime -->
+            <% } else if (tab==="upcoming"){ %>
+                <%- include('navigations/top-bar' ,{value:value}) %>
+                <%- include('anime-vault/upcoming-anime') %>
+                <%- include('navigations/bottom-bar' ) %>
+                <%- include('navigations/mobile-navigation' ) %>  
+                <!-- action figures -->
+                <% } else if (tab==="action-figures"){ %>
+                    <%- include('navigations/top-bar' ,{value:value}) %>
+                    <%- include('products/action-figures') %>
+                    <%- include('navigations/bottom-bar' ) %>
+                    <%- include('navigations/mobile-navigation' ) %>  
+                    <!-- Weekly reccomendation -->
+                          <% } else if (tab==="weekly-reccomendation"){ %>
+                            <%- include('navigations/top-bar' ,{value:value}) %>
+                            <%- include('anime-vault/weekly-reccomendation' ,{value:value}) %>
+                            <%- include('navigations/mobile-navigation' ) %>  
+                            <!-- Anime by year -->
+                            <% } else if (tab==="anime-by-year"){ %>
+                                <%- include('navigations/top-bar' ,{value:value}) %>
+                                <%- include('anime-vault/anime-by-year/main' ,{value:value}) %>
+                                <%- include('navigations/mobile-navigation' ) %>  
+                                    <% } %> 
 <%- include('main-comp/footer') %>

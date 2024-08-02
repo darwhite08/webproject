@@ -1,0 +1,32 @@
+<div id="note-container" class="mt-5 flex flex-col">
+    <h1 class="self-start font-bold my-1 ">Note</h1>
+
+    <div id="note-data-container"
+        class=" w-full h-52 flex flex-col justify-between bg-yellow-400 rounded-lg border border-yellow-400 mb-6 py-5 px-4">
+        <div>
+            <h4 class="text-gray-800 font-medium mb-3">13 things to work on</h4>
+            <p class="text-gray-800 text-sm">Our interior design experts work with you to create the space that
+                you have been dreaming about.</p>
+        </div>
+        <div>
+            <div class="flex items-center justify-between text-gray-800">
+                <p class="text-sm">March 28, 2020</p>
+                <button onclick="note_handler();"
+                    class="w-8 h-8 rounded-full bg-gray-800 text-white flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 ring-offset-yellow-400  focus:ring-black"
+                    aria-label="edit note" role="button">
+                    <i class="fa-solid fa-pen"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="note-data-editor" class="hidden w-full h-52 flex flex-col justify-between bg-yellow-400 rounded-lg border border-yellow-400 mb-6 my-2 ">
+        <form action="">
+            <input class="w-full bg-yellow-400 px-4 py-2 placeholder-yellow-600 font-medium focus:border-none focus:outline-none text-md" type="" placeholder="Note Heading">
+            <textarea class="w-full h-28 overflow-hideen bg-yellow-400 px-4 py-2 resize-none placeholder-yellow-600 focus:border-none focus:outline-none text-sm"  maxlength="100" name="" id="" placeholder="Write your note..."></textarea>
+           <div class="flex items-center justify-center">
+            <button class="bg-yellow-200 text-yellow-600 font-medium border-2 border-yellow-500 outline-none px-4 py-1 rounded-lg ">save</button>
+
+           </div>
+        </form>
+    </div>
+</div>

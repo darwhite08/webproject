@@ -1,232 +1,198 @@
-<div class=" my-5 z-0">
+<div class="static my-20  px-10">
     <div>
         <div>
-            <div class="mx-5 sm:mx-20 md:mx-20 lg:mx-20">
-                <p class="text-gray-400">Home / Anime</p>
-                <div class="pt-4 space-y-2">
-                    <h1 class="text-2xl sm:text-7xl md:text-7xl lg:text-7xl font-bold">Upcoming Anime : anime type</h1>
-                    <p class="text-sm sm:text-md md:text-md lg:text-md mb-4"> </p>
-                </div>
-
-                <div class="flex flex-row items-center gap-2 text-sm text-gray-400 mb-4">
-                    <img class="h-8" src="../public/media/animeDoodles/deku.png" alt="">
-                    <h1><span>By: </span> priyanshu Chandra</h1>
-                    <p>date</p>
-                </div>
-                <img class="" src="../public/media/bestAnimeList/img/animeListBackground.jpg " alt="">
-            </div>
-            <div class="flex flex-row  gap-8 mx-5 sm:ml-20 md:ml-20 lg:ml-20 ">
-                <div class="basis-full sm:basis-2/3 md:basis-2/3 lg:basis-2/3">
-                    <div class="mt-10">
-                        <h1
-                            class="my-4 text-2xl font-bold text-gray-600 subpixel-antialiased sm:text-5xl  md:text-5xl  lg:text-5xl ">
-                            CONTEXT</h1>
-                        <p class="text-sm sm:text-lg  md:text-lg  lg:text-lg text-justify">what is anime type</p>
-                    </div>
-                    <% for(var i=0; i<total; i++) {%>
-                        <div class="mt-0 sm:mt-10 md:mt-10 lg:mt-10 pb-10 border-b-2 border-dashed border-blue-200">
-                            <div class="">
-                                <h1><span
-                                        class="bg-blue-700 text-xl sm:text-5xl  md:text-5xl lg:text-5xl text font-bold  py-2 px-4 mr-2 rounded-md text-white "><%=i+1%></span><span class="text-lg sm:text-4xl  md:text-4xl lg:text-4xl font-bold"><%= animeList[i]['anime_name'] %> </span></h1></div>
-                            <div class="mt-10">
-                                <iframe width="100%" height="415"
-                                    src="youtubelink"
-                                    title="YouTube video player" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                <p class="py-6 text-justify">
-                                    <span
-                                        class="italic text-sm sm:text-md  md:text-md lg:text-md">anime context
-                                </p>
-                                <!-- about Anime -->
-                                <div>
-                                    <div>
-                                        <span type="button" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"><%= animeList[i]['anime_rating'] %></span>
-                                        <span type="button" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"><%= animeList[i]['year_released'] %>  </span>
-                                        <span type="button" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"><%= animeList[i]['total_seasons'] %> : <%= animeList[i]['total_episodes'] %></span>
-                                        <span type="button" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Status: <%= animeList[i]['status'] %></span>
-                                        <span type="button" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"><%= animeList[i]['available_on'] %></span>
-                                        <span type="button" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Popularity: <%= animeList[i]['popularity'] %></span>
-                                    </div>
-                                </div>
-                                <!-- about anime end -->
-                             <!-- Anime Note start -->
-                                <div role="alert"
-                                    class="relative flex w-full px-4 py-4 sm:mt-2  md:mt-2 lg:mt-2 mt-2 text-base text-white bg-blue-900 rounded-lg font-regular">
-                                    <div class="shrink-0">
-                                    </div>
-                                    <div class="ml-3 mr-12">note for anime</div>
-                                </div>
-                             <!-- Anime Note End -->
-                                <div class="text-sm sm:text-md mt-5 md:text-md lg:text-md space-y-2">
-                                    <button class="bg-black text-white py-2 px-4 rounded-lg">Watch on <a
-                                            href="">Netflix</a></button>
-                                    <button class="bg-black text-white py-2 px-4 rounded-lg"><i
-                                            class="fa-solid fa-comment"></i> Join Discussion</button>
-                                    <button class="bg-black text-white py-2 px-4 rounded-lg"> <i
-                                            class="fa-solid fa-plus"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        <% } %>
-                            <!-- news letter -->
-                            <section class="bg-yellow-500 dark:bg-gray-900 rounded-lg ">
-                                <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-                                    <div class="mx-auto max-w-screen-md sm:text-center">
-                                        <h2
-                                            class="mb-4 text-3xl tracking-tight font-extrabold text-white sm:text-4xl dark:text-white">
-                                            Sign up for our newsletter</h2>
-                                        <p
-                                            class="mx-auto mb-8 max-w-2xl font-light text-white md:mb-12 sm:text-xl dark:text-gray-400">
-                                            Stay up to date with the roadmap progress, announcements and exclusive
-                                            discounts feel free to sign up with your email.</p>
-                                        <form action="#">
-                                            <div
-                                                class="items-center mx-auto mb-3 space-y-4 max-w-screen-sm sm:flex sm:space-y-0">
-                                                <div class="relative w-full">
-                                                    <label for="email"
-                                                        class="hidden mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email
-                                                        address</label>
-                                                    <div
-                                                        class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                                                        <svg class="w-5 h-5 text-gray-500 dark:text-gray-400"
-                                                            fill="currentColor" viewBox="0 0 20 20"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            <path
-                                                                d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z">
-                                                            </path>
-                                                            <path
-                                                                d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z">
-                                                            </path>
-                                                        </svg>
-                                                    </div>
-                                                    <input
-                                                        class="block p-3 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:rounded-none sm:rounded-l-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                                        placeholder="Enter your email" type="email" id="email"
-                                                        required="">
-                                                </div>
-                                                <div>
-                                                    <button type="submit"
-                                                        class="py-3 px-5 w-full text-sm font-medium text-center text-white rounded-lg border cursor-pointer bg-black border-primary-600 sm:rounded-none sm:rounded-r-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Subscribe</button>
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="mx-auto max-w-screen-sm text-sm text-left text-white newsletter-form-footer dark:text-gray-300">
-                                                We care about the protection of your data. <a href="#"
-                                                    class="font-medium text-primary-600 dark:text-primary-500 hover:underline">Read
-                                                    our Privacy Policy</a>.</div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </section>
-                            <!-- Card Blog -->
-                            <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-                                <!-- Title -->
-                                <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
-                                    <h2 class="text-2xl font-bold md:text-4xl md:leading-tight">Related Topics</h2>
-                                    <p class="mt-1 text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, illum reiciendis doloremque expedita eveniet repudiandae harum mollitia fugiat, quod, modi consectetur soluta iusto nihil! Qui unde tempora earum eligendi provident.</p>
-                                </div>
-                                <!-- End Title -->
-
-                                <!-- Grid -->
-                                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                                    <% for(var i=0; i<3; i++) {%>
-                                    <!-- Card -->
-                                    <a class="group flex flex-col h-full border border-gray-200 hover:border-transparent hover:shadow-lg transition-all duration-300 rounded-xl p-5"
-                                        href="releated-topics/blog/animeName">
-                                        <div class="aspect-w-16 aspect-h-11">
-                                            <img class="w-full object-cover rounded-xl"
-                                            src="../public/media/bestAnimeList/img/animeListBackground.jpg"
-                                                alt="Image Description">
-                                        </div>
-                                        <div class="my-6">
-                                            <h3 class="text-xl font-semibold text-gray-800">
-                                                Front accounts - let's work together
-                                            </h3>
-                                            <p class="mt-5 text-gray-600">
-                                              hero acedmia upcoming season
-                                            </p>
-                                        </div>
-                                        <div class="mt-auto flex items-center gap-x-3">
-                                            <img class="size-8 rounded-full"
-                                            src="../public/media/animeDoodles/tanjiro.png"
-                                                alt="Image Description">
-                                            <div>
-                                                <h5 class="text-sm text-gray-800">By Priyanshu Chandra</h5>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <% }%>
-                                    <!-- End Card -->
-                                </div>
-                                <!-- End Grid -->
-
-                                <!-- Card -->
-                                <div class="mt-12 text-center">
-                                    <a class="py-3 px-4 inline-flex items-center gap-x-1 text-sm font-medium rounded-full border border-gray-200 bg-white text-blue-600 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
-                                        href="#">
-                                        Read more
-                                        <img class="size-8 rounded-full"
-                                        src="../public/media/bestAnimeList/img/icons8-forward.gif"
-                                            alt="Image Description">
-                                    </a>
-                                </div>
-                                <!-- End Card -->
-                             
-                            </div>
-                            <!-- End Card Blog -->
-                            <%- include('../navigations/bottombar') %>
-                </div>
-                <div
-                    class="basis-1/3 hidden sm:block md:block static border-l-2 border-t-2 px-10 bg-gray-100 mt-5 rounded-l-lg">
-                    <div class="sticky top-5 right-0 my-4 ">
-                        <div class="my-4  px-10">
-                            <h1 class="flex text-xl font-bold items-center">Hot <img class="h-6"
-                                    src="../public/media/bestAnimeList/img/icons8-fire.gif" alt=""></h1>
-                        </div>
-                        <div class="flex flex-col space-y-2 overflow-scroll-y">
-                            <% for(var i=0; i<3; i++) {%>
-                                <div
-                                    class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                                    <a href="#">
-                                        <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
-                                            My Hero Acedmia</h5>
-                                    </a>
-                                    <p class="mb-3 text-sm font-normal text-gray-700 dark:text-gray-400">Here are the
-                                        biggest
-                                        enterprise technology acquisitions of 2021 so far, in reverse chronological</p>
-
-                                    <a href="/hot/blog/anime-name"
-                                        class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                        Read more
-                                        <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-                                        </svg>
-                                    </a>
-                                </div>
-
-                                <% } %>
-                        </div>
-                    </div>
+            <h1 class="text-gray-400 text-sm">Home / upcoming anime</h1>
+        </div>
+        <div class="flex flex-row justify-between py-4 w-full bg-blue-600 rounded-lg my-4  px-10">
+            <div class="flex items-center gap-4  w-3/12 ">
+                <img class="w-14 h-14 rounded-full bg-white p-1"
+                    src="../../public/media/bestAnimeList/img/animeListBackground.jpg" alt="">
+                <div class="font-medium text-white">
+                    <div> Priyanshu Chandra</div>
+                    <div class="text-sm text-gray-200 dark:text-gray-400">Joined in August 2014</div>
                 </div>
             </div>
+            <div class="flex flex-row justify-center items-center gap-4">
+                <h1 class="text-2xl text-white font-bold">UPCOMING ANIME</h1>
+                <p class="h-4 w-4 bg-green-300 rounded-full"> </p>
+            </div>
+        </div>
+        <div class="mb-5">
+
+            <form class=" mx-auto">
+                <div class="flex flex-row justify-between items-center gap-8">
+                    <div class="flex flex-row w-96">
+                        <div class="relative w-full">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+                            <input type="text" id="simple-search"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 w-full"
+                                placeholder="Search branch name..." required />
+                        </div>
+                        <button type="submit"
+                            class="py-2.5 px-5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <span class="sr-only px-">Search</span>
+                        </button>
+                    </div>
+                    <div class="w-56">
+                        <select id="category"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                            <option selected>Choose Category</option>
+                            <option value="KO">kodomomuke</option>
+                            <option value="SH">Shonen</option>
+                            <option value="">Shoujo</option>
+                            <option value="DE">Seinen</option>
+                            <option value="DE">Josei</option>
+                            <option value="DE">Mecha</option>
+                            <option value="DE">Slice of Life</option>
+                            <option value="DE">Mahou Shoujo</option>
+                            <option value="DE">Isekai</option>
+                            <option value="DE">Yaoi</option>
+                            <option value="DE">Yuri</option>
+                            <option value="DE">Harem</option>
+                            <option value="DE">Ecchi</option>
+                            <option value="DE">Idol</option>
+
+                        </select>
+                    </div>
+                    <div class="w-56">
+                        <select
+                            class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 ">
+                            <option selected>year</option>
+                            <option value="US">1980-90</option>
+                            <option value="CA">90-2000</option>
+                            <option value="FR">2000-10</option>
+                            <option value="DE">2010-20</option>
+                            <option value="DE">2020-current</option>
+
+                        </select>
+                    </div>
+                    <div class="w-56">
+                        <select
+                            class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 ">
+                            <option selected>Season </option>
+                            <option value="US">Winter 24</option>
+                            <option value="CA">spring 24</option>
+                            <option value="FR">summer 24</option>
+                            <option value="DE">fall 24</option>
+                        </select>
+                    </div>
+                    <div class="w-56">
+                        <select
+                            class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 ">
+                            <option selected>Genere</option>
+                            <option value="US">Action</option>
+                            <option value="CA">comedy</option>
+                            <option value="FR">romance</option>
+                            <option value="DE">fight</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button class="bg-black text-white px-4 py-2 rounded-lg">
+                            <i class=" text-2xl fa-solid fa-bars-progress"></i>
+                        </button>
+
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+        <div class="mb-4">
+            <h1 class="text-bold">Anime details</h1>
         </div>
     </div>
-    <section class="fixed max-w-md p-4 mx-auto bg-white border border-gray-200 dark:bg-gray-800 left-12 bottom-16 dark:border-gray-700 rounded-2xl">
-        <h2 class="font-semibold text-gray-800 dark:text-white">🍪 Cookie Notice</h2>
-    
-        <p class="mt-4 text-sm text-gray-600 dark:text-gray-300">We use cookies to ensure that we give you the best experience on our website. <a href="#" class="text-blue-500 hover:underline">Read cookies policies</a>. </p>
-        
-        <div class="flex items-center justify-between mt-4 gap-x-4 shrink-0">
-            <button class="text-xs text-gray-800 underline transition-colors duration-300 dark:text-white dark:hover:text-gray-400 hover:text-gray-600 focus:outline-none">
-                Manage your preferences
-            </button>
-    
-            <button class=" text-xs bg-gray-900 font-medium rounded-lg hover:bg-gray-700 text-white px-4 py-2.5 duration-300 transition-colors focus:outline-none">
-                Accept
-            </button>
+    <div class="grid grid-cols-4 gap-8 bg-violet-500 py-10 px-10 rounded-lg">
+        <% for(i=0;i<20;i++){%>
+            <div class="max-w-sm bg-white shadow-lg border-4 rounded-lg shadow ">
+                <a href="#">
+                    <img class="rounded-t-lg" src="../../public/media/bestAnimeList/img/animeListBackground.jpg"
+                        alt="" />
+                </a>
+                <div class="p-5">
+                    <div>
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-blue-700 dark:text-white">Anime Name</h5>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 text-sm">Lorem ipsum dolor sit amet
+                            consectetur adipisicing elit. Optio labore suscipit necessitatibus alias </p>
+                    </div>
+                    <div class="pb-2">
+                        <p class="text-gray-400">Release date</p>
+                    </div>
+                    <div>
+                        <button type="button"
+                            class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 py-2.5 me-1 mb-2 "><i
+                                class="fa-brands fa-youtube"></i> Watch Trailer</button>
+                        <button onclick="upcoming_anime_overlay_open();" type="button"
+                            class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 py-2.5 me-1 mb-2 "><i
+                                class="fa-solid fa-circle-info"></i> Read More</button>
+                        <button type="button"
+                            class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 py-2.5 me-1 mb-2 "><i
+                                class="fa-solid fa-plus"></i></button>
+
+                    </div>
+                </div>
+            </div>
+            <% }%>
+    </div>
+
+    <!-- overlay page -->
+    <div id="upcoming-anime-overlay-container"
+        class="hidden z-50 flex items-center justify-center fixed left-0 top-0 min-h-screen bg-black/70 backdrop-blur-sm w-full px-20 ">
+        <div class=" h-full relative  bg-white flex flex-row py-10 px-10 mx-10 rounded-lg gap-8">
+            <button onclick="upcoming_anime_overlay_close();" class="absolute top-4 right-4 text-xl font-bold bg-violet-600 ring-4 border-4 border-violet-700 ring-violet-800 rounded-full px-3 py-1 text-white"><i class="fa-solid fa-x"></i></button>
+            <!-- anime overview and  -->
+            <div class="">
+                <div class="max-w-sm  border ">
+                    <a href="#">
+                        <img class="rounded-t-lg" src="../../public/media/bestAnimeList/img/animeListBackground.jpg"
+                            alt="" />
+                    </a>
+                    <div class="p-5">
+                        <div>
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-blue-700 dark:text-white">Anime Name
+                            </h5>
+                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 text-sm">Lorem ipsum dolor sit
+                                amet
+                                consectetur adipisicing elit. Optio labore suscipit necessitatibus alias </p>
+                        </div>
+                        <div class="pb-2">
+                            <p class="text-gray-400">Release date</p>
+                        </div>
+                        <div>
+                            <button type="button"
+                                class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 py-2.5 me-1 mb-2 "><i
+                                    class="fa-brands fa-youtube"></i> Watch Trailer</button>
+                            <button type="button"
+                                class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 py-2.5 me-1 mb-2 "><i
+                                    class="fa-solid fa-plus"></i></button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full ">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-600">Plot</h1>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio adipisci, ipsum itaque enim
+                        asperiores recusandae explicabo alias possimus eos excepturi numquam ut officia ad unde illo
+                        praesentium repellat odio non?</p>
+                </div>
+                <div class="mt-4">
+                    <button type="button"
+                        class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Alternative</button>
+                    <button type="button"
+                        class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Alternative</button>
+                    <button type="button"
+                        class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Alternative</button>
+                    <button type="button"
+                        class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Alternative</button>
+
+                </div>
+            </div>
         </div>
-    </section>
+
+    </div>
 </div>

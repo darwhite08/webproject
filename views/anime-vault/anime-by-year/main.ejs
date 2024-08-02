@@ -1,0 +1,198 @@
+<div class="static my-20  px-10">
+    <div>
+        <div>
+            <h1 class="text-gray-400 text-sm">Home / Anime by year</h1>
+        </div>
+        <div class="flex flex-row justify-between py-4 w-full bg-blue-600 rounded-lg my-4  px-10">
+            <div class="flex items-center gap-4  w-3/12 ">
+                <img class="w-14 h-14 rounded-full bg-white p-1"
+                    src="../../public/media/bestAnimeList/img/animeListBackground.jpg" alt="">
+                <div class="font-medium text-white">
+                    <div> Priyanshu Chandra</div>
+                    <div class="text-sm text-gray-200 dark:text-gray-400">Joined in August 2014</div>
+                </div>
+            </div>
+            <div class="flex flex-row justify-center items-center gap-4">
+                <h1 class="text-2xl text-white font-bold">ANIME BY YEAR</h1>
+                <p class="h-4 w-4 bg-green-300 rounded-full"> </p>
+            </div>
+        </div>
+        <div class="mb-5">
+
+            <form class=" mx-auto">
+                <div class="flex flex-row justify-between items-center gap-8">
+                    <div class="flex flex-row w-96">
+                        <div class="relative w-full">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+                            <input type="text" id="simple-search"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 w-full"
+                                placeholder="Search anime name..." required />
+                        </div>
+                        <button type="submit"
+                            class="py-2.5 px-5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <span class="sr-only px-">Search</span>
+                        </button>
+                    </div>
+                    <div class="w-56">
+                        <select id="category"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                            <option selected>Choose Category</option>
+                            <option value="KO">kodomomuke</option>
+                            <option value="SH">Shonen</option>
+                            <option value="">Shoujo</option>
+                            <option value="DE">Seinen</option>
+                            <option value="DE">Josei</option>
+                            <option value="DE">Mecha</option>
+                            <option value="DE">Slice of Life</option>
+                            <option value="DE">Mahou Shoujo</option>
+                            <option value="DE">Isekai</option>
+                            <option value="DE">Yaoi</option>
+                            <option value="DE">Yuri</option>
+                            <option value="DE">Harem</option>
+                            <option value="DE">Ecchi</option>
+                            <option value="DE">Idol</option>
+
+                        </select>
+                    </div>
+                    <div class="w-56">
+                        <select
+                            class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 ">
+                            <option selected>year</option>
+                            <option value="US">1980-90</option>
+                            <option value="CA">90-2000</option>
+                            <option value="FR">2000-10</option>
+                            <option value="DE">2010-20</option>
+                            <option value="DE">2020-current</option>
+
+                        </select>
+                    </div>
+                    <div class="w-56">
+                        <select
+                            class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 ">
+                            <option selected>Season </option>
+                            <option value="US">Winter </option>
+                            <option value="CA">spring </option>
+                            <option value="FR">summer </option>
+                            <option value="DE">fall </option>
+                        </select>
+                    </div>
+                    <div class="w-56">
+                        <select
+                            class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 ">
+                            <option selected>Genere</option>
+                            <option value="US">Action</option>
+                            <option value="CA">comedy</option>
+                            <option value="FR">romance</option>
+                            <option value="DE">fight</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button class="bg-black text-white px-4 py-2 rounded-lg">
+                            <i class=" text-2xl fa-solid fa-bars-progress"></i>
+                        </button>
+
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+        <div class="mb-4">
+            <h1 class="text-bold">Anime details</h1>
+        </div>
+    </div>
+    <div class="grid grid-cols-4 gap-8 bg-violet-500 py-10 px-10 rounded-lg">
+        <% for(i=0;i<20;i++){%>
+            <div class="max-w-sm bg-white shadow-lg border-4 rounded-lg shadow ">
+                <a href="#">
+                    <img class="rounded-t-lg" src="../../public/media/bestAnimeList/img/animeListBackground.jpg"
+                        alt="" />
+                </a>
+                <div class="p-5">
+                    <div>
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-blue-700 dark:text-white">Anime Name</h5>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 text-sm">Lorem ipsum dolor sit amet
+                            consectetur adipisicing elit. Optio labore suscipit necessitatibus alias </p>
+                    </div>
+                    <div class="pb-2">
+                        <p class="text-gray-400">Release date</p>
+                    </div>
+                    <div>
+                        <button type="button"
+                            class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 py-2.5 me-1 mb-2 "><i
+                                class="fa-brands fa-youtube"></i> Watch Trailer</button>
+                        <button onclick="upcoming_anime_overlay_open();" type="button"
+                            class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 py-2.5 me-1 mb-2 "><i
+                                class="fa-solid fa-circle-info"></i> Read More</button>
+                        <button type="button"
+                            class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 py-2.5 me-1 mb-2 "><i
+                                class="fa-solid fa-plus"></i></button>
+
+                    </div>
+                </div>
+            </div>
+            <% }%>
+    </div>
+
+    <!-- overlay page -->
+    <div id="upcoming-anime-overlay-container"
+        class="hidden z-50 flex items-center justify-center fixed left-0 top-0 min-h-screen bg-black/70 backdrop-blur-sm w-full px-20 ">
+        <div class=" h-full relative  bg-white flex flex-row py-10 px-10 mx-10 rounded-lg gap-8">
+            <button onclick="upcoming_anime_overlay_close();" class="absolute top-4 right-4 text-xl font-bold bg-violet-600 ring-4 border-4 border-violet-700 ring-violet-800 rounded-full px-3 py-1 text-white"><i class="fa-solid fa-x"></i></button>
+            <!-- anime overview and  -->
+            <div class="">
+                <div class="max-w-sm  border ">
+                    <a href="#">
+                        <img class="rounded-t-lg" src="../../public/media/bestAnimeList/img/animeListBackground.jpg"
+                            alt="" />
+                    </a>
+                    <div class="p-5">
+                        <div>
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-blue-700 dark:text-white">Anime Name
+                            </h5>
+                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 text-sm">Lorem ipsum dolor sit
+                                amet
+                                consectetur adipisicing elit. Optio labore suscipit necessitatibus alias </p>
+                        </div>
+                        <div class="pb-2">
+                            <p class="text-gray-400 ">Release date</p>
+                        </div>
+                        <div>
+                            <button type="button"
+                                class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 py-2.5 me-1 mb-2 "><i
+                                    class="fa-brands fa-youtube"></i> Watch Trailer</button>
+                            <button type="button"
+                                class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 py-2.5 me-1 mb-2 "><i
+                                    class="fa-solid fa-plus"></i></button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full ">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-600">Plot</h1>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio adipisci, ipsum itaque enim
+                        asperiores recusandae explicabo alias possimus eos excepturi numquam ut officia ad unde illo
+                        praesentium repellat odio non?</p>
+                </div>
+                <div class="mt-4">
+                    <button type="button"
+                        class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Alternative</button>
+                    <button type="button"
+                        class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Alternative</button>
+                    <button type="button"
+                        class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Alternative</button>
+                    <button type="button"
+                        class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Alternative</button>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,26 +1,35 @@
-<div class="bg-white py-10">
+<div id="best-anime-list-container" class="static bg-white py-10">
     <div>
         <div>
             <div class="mx-5 sm:mx-20 md:mx-20 lg:mx-20">
                 <p class="text-gray-400">Home / Anime</p>
                 <div class="pt-4 space-y-2">
                     <!-- blog heading -->
-                    <h1 class="text-2xl sm:text-7xl md:text-7xl lg:text-7xl font-bold"><%= animeList[1]['blog_heading'] %></h1>
+                    <h1 class="text-2xl sm:text-7xl md:text-7xl lg:text-7xl font-bold">
+                        <%= animeList[1]['blog_heading'] %>
+                    </h1>
                 </div>
-               
 
-                <div class="flex flex-col sm:flex-row md:flex-row lg:flex-row items-start sm:items-center md:items-center lg:items-center gap-2 text-sm text-gray-400 mb-4">
+
+                <div
+                    class="flex flex-col sm:flex-row md:flex-row lg:flex-row items-start sm:items-center md:items-center lg:items-center gap-2 text-sm text-gray-400 mb-4">
                     <div class="flex flex-row items-center gap-2">
-                    <img class="h-8" src="../public/media/animeDoodles/deku.png" alt="">
-                        <h1 class="text-sm sm:text-md md:text-md lg:text-md"><span>By:<%= animeList[1]['user_name'] %>  </span> </h1>
+                        <img class="h-8" src="../public/media/animeDoodles/deku.png" alt="">
+                        <h1 class="text-sm sm:text-md md:text-md lg:text-md"><span>By:<%= animeList[1]['user_name'] %>
+                            </span> </h1>
                     </div>
                     <!-- date of upload -->
                     <p class="text-xs sm:text-md md:text-md lg:text-md"></p>
                 </div>
                 <div class="py-2 bg-yellow-300 text-white rounded-lg  px-10 my-4 py-4">
-                    <h1 class="pb-4 text-md sm:text-xl md:text-xl lg:text-xl text-blue-700 font-bold"><i class="fa-solid fa-bars"></i> Table of content</h1>
-                    <% for(i = 0; i < anime_category.length; i++){ %>
-                            <button type="button" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 border-2 border-yellow-100 focus:outline-none bg-white rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 "><a href="/best-anime-list/<%= anime_type%>/<%= anime_category[i]%>"> <%= anime_category[i]%></a></button>
+                    <h1 class="pb-4 text-md sm:text-xl md:text-xl lg:text-xl text-blue-700 font-bold"><i
+                            class="fa-solid fa-bars"></i> Table of content</h1>
+                    <% for(i=0; i < anime_category.length; i++){ %>
+                        <button type="button"
+                            class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 border-2 border-yellow-100 focus:outline-none bg-white rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 "><a
+                                href="/best-anime-list/<%= anime_type%>/<%= anime_category[i]%>">
+                                <%= anime_category[i]%>
+                            </a></button>
                         <%}%>
                 </div>
                 <img class="" src="../public/media/bestAnimeList/img/animeListBackground.jpg " alt="">
@@ -31,44 +40,69 @@
                         <h1
                             class="my-4 text-2xl font-bold text-gray-600 subpixel-antialiased sm:text-5xl  md:text-5xl  lg:text-5xl ">
                             CONTEXT</h1>
-                        <p class="text-sm sm:text-lg  md:text-lg  lg:text-lg text-justify"><%= animeList[1]['blog_context'] %></p>
+                        <p class="text-sm sm:text-lg  md:text-lg  lg:text-lg text-justify">
+                            <%= animeList[1]['blog_context'] %>
+                        </p>
                     </div>
                     <% for(var i=0; i<total; i++) {%>
                         <div class="mt-10 sm:mt-10 md:mt-10 lg:mt-10 pb-10 border-b-2 border-dashed border-blue-200">
                             <div class="">
                                 <h1><span
-                                        class="bg-blue-700 text-2xl sm:text-5xl  md:text-5xl lg:text-5xl text font-bold py-2 hyphens-auto break-words px-4 mr-2 rounded-md text-white "><%=i+1%></span><span class="text-md sm:text-4xl  md:text-4xl lg:text-4xl font-bold"><%= animeList[i]['anime_name'] %> </span></h1></div>
+                                        class="bg-blue-700 text-2xl sm:text-5xl  md:text-5xl lg:text-5xl text font-bold py-2 hyphens-auto break-words px-4 mr-2 rounded-md text-white ">
+                                        <%=i+1%>
+                                    </span><span class="text-md sm:text-4xl  md:text-4xl lg:text-4xl font-bold">
+                                        <%= animeList[i]['anime_name'] %>
+                                    </span></h1>
+                            </div>
                             <div class="mt-10">
-                                <iframe width="100%" height="415"
-                                    src=<%= animeList[i]['youtube_link'] %>
+                                <iframe width="100%" height="415" src=<%=animeList[i]['youtube_link'] %>
                                     title="YouTube video player" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;
+                                    picture-in-picture; web-share"
                                     referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                                 <p class="py-6 text-justify">
-                                    <span
-                                        class="italic text-sm sm:text-md  md:text-md lg:text-md">The
+                                    <span class="italic text-sm sm:text-md  md:text-md lg:text-md">The
                                         <%= animeList[i]['anime_explanation'] %>
                                 </p>
                                 <!-- about Anime -->
                                 <div>
                                     <div>
-                                        <span type="button" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"><%= animeList[i]['anime_rating'] %></span>
-                                        <span type="button" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"><%= animeList[i]['year_released'] %>  </span>
-                                        <span type="button" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"><%= animeList[i]['total_seasons'] %> : <%= animeList[i]['total_episodes'] %></span>
-                                        <span type="button" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Status: <%= animeList[i]['status'] %></span>
-                                        <span type="button" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"><%= animeList[i]['available_on'] %></span>
-                                        <span type="button" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Popularity: <%= animeList[i]['popularity'] %></span>
+                                        <span type="button"
+                                            class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                                            <%= animeList[i]['anime_rating'] %>
+                                        </span>
+                                        <span type="button"
+                                            class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                                            <%= animeList[i]['year_released'] %>
+                                        </span>
+                                        <span type="button"
+                                            class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                                            <%= animeList[i]['total_seasons'] %> : <%= animeList[i]['total_episodes'] %>
+                                        </span>
+                                        <span type="button"
+                                            class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Status:
+                                            <%= animeList[i]['status'] %></span>
+                                        <span type="button"
+                                            class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                                            <%= animeList[i]['available_on'] %>
+                                        </span>
+                                        <span type="button"
+                                            class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Popularity:
+                                            <%= animeList[i]['popularity'] %></span>
                                     </div>
                                 </div>
                                 <!-- about anime end -->
-                             <!-- Anime Note start -->
+                                <!-- Anime Note start -->
                                 <div role="alert"
                                     class="relative flex w-full px-4 py-4 sm:mt-2  md:mt-2 lg:mt-2 mt-2 text-base text-white bg-blue-900 rounded-lg font-regular">
                                     <div class="shrink-0">
                                     </div>
-                                    <div class=" ml-1 sm:ml-3 md:ml-3 lg:ml-3 mr-1 sm:mr-12 md:mr-12 lg:mr-12"><span>Note: </span><%= animeList[i]['note'] %></div>
+                                    <div class=" ml-1 sm:ml-3 md:ml-3 lg:ml-3 mr-1 sm:mr-12 md:mr-12 lg:mr-12">
+                                        <span>Note: </span>
+                                        <%= animeList[i]['note'] %>
+                                    </div>
                                 </div>
-                             <!-- Anime Note End -->
+                                <!-- Anime Note End -->
                                 <div class="text-sm sm:text-md mt-5 md:text-md lg:text-md space-y-2">
                                     <button class="bg-black text-white py-2 px-4 rounded-lg">Watch on <a
                                             href="">Netflix</a></button>
@@ -76,8 +110,13 @@
                                             class="fa-solid fa-comment"></i> Join Discussion</button>
                                     <button class="bg-black text-white py-2 px-4 rounded-lg"> <i
                                             class="fa-solid fa-plus"></i></button>
-                                            <button class="bg-black text-white py-2 px-4 rounded-lg"> <i class="fa-solid fa-thumbs-up"></i></button>
-                                            <button class="bg-black text-white py-2 px-4 rounded-lg"> <i class="fa-solid fa-thumbs-down"></i></button>
+                                    <button data-anime-id="<%= animeList[i]['anime_id'] %>" onclick="animeLikeEvent();"
+                                        name="like" class="animeLike bg-black text-white py-2 px-4 rounded-lg"> <i
+                                            class="fa-solid fa-thumbs-up"></i></button>
+                                    <button data-anime-id="<%= animeList[i]['anime_id'] %>"
+                                        onclick="animeDislikeEvent();" name="dislike"
+                                        class="animeDislike bg-black text-white py-2 px-4 rounded-lg"> <i
+                                            class="fa-solid fa-thumbs-down"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -137,40 +176,43 @@
                                 <!-- Title -->
                                 <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
                                     <h2 class="text-2xl font-bold md:text-4xl md:leading-tight">Related Topics</h2>
-                                    <p class="mt-1 text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, illum reiciendis doloremque expedita eveniet repudiandae harum mollitia fugiat, quod, modi consectetur soluta iusto nihil! Qui unde tempora earum eligendi provident.</p>
+                                    <p class="mt-1 text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing
+                                        elit. Perspiciatis, illum reiciendis doloremque expedita eveniet repudiandae
+                                        harum mollitia fugiat, quod, modi consectetur soluta iusto nihil! Qui unde
+                                        tempora earum eligendi provident.</p>
                                 </div>
                                 <!-- End Title -->
 
                                 <!-- Grid -->
                                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                                     <% for(var i=0; i<3; i++) {%>
-                                    <!-- Card -->
-                                    <a class="group flex flex-col h-full border border-gray-200 hover:border-transparent hover:shadow-lg transition-all duration-300 rounded-xl p-5"
-                                        href="releated-topics/blog/animeName">
-                                        <div class="aspect-w-16 aspect-h-11">
-                                            <img class="w-full object-cover rounded-xl"
-                                            src="../public/media/bestAnimeList/img/animeListBackground.jpg"
-                                                alt="Image Description">
-                                        </div>
-                                        <div class="my-6">
-                                            <h3 class="text-xl font-semibold text-gray-800">
-                                                Front accounts - let's work together
-                                            </h3>
-                                            <p class="mt-5 text-gray-600">
-                                              hero acedmia upcoming season
-                                            </p>
-                                        </div>
-                                        <div class="mt-auto flex items-center gap-x-3">
-                                            <img class="size-8 rounded-full"
-                                            src="../public/media/animeDoodles/tanjiro.png"
-                                                alt="Image Description">
-                                            <div>
-                                                <h5 class="text-sm text-gray-800">By Priyanshu Chandra</h5>
+                                        <!-- Card -->
+                                        <a class="group flex flex-col h-full border border-gray-200 hover:border-transparent hover:shadow-lg transition-all duration-300 rounded-xl p-5"
+                                            href="releated-topics/blog/animeName">
+                                            <div class="aspect-w-16 aspect-h-11">
+                                                <img class="w-full object-cover rounded-xl"
+                                                    src="../public/media/bestAnimeList/img/animeListBackground.jpg"
+                                                    alt="Image Description">
                                             </div>
-                                        </div>
-                                    </a>
-                                    <% }%>
-                                    <!-- End Card -->
+                                            <div class="my-6">
+                                                <h3 class="text-xl font-semibold text-gray-800">
+                                                    Front accounts - let's work together
+                                                </h3>
+                                                <p class="mt-5 text-gray-600">
+                                                    hero acedmia upcoming season
+                                                </p>
+                                            </div>
+                                            <div class="mt-auto flex items-center gap-x-3">
+                                                <img class="size-8 rounded-full"
+                                                    src="../public/media/animeDoodles/tanjiro.png"
+                                                    alt="Image Description">
+                                                <div>
+                                                    <h5 class="text-sm text-gray-800">By Priyanshu Chandra</h5>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <% }%>
+                                            <!-- End Card -->
                                 </div>
                                 <!-- End Grid -->
 
@@ -180,15 +222,15 @@
                                         href="#">
                                         Read more
                                         <img class="size-8 rounded-full"
-                                        src="../public/media/bestAnimeList/img/icons8-forward.gif"
+                                            src="../public/media/bestAnimeList/img/icons8-forward.gif"
                                             alt="Image Description">
                                     </a>
                                 </div>
                                 <!-- End Card -->
-                             
+
                             </div>
                             <!-- End Card Blog -->
-                           
+
                 </div>
                 <div
                     class="basis-1/3 hidden sm:block md:block static border-l-2 border-t-2 px-10 bg-gray-100 mt-5 rounded-l-lg">
@@ -227,19 +269,54 @@
             </div>
         </div>
     </div>
-    <!-- <section class="fixed max-w-md p-4 mx-auto bg-white border border-gray-200 dark:bg-gray-800 left-12 bottom-16 dark:border-gray-700 rounded-2xl">
-        <h2 class="font-semibold text-gray-800 dark:text-white">🍪 Cookie Notice</h2>
-    
-        <p class="mt-4 text-sm text-gray-600 dark:text-gray-300">We use cookies to ensure that we give you the best experience on our website. <a href="#" class="text-blue-500 hover:underline">Read cookies policies</a>. </p>
-        
-        <div class="flex items-center justify-between mt-4 gap-x-4 shrink-0">
-            <button class="text-xs text-gray-800 underline transition-colors duration-300 dark:text-white dark:hover:text-gray-400 hover:text-gray-600 focus:outline-none">
-                Manage your preferences
-            </button>
-    
-            <button class=" text-xs bg-gray-900 font-medium rounded-lg hover:bg-gray-700 text-white px-4 py-2.5 duration-300 transition-colors focus:outline-none">
-                Accept
-            </button>
+    <!-- modal -->
+    <div id="best-anime-list-login-modal" class="hidden relative z-50" aria-labelledby="modal-title" role="dialog"
+        aria-modal="true">
+        <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+            <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+
+                <div
+                    class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                    <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                        <div class="sm:flex sm:items-start">
+                            <div
+                                class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                                <svg class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                    stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                                </svg>
+                            </div>
+                            <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                                <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">Login
+                                    before voting post</h3>
+                            </div>
+                        </div>
+                        <div class="flex flex-col justify-center items-center mt-4 px-10">
+                            <button data-modal-google="google-login" type="button"
+                                class="flex flex-row gap-8 items-center py-2.5 px-5 me-2 mb-2 text-md font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 w-72 "><i
+                                    class="fa-brands fa-google border-r-2 pr-4 "></i><span>Login with
+                                    Google</span></button>
+                            <button data-modal-apple="apple-login" type="button"
+                                class="flex flex-row gap-8 items-center py-2.5 px-5 me-2 mb-2 text-md font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 w-72 "><i
+                                    class="fa-brands fa-apple border-r-2  pr-4"></i><span>Login with Apple
+                                    ID</span></button>
+                            <button data-modal-facebook="facebook-login" type="button"
+                                class="flex flex-row gap-8 items-center py-2.5 px-5 me-2 mb-2 text-md font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 w-72 "><i
+                                    class="fa-brands fa-facebook border-r-2 pr-4 text-blue-600"></i><span>Login with
+                                    Facebook</span></button>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                        <button data-modal-close="close-modal" type="button"
+                            class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">Close</button>
+                    </div>
+                </div>
+            </div>
         </div>
-    </section> -->
+    </div>
 </div>
+
+<!-- Like and dislike logic -->
+<script src="../../public/responsive/anime-vault/best-anime-list/anime-liked-dislike-logic.js"></script>

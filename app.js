@@ -15,8 +15,8 @@ const multerS3 = require("multer-s3");
 const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
 const { S3Client, GetObjectCommand, PutObjectCommand } = require("@aws-sdk/client-s3");
 const algoliasearch = require('algoliasearch');
-const {NodeHtmlMarkdown,NodeHtmlMarkdownOptions} = require('node-html-markdown');
-const {marked} = require('marked');
+const { NodeHtmlMarkdown, NodeHtmlMarkdownOptions } = require('node-html-markdown');
+const { marked } = require('marked');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -138,8 +138,6 @@ app.get('/action-figures', async (req, res) => {
   res.render('maintenance-page')
 });
 
-
-
 const animeRoute = [
   { id: 1, anime_type: 'isekai', anime_category: 'reincarnation' },
   { id: 2, anime_type: 'isekai', anime_category: 'summoning' },
@@ -198,14 +196,13 @@ const groupAnimes = animeRoute.reduce((acc, anime) => {
   if (!acc[type]) {
     acc[type] = [];
   }
-
   // Push the anime category into the corresponding type
   acc[type].push(anime.anime_category);
-
   return acc;
 }, {});
 
 console.log(groupAnimes)
+
 // best anime list route
 for (let index = 0; index < animeRoute.length; index++) {
   app.get(`/best-anime-list/${animeRoute[index]["anime_type"]}`, async (req, res) => {
@@ -229,6 +226,85 @@ for (let index = 0; index < animeRoute.length; index++) {
     // console.log(response.data)
   });
 }
+
+// like and dislike 
+
+app.post('/best-anime-list/api/like/post', async (req, res) => {
+
+  const animeID = req.body.animeID;
+  const likeValue = req.body.like;
+  const dislikeValue = req.body.dislike;
+
+  if (req.isAuthenticated()) {
+    try {
+    const userGoogleId = req.user.googleId;
+    const likesAndDislikeTable = await db.query("SELECT * FROM anime_like_dislike_table WHERE (google_id,anime_id) = ($1,$2) ", [BigInt(userGoogleId),animeID]);
+    if (likesAndDislikeTable?.rows?.length == 0) {
+      const newLikes =  db.query("INSERT INTO anime_like_dislike_table (anime_id,google_id,liked,disliked) VALUES ($1,$2,$3,$4)", [animeID, BigInt(userGoogleId), likeValue, dislikeValue]);
+      res.json(
+        {
+          isAuthenticated:req.isAuthenticated(),
+          likeRessponse:true,
+          unlikeResponse:false,
+          firstLike:true
+        }
+      );
+    }
+    if (likesAndDislikeTable?.rows?.length !== 0) {
+    if (likesAndDislikeTable.rows[0]["liked"] == true && likesAndDislikeTable.rows[0]["disliked"] == false) {
+      db.query("UPDATE anime_like_dislike_table SET liked = false WHERE (google_id,anime_id) = ($1,$2)",[BigInt(userGoogleId),animeID])
+      res.json(
+        {
+          isAuthenticated:req.isAuthenticated(),
+          likeResponse:false,
+          unlikeResponse:false,
+          firstLike:false
+        }
+      );
+    }
+    else if (likesAndDislikeTable.rows[0]["liked"] == false && likesAndDislikeTable.rows[0]["disliked"] == true) {
+      db.query("UPDATE anime_like_dislike_table SET liked = true, disliked = false WHERE (google_id,anime_id) = ($1,$2)",[BigInt(userGoogleId),animeID])
+      res.json(
+        {
+          isAuthenticated:req.isAuthenticated(),
+          likeResponse:true,
+          unlikeResponse:false,
+          firstLike:false
+        }
+      )
+    }
+    else if (likesAndDislikeTable.rows[0]["liked"] == false && likesAndDislikeTable.rows[0]["disliked"] == false) {
+      db.query("UPDATE anime_like_dislike_table SET liked = true WHERE (google_id,anime_id) = ($1,$2)",[BigInt(userGoogleId),animeID])
+      res.json(
+        {
+          isAuthenticated:req.isAuthenticated(),
+          likeResponse:true,
+          unlikeResponse:false,
+          firstLike:false
+        }
+      );
+    }  
+    }  
+  } catch (error) {
+      console.log(error);
+    }
+  }
+  if (req.isUnauthenticated()) {
+    res.json({
+      isAuthenticated:req.isAuthenticated()
+    });
+  }
+});
+
+
+app.post('/best-anime-list/api/dislike/post', async (req, res) => {
+  // if(req.isAuthenticated()){
+
+  // }
+  // if(req.isUnauthenticated()){
+  //   res.send(false);
+  // }
+});
 
 // watch list based on category
 for (let index = 0; index < animeRoute.length; index++) {
@@ -429,7 +505,6 @@ app.get('/auth/google/secrets', passport.authenticate("google", {
   failureRedirect: "/login"
 }));
 
-// 
 
 passport.use(
   "google",
@@ -465,7 +540,14 @@ passport.use(
 
 passport.serializeUser(function (user, cb) {
   process.nextTick(function () {
-    cb(null, { id: user.id, userId: user.user_id, username: user.user_name, profilePicture: user.user_image, email: user.email, });
+    cb(null, {
+      id: user.id,
+      userId: user.user_id,
+      username: user.user_name,
+      profilePicture: user.user_image,
+      email: user.email,
+      googleId: user.google_id
+    });
   });
 });
 

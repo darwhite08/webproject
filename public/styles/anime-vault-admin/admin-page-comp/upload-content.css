@@ -1,0 +1,31 @@
+.tag {
+    display: inline-block;
+    background-color: #3885e9; /* Light blue-gray background */
+    border-radius: 9999px; /* Full round border */
+    padding: 4px 10px; /* Padding inside tag */
+    margin: 4px; /* Margin between tags */
+    font-size: 14px; /* Font size */
+    cursor: pointer;
+    color: white;
+}
+.tag-close {
+    margin-left: 8px; /* Space between text and close button */
+    color: white; /* Slightly darker color for "x" */
+}
+.autocomplete-list {
+    position: absolute;
+    z-index: 10;
+    background-color: #fff;
+    border: 1px solid #cbd5e0;
+    border-radius: 4px;
+    width: 100%;
+    max-height: 150px;
+    overflow-y: auto;
+}
+.autocomplete-list div {
+    padding: 8px;
+    cursor: pointer;
+}
+.autocomplete-list div:hover {
+    background-color: #edf2f7;
+}

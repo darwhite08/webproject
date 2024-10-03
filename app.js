@@ -18,6 +18,12 @@ const algoliasearch = require('algoliasearch');
 const { NodeHtmlMarkdown, NodeHtmlMarkdownOptions } = require('node-html-markdown');
 const { marked } = require('marked');
 
+// custom package 
+const userIdGenerator = require("./custom-modules/unique_id_generator");
+const animeByYearSearch = require("./custom-modules/anime-by-year/aby-searched-result");
+const { start } = require("repl");
+
+
 const app = express();
 const port = process.env.PORT || 3000;
 env.config();
@@ -72,7 +78,7 @@ const db = new pg.Client({
   database: process.env.PG_DATABASE,
   password: process.env.PG_PASSWORD,
   port: process.env.PG_PORT,
-  ssl: { rejectUnauthorized: false }
+  // ssl: { rejectUnauthorized: false }
 });
 
 
@@ -91,16 +97,19 @@ db.connect()
 
 
 app.get('/', async (req, res) => {
-
+  const id = await userIdGenerator.user_id_generator("au_user_id","au_users");
   if (req.isAuthenticated()) {
-    res.render('main', { tab: "home", value: req.isAuthenticated(), profile_picture: req.user.profilePicture });
+    res.render('main', { tab: "home", value: req.isAuthenticated(),user_data:req.user });
   }
   if (req.isUnauthenticated()) {
     res.render('main', { tab: "home", value: req.isAuthenticated() });
   }
 });
 
-
+// maintenance-page
+app.get('/maintancene', async (req, res) => {
+  res.render('maintenance-page')
+});
 
 //blog 
 app.get('/blog', async (req, res) => {
@@ -111,7 +120,7 @@ app.get('/blog', async (req, res) => {
 });
 app.get('/countdown', async (req, res) => {
   // if (req.isUnauthenticated()) {
-  //   const result = await db.query("SELECT * FROM anime_countdown JOIN best_anime_list_user ON anime_countdown.user_content_id = best_anime_list_user.id ");
+  //   const result = await db.query("SELECT * FROM anime_countdown JOIN au_users ON anime_countdown.user_content_id = au_users.id ");
   //   res.render('main', { animeList: result.rows, total: result.rows.length, userTrue: false, tab: "countdown", value: false });
 
   res.render('maintenance-page')
@@ -201,22 +210,111 @@ const groupAnimes = animeRoute.reduce((acc, anime) => {
   return acc;
 }, {});
 
-console.log(groupAnimes)
+async function totalLikesCounterHandle(animeList, isAuthenticated = false, google_id = null) {
+  let animeLikesCount = new Object();
+  let animeDislikesCount = new Object();
+
+  var loadedAnimeId = [];
+  for (let i = 0; i < animeList.rows.length; i++) {
+    loadedAnimeId.push(animeList.rows[i]['anime_id']);
+  }
+  for (let i = 0; i < loadedAnimeId.length; i++) {
+    var result = await db.query("SELECT anime_id FROM anime_like_dislike_table WHERE (anime_id , liked) = ($1,true)", [loadedAnimeId[i]]);
+    if (result.rows.length !== 0) {
+      for (let j = 0; j < result.rows.length; j++) {
+        animeLikesCount[loadedAnimeId[i]] = result.rows.length;
+      }
+    }
+  }
+  for (let i = 0; i < loadedAnimeId.length; i++) {
+    var result = await db.query("SELECT anime_id FROM anime_like_dislike_table WHERE (anime_id , disliked) = ($1,true)", [loadedAnimeId[i]]);
+    if (result.rows.length !== 0) {
+      for (let j = 0; j < result.rows.length; j++) {
+        animeDislikesCount[loadedAnimeId[i]] = result.rows.length;
+      }
+    }
+  }
+  if (isAuthenticated) {
+    animeLikesCount.userLikedAnimes = (await ifUserLikedDislikedAnime(google_id)).userLikedAnimes;
+    animeDislikesCount.userDislikedAnimes = (await ifUserLikedDislikedAnime(google_id)).userDislikedAnimes
+  }
+  async function ifUserLikedDislikedAnime(google_id) {
+    var userLikedAnimes = new Object();
+    var userDislikedAnimes = new Object();
+    for (let i = 0; i < loadedAnimeId.length; i++) {
+      var unquieLikedAnime = await db.query("SELECT anime_id FROM anime_like_dislike_table WHERE (anime_id,google_id, liked) = ($1,$2,true)", [loadedAnimeId[i], google_id]);
+      if (unquieLikedAnime.rows.length !== 0) {
+        userLikedAnimes[loadedAnimeId[i]] = true;
+      }
+    }
+    for (let i = 0; i < loadedAnimeId.length; i++) {
+      var unquieDisikedAnime = await db.query("SELECT anime_id FROM anime_like_dislike_table WHERE (anime_id,google_id, disliked) = ($1,$2,true)", [loadedAnimeId[i], google_id]);
+      if (unquieDisikedAnime.rows.length !== 0) {
+        userDislikedAnimes[loadedAnimeId[i]] = true;
+      }
+    }
+
+    return { userLikedAnimes, userDislikedAnimes };
+  }
+  return { animeLikesCount, animeDislikesCount };
+}
+
+async function checkWishlistedAnime(anime_list, google_id) {
+  var animeWishlisted = new Object();
+
+  var loadedAnimeId = [];
+  for (let i = 0; i < anime_list.rows.length; i++) {
+    loadedAnimeId.push(anime_list.rows[i]['anime_id']);
+  }
+  for (let i = 0; i < loadedAnimeId.length; i++) {
+    var result = await db.query("SELECT * FROM anime_user_wishlist WHERE (anime_id,google_id,wishlisted) = ($1,$2,true)", [loadedAnimeId[i], google_id]);
+    if (result?.rows?.length !== 0) {
+      if (result.rows[0]['wishlisted'] == true) {
+        animeWishlisted[loadedAnimeId[i]] = true;
+      }
+    }
+  }
+  return animeWishlisted;
+}
 
 // best anime list route
 for (let index = 0; index < animeRoute.length; index++) {
   app.get(`/best-anime-list/${animeRoute[index]["anime_type"]}`, async (req, res) => {
-    const animeList = await db.query("SELECT * FROM best_anime_list JOIN best_anime_list_user ON best_anime_list_user.id = best_anime_list.user_id JOIN best_anime_list_content ON best_anime_list_content.id = best_anime_list.content_id WHERE lower(anime_type) = $1  ", [animeRoute[index]["anime_type"].toLowerCase()]);
+    const animeList = await db.query("SELECT * FROM best_anime_list JOIN au_users ON au_users.id = best_anime_list.user_id JOIN best_anime_list_content ON best_anime_list_content.id = best_anime_list.content_id WHERE lower(anime_type) = $1  ", [animeRoute[index]["anime_type"].toLowerCase()]);
+    var animeTotalLikes = (await totalLikesCounterHandle(animeList)).animeLikesCount;
+    var animeTotalDislikes = (await totalLikesCounterHandle(animeList)).animeDislikesCount;
     // render
     if (req.isAuthenticated()) {
+      animeTotalLikes = (await totalLikesCounterHandle(animeList, true, req.user.googleId)).animeLikesCount;
+      animeTotalDislikes = (await totalLikesCounterHandle(animeList, true, req.user.googleId)).animeDislikesCount;
+      animeWishlisted = await checkWishlistedAnime(animeList,req.user.googleId);
       if (animeList?.rows.length !== 0) {
-        res.render('main', { animeList: animeList.rows, anime_type: animeRoute[index]['anime_type'], anime_category: groupAnimes[animeRoute[index]['anime_type']], total: animeList.rows.length, tab: "bestanimelist", value: req.isAuthenticated(), profile_picture: req.user.profilePicture });
+        res.render('main', {
+          animeList: animeList.rows,
+          anime_type: animeRoute[index]['anime_type'],
+          anime_category: groupAnimes[animeRoute[index]['anime_type']],
+          total: animeList.rows.length,
+          tab: "bestanimelist",
+          value: req.isAuthenticated(),
+          profile_picture: req.user.profilePicture,
+          animeTotalLikes: animeTotalLikes,
+          animeTotalDislikes: animeTotalDislikes,
+          animeWishlisted:animeWishlisted
+        });
       } else if (animeList.rows.length === 0) {
         res.render('maintenance-page')
       }
     } if (req.isUnauthenticated()) {
       if (animeList?.rows.length !== 0) {
-        res.render('main', { animeList: animeList.rows, anime_type: animeRoute[index]['anime_type'], anime_category: groupAnimes[animeRoute[index]['anime_type']], total: animeList.rows.length, userTrue: false, tab: "bestanimelist", value: req.isAuthenticated() });
+        res.render('main', {
+          animeList: animeList.rows,
+          anime_type: animeRoute[index]['anime_type'],
+          anime_category: groupAnimes[animeRoute[index]['anime_type']],
+          total: animeList.rows.length, userTrue: false, tab: "bestanimelist",
+          value: req.isAuthenticated(),
+          animeTotalLikes: animeTotalLikes,
+          animeTotalDislikes: animeTotalDislikes
+        });
       } else if (animeList.rows.length === 0) {
         res.render('maintenance-page')
       }
@@ -226,91 +324,260 @@ for (let index = 0; index < animeRoute.length; index++) {
     // console.log(response.data)
   });
 }
-
-// like and dislike 
-
-app.post('/best-anime-list/api/like/post', async (req, res) => {
-
+// like post
+app.post('/api/like/post', async (req, res) => {
   const animeID = req.body.animeID;
   const likeValue = req.body.like;
   const dislikeValue = req.body.dislike;
 
   if (req.isAuthenticated()) {
     try {
-    const userGoogleId = req.user.googleId;
-    const likesAndDislikeTable = await db.query("SELECT * FROM anime_like_dislike_table WHERE (google_id,anime_id) = ($1,$2) ", [BigInt(userGoogleId),animeID]);
-    if (likesAndDislikeTable?.rows?.length == 0) {
-      const newLikes =  db.query("INSERT INTO anime_like_dislike_table (anime_id,google_id,liked,disliked) VALUES ($1,$2,$3,$4)", [animeID, BigInt(userGoogleId), likeValue, dislikeValue]);
-      res.json(
-        {
-          isAuthenticated:req.isAuthenticated(),
-          likeRessponse:true,
-          unlikeResponse:false,
-          firstLike:true
+      async function totalLikesCounter(anime_id, like_value) {
+        try {
+          const result = await db.query(
+            "SELECT * FROM anime_like_dislike_table WHERE (anime_id, liked) = ($1, $2)",
+            [anime_id, like_value]
+          );
+          // Ensure the result is defined and rows is an array
+          if (result && result.rows) {
+            return result.rows.length;
+          }
+          return 0;
+        } catch (error) {
+          console.error("Database query error:", error);
+          throw error;
         }
+      }
+
+      const totalLikes = await totalLikesCounter(animeID, true);
+      console.log(totalLikes);
+
+      const userGoogleId = req.user.googleId;
+      const likesAndDislikeTable = await db.query(
+        "SELECT * FROM anime_like_dislike_table WHERE (google_id,anime_id) = ($1,$2)",
+        [BigInt(userGoogleId), animeID]
       );
-    }
-    if (likesAndDislikeTable?.rows?.length !== 0) {
-    if (likesAndDislikeTable.rows[0]["liked"] == true && likesAndDislikeTable.rows[0]["disliked"] == false) {
-      db.query("UPDATE anime_like_dislike_table SET liked = false WHERE (google_id,anime_id) = ($1,$2)",[BigInt(userGoogleId),animeID])
-      res.json(
-        {
-          isAuthenticated:req.isAuthenticated(),
-          likeResponse:false,
-          unlikeResponse:false,
-          firstLike:false
+
+      if (likesAndDislikeTable?.rows?.length == 0) {
+        await db.query(
+          "INSERT INTO anime_like_dislike_table (anime_id,google_id,liked,disliked) VALUES ($1,$2,$3,$4)",
+          [animeID, BigInt(userGoogleId), likeValue, dislikeValue]
+        );
+
+        res.json({
+          isAuthenticated: req.isAuthenticated(),
+          likeResponse: true,
+          dislikeResponse: false,
+          firstLike: true,
+          totalLikes: await totalLikesCounter(animeID, true),
+        });
+      } else {
+        const existing = likesAndDislikeTable.rows[0];
+        if (existing.liked && !existing.disliked) {
+          await db.query(
+            "UPDATE anime_like_dislike_table SET liked = false WHERE (google_id,anime_id) = ($1,$2)",
+            [BigInt(userGoogleId), animeID]
+          );
+
+          res.json({
+            isAuthenticated: req.isAuthenticated(),
+            likeResponse: false,
+            dislikeResponse: false,
+            firstLike: false,
+            totalLikes: await totalLikesCounter(animeID, true),
+          });
+        } else if (!existing.liked && existing.disliked) {
+          await db.query(
+            "UPDATE anime_like_dislike_table SET liked = true, disliked = false WHERE (google_id,anime_id) = ($1,$2)",
+            [BigInt(userGoogleId), animeID]
+          );
+
+          res.json({
+            isAuthenticated: req.isAuthenticated(),
+            likeResponse: true,
+            dislikeResponse: false,
+            firstLike: false,
+            totalLikes: await totalLikesCounter(animeID, true),
+          });
+        } else if (!existing.liked && !existing.disliked) {
+          await db.query(
+            "UPDATE anime_like_dislike_table SET liked = true WHERE (google_id,anime_id) = ($1,$2)",
+            [BigInt(userGoogleId), animeID]
+          );
+
+          res.json({
+            isAuthenticated: req.isAuthenticated(),
+            likeResponse: true,
+            dislikeResponse: false,
+            firstLike: false,
+            totalLikes: await totalLikesCounter(animeID, true),
+          });
         }
-      );
-    }
-    else if (likesAndDislikeTable.rows[0]["liked"] == false && likesAndDislikeTable.rows[0]["disliked"] == true) {
-      db.query("UPDATE anime_like_dislike_table SET liked = true, disliked = false WHERE (google_id,anime_id) = ($1,$2)",[BigInt(userGoogleId),animeID])
-      res.json(
-        {
-          isAuthenticated:req.isAuthenticated(),
-          likeResponse:true,
-          unlikeResponse:false,
-          firstLike:false
-        }
-      )
-    }
-    else if (likesAndDislikeTable.rows[0]["liked"] == false && likesAndDislikeTable.rows[0]["disliked"] == false) {
-      db.query("UPDATE anime_like_dislike_table SET liked = true WHERE (google_id,anime_id) = ($1,$2)",[BigInt(userGoogleId),animeID])
-      res.json(
-        {
-          isAuthenticated:req.isAuthenticated(),
-          likeResponse:true,
-          unlikeResponse:false,
-          firstLike:false
-        }
-      );
-    }  
-    }  
-  } catch (error) {
+      }
+    } catch (error) {
       console.log(error);
+      res.status(500).json({ error: "An error occurred", error: error });
     }
-  }
-  if (req.isUnauthenticated()) {
+  } else {
     res.json({
-      isAuthenticated:req.isAuthenticated()
+      isAuthenticated: req.isAuthenticated(),
     });
   }
 });
+// Dislike post
+app.post('/api/dislike/post', async (req, res) => {
+  const animeID = req.body.animeID;
+  const likeValue = req.body.like;
+  const dislikeValue = req.body.dislike;
 
+  if (req.isAuthenticated()) {
+    try {
+      async function totalDislikesCounter(anime_id, dislike_value) {
+        try {
+          const result = await db.query(
+            "SELECT COUNT(*) FROM anime_like_dislike_table WHERE anime_id = $1 AND disliked = $2",
+            [anime_id, dislike_value]
+          );
+          return parseInt(result.rows[0].count, 10);
+        } catch (error) {
+          console.error("Database query error:", error);
+          throw error;
+        }
+      }
 
-app.post('/best-anime-list/api/dislike/post', async (req, res) => {
-  // if(req.isAuthenticated()){
+      const userGoogleId = req.user.googleId;
+      const likesAndDislikeTable = await db.query(
+        "SELECT * FROM anime_like_dislike_table WHERE google_id = $1 AND anime_id = $2",
+        [BigInt(userGoogleId), animeID]
+      );
 
-  // }
-  // if(req.isUnauthenticated()){
-  //   res.send(false);
-  // }
+      if (likesAndDislikeTable.rows.length === 0) {
+        await db.query(
+          "INSERT INTO anime_like_dislike_table (anime_id, google_id, liked, disliked) VALUES ($1, $2, $3, $4)",
+          [animeID, BigInt(userGoogleId), likeValue, dislikeValue]
+        );
+
+        res.json({
+          isAuthenticated: req.isAuthenticated(),
+          likeResponse: false,
+          dislikeResponse: true,
+          firstDislike: true,
+          totalDislikes: await totalDislikesCounter(animeID, true),
+        });
+      } else {
+        const existing = likesAndDislikeTable.rows[0];
+        if (!existing.liked && existing.disliked) {
+          await db.query(
+            "UPDATE anime_like_dislike_table SET disliked = false WHERE google_id = $1 AND anime_id = $2",
+            [BigInt(userGoogleId), animeID]
+          );
+
+          res.json({
+            isAuthenticated: req.isAuthenticated(),
+            likeResponse: false,
+            dislikeResponse: false,
+            firstDislike: false,
+            totalDislikes: await totalDislikesCounter(animeID, true),
+          });
+        } else if (existing.liked && !existing.disliked) {
+          await db.query(
+            "UPDATE anime_like_dislike_table SET liked = false, disliked = true WHERE google_id = $1 AND anime_id = $2",
+            [BigInt(userGoogleId), animeID]
+          );
+
+          res.json({
+            isAuthenticated: req.isAuthenticated(),
+            likeResponse: false,
+            dislikeResponse: true,
+            firstDislike: false,
+            totalDislikes: await totalDislikesCounter(animeID, true),
+          });
+        } else if (!existing.liked && !existing.disliked) {
+          await db.query(
+            "UPDATE anime_like_dislike_table SET disliked = true WHERE google_id = $1 AND anime_id = $2",
+            [BigInt(userGoogleId), animeID]
+          );
+
+          res.json({
+            isAuthenticated: req.isAuthenticated(),
+            likeResponse: false,
+            dislikeResponse: true,
+            firstDislike: false,
+            totalDislikes: await totalDislikesCounter(animeID, true),
+          });
+        }
+      }
+    } catch (error) {
+      console.error("Error handling request:", error);
+      res.status(500).json({ error: "An error occurred" });
+    }
+  } else {
+    res.json({
+      isAuthenticated: req.isAuthenticated(),
+    });
+  }
+});
+app.get('/api/like-dislike/get', async (req, res) => {
+  if (req.isAuthenticated()) {
+    var result = (await totalLikesCounterHandle(animeList, true, req.user.googleId));
+    var animeTotalLikes = result.animeLikesCount;
+    var animeTotalDislikes = result.animeDislikesCount;
+    res.json({
+      animeUserLiked: animeUserLiked,
+      animeUserDisliked: animeUserDisliked
+    });
+  }
+  else {
+    res.status(500).json({ error: "An error occurred" });
+  }
+});
+
+// addOrRemove from wishlist Post
+app.post('/api/wishlist/post', async (req, res) => {
+
+  var anime_id = req.body.animeId;
+  var wishlist = req.body.addToWihslist;
+  if (req.isAuthenticated()) {
+    var google_id = req.user.googleId;
+    var result = await db.query("SELECT * FROM anime_user_wishlist WHERE (anime_id,google_id) = ($1,$2)", [anime_id, google_id]);
+    if (result?.rows?.length == 0) {
+      db.query("INSERT INTO anime_user_wishlist (google_id,anime_id,wishlisted) VALUES ($1,$2,$3)", [google_id, anime_id, wishlist])
+      res.json({
+        wishlisted: true,
+        isAuthenticated: true
+      });
+    }
+    else {
+      if (result.rows[0]['wishlisted'] == true) {
+        db.query("UPDATE anime_user_wishlist SET wishlisted = false WHERE google_id = $1 AND anime_id = $2", [google_id, anime_id])
+        res.json({
+          wishlisted: true,
+          isAuthenticated: true
+        });
+      }
+      else {
+        db.query("UPDATE anime_user_wishlist SET wishlisted = true WHERE google_id = $1 AND anime_id = $2", [google_id, anime_id])
+        res.json({
+          wishlisted: false,
+          isAuthenticated: true
+        });
+      }
+    }
+  }
+  else {
+    console.log("workings")
+    res.json({
+      isAuthenticated: false
+    });
+  }
+
 });
 
 // watch list based on category
 for (let index = 0; index < animeRoute.length; index++) {
   app.get(`/best-anime-list/${animeRoute[index]['anime_type']}/${animeRoute[index]['anime_category']}`, async (req, res) => {
     console.log(animeRoute[index])
-    const animeList = await db.query("SELECT * FROM best_anime_list JOIN best_anime_list_user ON best_anime_list_user.id = best_anime_list.user_id JOIN best_anime_list_content ON best_anime_list_content.id = best_anime_list.content_id WHERE lower(anime_category) = $1  limit 10", [animeRoute[index]['anime_category'].toLowerCase()]);
+    const animeList = await db.query("SELECT * FROM best_anime_list JOIN au_users ON au_users.id = best_anime_list.user_id JOIN best_anime_list_content ON best_anime_list_content.id = best_anime_list.content_id WHERE lower(anime_category) = $1  limit 10", [animeRoute[index]['anime_category'].toLowerCase()]);
     // render
     if (req.isAuthenticated()) {
       if (animeList?.rows.length !== 0) {
@@ -360,15 +627,40 @@ app.get('/weekly-reccomendation', async (req, res) => {
   }
 });
 // anime by year
-app.get('/anime-by-year', async (req, res) => {
-  // render
+app.get('/anime-by-year', async (req, res) => { 
+  const result  = await db.query("SELECT * FROM anime_by_year");
+
+  console.log(result.rows)
   if (req.isAuthenticated()) {
     res.render('main', { tab: 'anime-by-year', value: false })
   }
   else if (req.isUnauthenticated()) {
-    res.render('main', { tab: 'anime-by-year', value: false })
+
+    res.render('main', { tab: 'anime-by-year', value: false, anime_data:result.rows })
   }
 });
+
+// Anime by year post
+app.post('/api/search',async(req,res)=>{
+  const searchType = req.body.searchType; 
+  const databaseName = 'anime_by_year'; 
+   if (searchType == 'year') {
+    const startYear = req.body.startYear;
+    const endYear =  req.body.endYear;
+    
+    const result = await animeByYearSearch.year_wise_searched_items(databaseName,'release_year',parseInt(startYear),parseInt(endYear));
+    console.log(result)
+    res.json({
+      animeData: result
+    })
+   }
+   else if(searchType == 'genere'){
+
+   }
+ 
+});
+
+
 // login
 app.get('/login', async (req, res) => {
   res.render('Auth/loginpage'); // 
@@ -377,7 +669,7 @@ app.get('/login', async (req, res) => {
 // Dash board router
 app.get('/user/dash-board', async (req, res) => {
   if (req.isAuthenticated()) {
-    res.render('main2', { userTrue: true, profile_picture: req.user.profilePicture, user_data: req.user, username: req.user.username, email: req.user.email, settings: false, profile: true, content_upload: false, watchlist: false, readLater: false, calender: false });
+    res.render('main2', { userTrue: true ,user_data:req.user, settings: false, profile: true, content_upload: false, watchlist: false, readLater: false, calender: false });
   }
   else {
     res.render('Auth/loginpage');
@@ -388,7 +680,7 @@ app.get('/user/dash-board', async (req, res) => {
 
 app.get('/user/dash-board/profile', async (req, res) => {
   if (req.isAuthenticated()) {
-    res.render('main2', { userTrue: true, profile_picture: req.user.profilePicture, username: req.user.username, email: req.user.email, settings: false, profile: true, content_upload: false, watchlist: false, readLater: false, calender: false });
+    res.render('main2', { userTrue: true, user_data:req.user, settings: false, profile: true, content_upload: false, watchlist: false, readLater: false, calender: false });
   }
   else {
     res.render('Auth/loginPage');
@@ -437,10 +729,10 @@ app.get('/user/dash-board/upload-content', async (req, res) => {
 
 // upload content post router
 app.post('/user/dash-board/upload-content/post', async (req, res) => {
-  console.log(NodeHtmlMarkdown.translate(req.body.editorcontent));
-  var markedDown = NodeHtmlMarkdown.translate(req.body.editorcontent);
-  console.log(marked.parse(markedDown));
-  res.send('done')
+  var markedDownBlogBody = NodeHtmlMarkdown.translate(req.body.editorcontent);
+  var blogheading = NodeHtmlMarkdown(req.body.blogheading); 
+  
+  
 });
 
 // settings router
@@ -518,13 +810,14 @@ passport.use(
     async (accessToken, refreshToken, profile, cb) => {
       try {
         console.log(profile);
-        const result = await db.query("SELECT * FROM best_anime_list_user WHERE email = $1", [
+        const result = await db.query("SELECT * FROM au_users WHERE email = $1", [
           profile._json.email,
         ]);
         if (result.rows.length === 0) {
+        const genratedAuUserId = await userIdGenerator.user_id_generator('au_user_id','au_users'); 
           const newUser = await db.query(
-            "INSERT INTO best_anime_list_user (email, user_password,user_image,google_id,user_name) VALUES ($1, $2,$3,$4,$5)",
-            [profile._json.email, "google", profile._json.picture, profile._json.id, profile.displayName]
+            "INSERT INTO au_users (email, user_password,user_image,google_id,user_name,au_user_id) VALUES ($1, $2,$3,$4,$5,$6)",
+            [profile._json.email, "google", profile._json.picture, profile._json.id, profile.displayName,genratedAuUserId]
           );
           return cb(null, newUser.rows[0]);
         } else {
@@ -544,9 +837,9 @@ passport.serializeUser(function (user, cb) {
       id: user.id,
       userId: user.user_id,
       username: user.user_name,
-      profilePicture: user.user_image,
+      profile_picture: user.user_image,
       email: user.email,
-      googleId: user.google_id
+      google_id: user.google_id
     });
   });
 });

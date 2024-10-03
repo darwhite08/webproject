@@ -21,6 +21,7 @@
 
             <form class=" mx-auto">
                 <div class="flex flex-row justify-between items-center gap-8">
+                    <!-- search -->
                     <div class="flex flex-row w-96">
                         <div class="relative w-full">
                             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -36,7 +37,8 @@
                             <span class="sr-only px-">Search</span>
                         </button>
                     </div>
-                    <div class="w-56">
+                    <!-- search by category -->
+                    <div id="aby-search-category" class="w-56">
                         <select id="category"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>Choose Category</option>
@@ -57,19 +59,28 @@
 
                         </select>
                     </div>
-                    <div class="w-56">
+                    <!-- search-by-year -->
+                    <div id="aby-search-year" class="w-56">
                         <select
                             class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 ">
                             <option selected>year</option>
-                            <option value="US">1980-90</option>
-                            <option value="CA">90-2000</option>
-                            <option value="FR">2000-10</option>
-                            <option value="DE">2010-20</option>
-                            <option value="DE">2020-current</option>
+                            <option value="1900-10">1900-10</option>
+                            <option value="1910-20">1910-20</option>
+                            <option value="1920-30">1920-30</option>
+                            <option value="1930-40">1930-40</option>
+                            <option value="1940-50">1940-50</option>
+                            <option value="1950-60">1950-60</option>
+                            <option value="1960-70">1960-70</option>
+                            <option value="1970-80">1970-80</option>
+                            <option value="1980-90">1980-90</option>
+                            <option value="1990-2000">1990-2000</option>
+                            <option value="2000-10">2000-10</option>
+                            <option value="2010-20">2010-20</option>
+                            <option value="2020-current">2020-current</option>
 
                         </select>
                     </div>
-                    <div class="w-56">
+                    <div id="aby-search-season" class="w-56">
                         <select
                             class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 ">
                             <option selected>Season </option>
@@ -79,7 +90,7 @@
                             <option value="DE">fall </option>
                         </select>
                     </div>
-                    <div class="w-56">
+                    <div id="aby-search-genere" class="w-56">
                         <select
                             class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 ">
                             <option selected>Genere</option>
@@ -104,66 +115,37 @@
             <h1 class="text-bold">Anime details</h1>
         </div>
     </div>
-    <div class="grid grid-cols-4 gap-8 bg-violet-500 py-10 px-10 rounded-lg">
-        <% for(i=0;i<20;i++){%>
-            <div class="max-w-sm bg-white shadow-lg border-4 rounded-lg shadow ">
-                <a href="#">
-                    <img class="rounded-t-lg" src="../../public/media/bestAnimeList/img/animeListBackground.jpg"
-                        alt="" />
-                </a>
-                <div class="p-5">
-                    <div>
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-blue-700 dark:text-white">Anime Name</h5>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 text-sm">Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. Optio labore suscipit necessitatibus alias </p>
-                    </div>
-                    <div class="pb-2">
-                        <p class="text-gray-400">Release date</p>
-                    </div>
-                    <div>
-                        <button type="button"
-                            class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 py-2.5 me-1 mb-2 "><i
-                                class="fa-brands fa-youtube"></i> Watch Trailer</button>
-                        <button onclick="upcoming_anime_overlay_open();" type="button"
-                            class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 py-2.5 me-1 mb-2 "><i
-                                class="fa-solid fa-circle-info"></i> Read More</button>
-                        <button type="button"
-                            class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 py-2.5 me-1 mb-2 "><i
-                                class="fa-solid fa-plus"></i></button>
-
-                    </div>
-                </div>
-            </div>
-            <% }%>
-    </div>
-
-    <!-- overlay page -->
-    <div id="upcoming-anime-overlay-container"
-        class="hidden z-50 flex items-center justify-center fixed left-0 top-0 min-h-screen bg-black/70 backdrop-blur-sm w-full px-20 ">
-        <div class=" h-full relative  bg-white flex flex-row py-10 px-10 mx-10 rounded-lg gap-8">
-            <button onclick="upcoming_anime_overlay_close();" class="absolute top-4 right-4 text-xl font-bold bg-violet-600 ring-4 border-4 border-violet-700 ring-violet-800 rounded-full px-3 py-1 text-white"><i class="fa-solid fa-x"></i></button>
-            <!-- anime overview and  -->
-            <div class="">
-                <div class="max-w-sm  border ">
+    <div class="relative">
+        <div id="aby-result-container" class=" grid grid-cols-4 gap-8 bg-violet-500 py-10 px-10 rounded-lg">
+            <% for(i=0;i<anime_data.length;i++){%>
+                <div class="aby-result-container-cards max-w-sm bg-white shadow-lg border-4 rounded-lg shadow ">
                     <a href="#">
                         <img class="rounded-t-lg" src="../../public/media/bestAnimeList/img/animeListBackground.jpg"
                             alt="" />
                     </a>
-                    <div class="p-5">
+                    <div class="p-5 flex flex-col justify-between">
                         <div>
-                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-blue-700 dark:text-white">Anime Name
+                            <h5 class="anime_by_year_name mb-2 text-lg font-bold tracking-tight text-blue-700 ">
+                                <%=anime_data[i]["anime_name"] %>
                             </h5>
-                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 text-sm">Lorem ipsum dolor sit
-                                amet
-                                consectetur adipisicing elit. Optio labore suscipit necessitatibus alias </p>
+                            <p class="anime_by_year_plot mb-3 font-normal text-gray-700 dark:text-gray-400 text-sm">
+                                <%=anime_data[i]["anime_plot"]%>
+                            </p>
                         </div>
                         <div class="pb-2">
-                            <p class="text-gray-400 ">Release date</p>
+                            <p class="aby-release-year text-xs font-medium text-red-600">Release date:
+                                <%=anime_data[i]["release_year"]%>
+                            </p>
                         </div>
                         <div>
                             <button type="button"
                                 class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 py-2.5 me-1 mb-2 "><i
                                     class="fa-brands fa-youtube"></i> Watch Trailer</button>
+                            <button onclick='readmore_open(<%= JSON.stringify(anime_data[i]) %>)'
+                                class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 py-2.5 me-1 mb-2">
+                                <i class="fa-solid fa-circle-info"></i> Read More
+                            </button>
+
                             <button type="button"
                                 class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 py-2.5 me-1 mb-2 "><i
                                     class="fa-solid fa-plus"></i></button>
@@ -171,28 +153,17 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="w-full ">
-                <div>
-                    <h1 class="text-2xl font-bold text-gray-600">Plot</h1>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio adipisci, ipsum itaque enim
-                        asperiores recusandae explicabo alias possimus eos excepturi numquam ut officia ad unde illo
-                        praesentium repellat odio non?</p>
-                </div>
-                <div class="mt-4">
-                    <button type="button"
-                        class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Alternative</button>
-                    <button type="button"
-                        class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Alternative</button>
-                    <button type="button"
-                        class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Alternative</button>
-                    <button type="button"
-                        class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Alternative</button>
-
-                </div>
-            </div>
+                <% }%>
         </div>
-
+        <!-- aby loader -->
+        <%-include('./aby-loader')%>
     </div>
+
+    <!-- overlay page -->
+    <%-include('./readmore/readmore-container')%>
+
 </div>
+<script src="../../../public/responsive/anime-vault/anime-by-year/anime-by-year-main.js"></script>
+<script src="../../../public/responsive/anime-vault/anime-by-year/anime-by-year-readmore.js"></script>
+<script src="../../../public/responsive/anime-vault/anime-by-year/load-aby-cards.js"></script>
+<script src="../../../public/responsive/anime-vault/anime-by-year/search-action/search-by-year.js"></script>

@@ -16,7 +16,7 @@
                         <div>
                             <button type="button"
                                 class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600">
-                                <img class="w-8 h-8 rounded-full" src=<%=user_data.profilePicture %> lt="user photo">
+                                <img class="w-8 h-8 rounded-full" src="<%=user_data.profile_picture %>" >
                             </button>
                         </div>
 
@@ -24,14 +24,14 @@
                 </div>
             </div>
         </div>
-    </nav>s
+    </nav>
 
     <!-- side bar start -->
     <aside
         class="fixed top-0  px-4 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700">
 
         <div class="flex items-center gap-4 mb-6 border-b border-dashed pb-4">
-            <img class="w-10 h-10 rounded-full" src=<%=user_data.profilePicture%> alt="">
+            <img class="w-10 h-10 rounded-full" src=<%=user_data.profile_picture%> alt="">
             <div class="font-medium text-sm dark:text-white">
                 <div></div>
                 <div class="text-sm text-gray-500 dark:text-gray-400">Joined 2014</div>
@@ -49,18 +49,18 @@
                     </a>
                 </li>
                 <!-- upload content -->
-                <li>
+                <!-- <li>
                     <a href="/user/dash-board/upload-content"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group " >
                         <i class="fa-solid fa-cloud-arrow-up"></i>
                         <span
                             class="flex-1 ms-3 me-2 text-md font-medium text-gray-900 focus:outline-none  hover:bg-gray-100 hover:text-blue-700 focus:z-10">Upload Content</span>
                     </a>
-                </li>
+                </li> -->
 
                 <!-- Earning -->
 
-                <li>
+                <!-- <li>
                     <a href="/logout"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <i class="fa-solid fa-right-to-bracket"></i>
@@ -68,7 +68,7 @@
                         <span
                             class="flex-1 px-5 me-2 text-md font-medium text-gray-900 focus:outline-none  hover:bg-gray-100 hover:text-blue-700 focus:z-10">Earning</span>
                     </a>
-                </li>
+                </li> -->
 
                 <!-- watchlist -->
 
@@ -83,7 +83,7 @@
                     </a>
                 </li>
                 <!-- read later -->
-                <li>
+                <!-- <li>
                     <a href="/user/dash-board/read-later    "
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <i class="fa-solid fa-book-bookmark"></i>
@@ -92,9 +92,9 @@
                             class="flex-1 px-5 me-2 text-md font-medium text-gray-900 focus:outline-none  hover:bg-gray-100 hover:text-blue-700 focus:z-10">Read later
                         </span>
                     </a>
-                </li>
+                </li> -->
                 <!-- read by date -->
-                <li>
+                <!-- <li>
                     <a href="/user/dash-board/calender"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <i class="fa-solid fa-calendar"></i>
@@ -103,7 +103,7 @@
                             class="flex-1 px-5 me-2 text-md font-medium text-gray-900 focus:outline-none  hover:bg-gray-100 hover:text-blue-700 focus:z-10">Read by date
                         </span>
                     </a>
-                </li>
+                </li> -->
 
                 <!-- settings -->
                 <li>
@@ -139,8 +139,7 @@
             class="px-4 border-2 border-gray-200 border-dashed rounded-lg flex flex-col items-center justify-center  sm:flex-row md:flex-row lg:flex-row ">
 
             <% if (profile){%>
-                <%- include('admin-page-comp/profile' ,{ profilePicture:profile_picture, username:username,
-                    email:email}) %>
+                <%- include('admin-page-comp/profile',{ user_data:user_data}) %>
                     <% } else if (settings){%>
                         <%- include('admin-page-comp/settings' ) %>
                             <% } else if (content_upload){%>

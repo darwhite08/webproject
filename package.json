@@ -17,6 +17,7 @@
     "axios": "^1.7.2",
     "body-parser": "^1.20.2",
     "ckeditor5-premium-features": "^42.0.0",
+    "crypto-js": "^4.2.0",
     "dotenv": "^16.4.5",
     "ejs": "^3.1.9",
     "express": "^4.19.2",

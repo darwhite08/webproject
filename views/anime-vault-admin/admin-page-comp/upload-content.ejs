@@ -1,9 +1,8 @@
-<div class=" rounded-lg  px-10 w-full pt-8 mt-2 bg-violet-100 ">
+<div class=" rounded-lg  px-10 w-full pt-8 mt-2  ">
     <!-- <div class="flex justify-center items-center bg-gray-200 rounded-lg py-2">
     <h1 class="text-3xl text-gray-400 font-bold">Anime Post</h1>
   </div> -->
     <div>
-
         <div class="flex items-center justify-between gap bg-blue-600 py-4 px-10 rounded-lg">
             <div class="flex items-center gap-4  w-3/12">
                 <img class="w-10 h-10 rounded-full" src="<%= user_data.profilePicture  %>" alt="">
@@ -24,26 +23,58 @@
 
     <div class="py-10">
         <form action="/user/dash-board/upload-content/post" method="POST">
-            <textarea id="mytextarea" name="editorcontent"></textarea>
+            <div class="bg-white rounded-md pb-4">
+                <!-- cover photo -->
+                <div class="pb-10">
+                    <div class="flex justify-start">
+                        <label class="relative block text-sm text-gray-900 dark:text-gray-400">
+                            <span id="file_name"
+                                class="py-2 px-4 text-xl font-medium bg-gray-50 border-2 bg-white border-gray-300 rounded-lg cursor-pointer dark:bg-gray-700 dark:border-gray-600">Add
+                                a cover image</span>
+                            <input id="file_input" type="file" name="coverPhoto" class="absolute inset-0 opacity-0 cursor-pointer">
+                        </label>
+                    </div>
+                </div>
+                <!-- Heading -->
+                <div class="w-full">
+                    <input
+                        class="focus:border-none focus:outline-none text-6xl font-extrabold text-black placeholder:text-stone-700 w-full"
+                        type="text" name="blogheading" id="" placeholder="Heading for anime blog..." autofocus>
+                </div>
+
+            </div>
+            <div>
+                <div>
+                    <h1 class="text-xl my-4 font-medium bg-green-200 text-green-700 w-fit rounded-lg p-2 "><i class="fa-solid fa-star-of-life text-white"></i> Blog body </h1>
+                </div>
+                <textarea id="mytextarea" name="editorcontent">
+                </textarea>
+            </div>
             <div class="flex justify-end items-end ">
-                <button class="bg-blue-300 mt-4 py-2 px-4 text-blue-900 font-bold rounded-lg text-lg" type="submit">Post</button>
+                <button class="bg-blue-600 mt-4 py-2 px-4 text-white font-bold rounded-lg text-lg"
+                    type="submit">Next</button>
             </div>
         </form>
     </div>
-    <script>
-        tinymce.init({
-            selector: '#mytextarea',
-            plugins: [
-                'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
-                'searchreplace', 'wordcount', 'visualblocks', 'visualchars', 'code', 'fullscreen', 'insertdatetime',
-                'media', 'table', 'emoticons', 'help','accordion','save'
-            ],
-            toolbar: 'undo redo | styles | bold italic accordion| alignleft aligncenter alignright alignjustify | ' +
-                'bullist numlist outdent indent | link image | print preview media fullscreen | ' +
-                'forecolor backcolor emoticons | help save',
-            license_key: 'gpl',
-            branding: false,
-            promotion: false
-        });
-    </script>
 </div>
+<script>
+    tinymce.init({
+        selector: '#mytextarea',
+        plugins: [
+            'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
+            'searchreplace', 'wordcount', 'visualblocks', 'visualchars', 'code', 'fullscreen', 'insertdatetime',
+            'media', 'table', 'emoticons', 'help', 'accordion', 'save', 'autoresize',
+        ],
+        toolbar: 'undo redo | blocks | bold italic accordion| table ' +
+            'bullist numlist  | link image | print preview media fullscreen | ' +
+            ' emoticons | help save',
+        menu: {
+            format: { title: 'Format', items: 'bold italic underline strikethrough superscript subscript codeformat | blocks ' },
+
+        },
+        license_key: 'gpl',
+        branding: false,
+        promotion: false,
+    });
+</script>
+<script src="../../../public/responsive/anime-vault-admin/anime-vault-admin-comp/blog/upload-content.js"></script>

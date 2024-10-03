@@ -9,9 +9,9 @@
             <a class="me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
                 href="/">Home</a>
             <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
-                href="/blog">Blog</a>
+                href="/maintancene">Blog</a>
             <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
-                href="/blog">About us</a>
+                href="/maintancene">About us</a>
             <div class="relative z-50">
                 <button
                     class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
@@ -142,13 +142,13 @@
                 </div>
             </div>
             <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
-                href="/community">Community</a>
+                href="/maintancene">Community</a>
             <a class=" px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white hover:text-blue-700 "
                 href="/action-figures">Action Figures</a>
         </div>
         <% if (value) { %>
             <a href="/user/dash-board"> <img class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
-                    src=<%=profile_picture %> alt="Bordered avatar"></a>
+                    src='<%= user_data.profile_picture %>' alt="Bordered avatar"></a>
             <% } else{ %>
                 <button class="right-0 bg-gray-900 rounded-md px-4 "><a href="/login">Login</a></button>
                 <% } %>

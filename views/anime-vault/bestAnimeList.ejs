@@ -1,4 +1,4 @@
-<div id="best-anime-list-container" class="static bg-white py-10">
+<div onloadeddata="likeDislikeApperanceHandle()" id="best-anime-list-container" class="static bg-white py-10">
     <div>
         <div>
             <div class="mx-5 sm:mx-20 md:mx-20 lg:mx-20">
@@ -81,14 +81,16 @@
                                         </span>
                                         <span type="button"
                                             class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Status:
-                                            <%= animeList[i]['status'] %></span>
+                                            <%= animeList[i]['status'] %>
+                                        </span>
                                         <span type="button"
                                             class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                                             <%= animeList[i]['available_on'] %>
                                         </span>
                                         <span type="button"
                                             class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Popularity:
-                                            <%= animeList[i]['popularity'] %></span>
+                                            <%= animeList[i]['popularity'] %>
+                                        </span>
                                     </div>
                                 </div>
                                 <!-- about anime end -->
@@ -104,19 +106,109 @@
                                 </div>
                                 <!-- Anime Note End -->
                                 <div class="text-sm sm:text-md mt-5 md:text-md lg:text-md space-y-2">
-                                    <button class="bg-black text-white py-2 px-4 rounded-lg">Watch on <a
-                                            href="">Netflix</a></button>
-                                    <button class="bg-black text-white py-2 px-4 rounded-lg"><i
-                                            class="fa-solid fa-comment"></i> Join Discussion</button>
-                                    <button class="bg-black text-white py-2 px-4 rounded-lg"> <i
-                                            class="fa-solid fa-plus"></i></button>
-                                    <button data-anime-id="<%= animeList[i]['anime_id'] %>" onclick="animeLikeEvent();"
-                                        name="like" class="animeLike bg-black text-white py-2 px-4 rounded-lg"> <i
-                                            class="fa-solid fa-thumbs-up"></i></button>
-                                    <button data-anime-id="<%= animeList[i]['anime_id'] %>"
-                                        onclick="animeDislikeEvent();" name="dislike"
-                                        class="animeDislike bg-black text-white py-2 px-4 rounded-lg"> <i
-                                            class="fa-solid fa-thumbs-down"></i></button>
+                                    <% const animeId=animeList[i]['anime_id']; %>
+                                        <button class="bg-black text-white py-2 px-4 rounded-lg">Watch on <a
+                                                href="">Netflix</a></button>
+                                        <button class="bg-black text-white py-2 px-4 rounded-lg"><i
+                                                class="fa-solid fa-comment"></i> Join Discussion</button>
+                                        <% if(value){%>
+                                            <% if(animeWishlisted.hasOwnProperty(animeId)){%>
+
+                                            <button data-wishlist-anime-id="<%= animeId %>"
+                                                onclick="animeWishlistHandle();"
+                                                class="animeWishlistButtons bg-violet-600 text-white py-2 px-4 rounded-lg">
+                                                <i class="fa-solid fa-plus"></i></button>
+                                                <% }else{%>
+                                                    <button data-wishlist-anime-id="<%= animeId %>"
+                                                        onclick="animeWishlistHandle();"
+                                                        class="animeWishlistButtons bg-black text-white py-2 px-4 rounded-lg">
+                                                        <i class="fa-solid fa-plus"></i></button>
+                                                    <% }%>
+                                            <% }else{%>
+                                                <button data-wishlist-anime-id="<%= animeId %>"
+                                                    onclick="animeWishlistHandle();"
+                                                    class="animeWishlistButtons bg-black text-white py-2 px-4 rounded-lg">
+                                                    <i class="fa-solid fa-plus"></i></button>
+                                                <% }%>
+                                                    <!-- Like Button -->
+                                                    <% if (animeTotalLikes.hasOwnProperty(animeId)) { %>
+                                                        <% if (value && animeTotalLikes.userLikedAnimes[animeId]) { %>
+                                                            <button data-anime-id="<%= animeId %>"
+                                                                onclick="animeLikeEvent();" name="like"
+                                                                class="animeLike bg-blue-600 text-white py-2 px-4 rounded-lg">
+                                                                <span class="like border-r pr-2 mr-2">
+                                                                    <%= animeTotalLikes[animeId] %>
+                                                                </span>
+                                                                <i class="fa-solid fa-thumbs-up"></i>
+                                                            </button>
+                                                            <% } else { %>
+                                                                <button data-anime-id="<%= animeId %>"
+                                                                    onclick="animeLikeEvent();" name="like"
+                                                                    class="animeLike bg-black text-white py-2 px-4 rounded-lg">
+                                                                    <span class="like border-r pr-2 mr-2">
+                                                                        <%= animeTotalLikes[animeId] %>
+                                                                    </span>
+                                                                    <i class="fa-solid fa-thumbs-up"></i>
+                                                                </button>
+                                                                <% } %>
+                                                                    <% } else { %>
+                                                                        <button data-anime-id="<%= animeId %>"
+                                                                            onclick="animeLikeEvent();" name="like"
+                                                                            class="animeLike bg-black text-white py-2 px-4 rounded-lg">
+                                                                            <span class="like border-r pr-2 mr-2">No
+                                                                                Likes</span>
+                                                                            <i class="fa-solid fa-thumbs-up"></i>
+                                                                        </button>
+                                                                        <% } %>
+
+                                                                            <!-- Dislike Button -->
+                                                                            <% if
+                                                                                (animeTotalDislikes.hasOwnProperty(animeId))
+                                                                                { %>
+                                                                                <% if (value &&
+                                                                                    animeTotalDislikes.userDislikedAnimes[animeId])
+                                                                                    { %>
+                                                                                    <button
+                                                                                        data-anime-id="<%= animeId %>"
+                                                                                        onclick="animeDislikeEvent();"
+                                                                                        name="dislike"
+                                                                                        class="animeDislike bg-red-600 text-white py-2 px-4 rounded-lg">
+                                                                                        <span
+                                                                                            class="dislike border-r pr-2 mr-2">
+                                                                                            <%= animeTotalDislikes[animeId]
+                                                                                                %>
+                                                                                        </span>
+                                                                                        <i
+                                                                                            class="fa-solid fa-thumbs-down"></i>
+                                                                                    </button>
+                                                                                    <% } else { %>
+                                                                                        <button
+                                                                                            data-anime-id="<%= animeId %>"
+                                                                                            onclick="animeDislikeEvent();"
+                                                                                            name="dislike"
+                                                                                            class="animeDislike bg-black text-white py-2 px-4 rounded-lg">
+                                                                                            <span
+                                                                                                class="dislike border-r pr-2 mr-2">
+                                                                                                <%= animeTotalDislikes[animeId]
+                                                                                                    %>
+                                                                                            </span>
+                                                                                            <i
+                                                                                                class="fa-solid fa-thumbs-down"></i>
+                                                                                        </button>
+                                                                                        <% } %>
+                                                                                            <% } else { %>
+                                                                                                <button
+                                                                                                    data-anime-id="<%= animeId %>"
+                                                                                                    onclick="animeDislikeEvent();"
+                                                                                                    name="dislike"
+                                                                                                    class="animeDislike bg-black text-white py-2 px-4 rounded-lg">
+                                                                                                    <span
+                                                                                                        class="dislike border-r pr-2 mr-2">No
+                                                                                                        Dislikes</span>
+                                                                                                    <i
+                                                                                                        class="fa-solid fa-thumbs-down"></i>
+                                                                                                </button>
+                                                                                                <% } %>
                                 </div>
                             </div>
                         </div>
@@ -320,3 +412,4 @@
 
 <!-- Like and dislike logic -->
 <script src="../../public/responsive/anime-vault/best-anime-list/anime-liked-dislike-logic.js"></script>
+<script src="../../public/responsive/anime-vault/best-anime-list/anime-wishlist.js"></script>

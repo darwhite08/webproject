@@ -1,0 +1,28 @@
+<div class="bg-white flex flex-row rounded-lg px-10 py-4">
+    <div class="rounded-3xl relative basis-1/4">
+    <img class="h-full w-full rounded-2xl" src=<%= user_data.profile_picture%> alt="">
+    <div class="absolute text-center top-4 right-2">
+       <p class="text-xs bg-gray-100 rounded-full text-gray-600 py-1 px-2 font-medium"><i class="fa-solid fa-location-dot"></i> india</p>
+    </div>
+    </div>
+    <div class=" py-2 px-5 basis-3/4">
+       <div class="flex  flex-col gap-2">
+          <div class="flex flex-col gap-2">
+             <div class="flex flex-row gap-1 items-center">
+                <h1 class="text-4xl font-bold text-gray-700"><%=user_data.username%></h1>
+                <img class="h-6 w-6 mt-2" src="../../../public/media/gif-icons/verified.gif" alt="">
+             </div>
+             <div class="flex flex-row gap-2">
+                <h1 class="text-xs bg-red-100 rounded-full text-red-600 py-0.5 px-2"><%=user_data.email%></h1>
+                <h1 class="text-xs bg-green-100 rounded-full text-green-600 py-0.5 px-2">USER-ID: <%=user_data.au_user_id%></h1>
+             </div>
+          </div>
+          <p class="text-md text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, maxime temporibus molestiae debitis excepturi commodi ut eaque neque iure ad odio impedit nihil blanditiis ea asperiores qui, facilis eos! Omnis.</p>
+       </div>
+       <div class="pt-4  gap-4 flex flex-row">
+          <button class="text-sm font-medium bg-gray-200 rounded-3xl py-2 px-4">3.2k Followers</button>
+          <button class="text-sm font-medium bg-gray-200 rounded-3xl py-2 px-4">54 Following</button>
+       </div>
+    </div>
+    </div>
+    

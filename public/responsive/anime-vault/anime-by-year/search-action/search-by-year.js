@@ -27,10 +27,10 @@ function search_by_year_handle(event) {
     const yearData = yearRanges[selectedYear];
 
     if (yearData) {
-        database_fetch_handle(yearData);
+        database_fetch_handle_year(yearData);
     }
 }
-function database_fetch_handle(data) {
+function database_fetch_handle_year(data) {
     const jsonData = {
         searchType: 'year',
         startYear: data.startYear,
@@ -47,7 +47,11 @@ function database_fetch_handle(data) {
     })
         .then((response) => response.json())
         .then((data) => {
-            load_searched_content(data)
+            if (!data.animeData.length == 0) {
+                different_search_handle(data); 
+                } else {
+                data_not_found_handle();
+                }
         })
         .catch((error) => {
             console.error('Error:', error);

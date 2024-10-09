@@ -1,72 +1,73 @@
-<div id="aby-loader" class=" absolute flex justify-center top-0  min-h-full w-full  rounded-xl bg-violet-500 ">
-    <div class="relative w-full ">
-        <div class="loader absolute z-50 top-0">
-            <div class="container">
-                <div class="carousel">
-                    <div class="love"></div>
-                    <div class="love"></div>
-                    <div class="love"></div>
-                    <div class="love"></div>
-                    <div class="love"></div>
-                    <div class="love"></div>
-                    <div class="love"></div>
+<div id="aby-loader" class="hidden absolute  flex justify-center top-0  min-h-full w-full  rounded-xl bg-violet-500 ">
+    <div class="relative w-full py-10 px-10">
+        <!-- <div class="absolute z-50 flex justify-center top-0 left-0 w-full h-full bg-black/30">
+            <div class="loader ">
+                <div class="container">
+                    <div class="carousel">
+                        <div class="love"></div>
+                        <div class="love"></div>
+                        <div class="love"></div>
+                        <div class="love"></div>
+                        <div class="love"></div>
+                        <div class="love"></div>
+                        <div class="love"></div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="carousel">
+                        <div class="death"></div>
+                        <div class="death"></div>
+                        <div class="death"></div>
+                        <div class="death"></div>
+                        <div class="death"></div>
+                        <div class="death"></div>
+                        <div class="death"></div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="carousel">
+                        <div class="robots"></div>
+                        <div class="robots"></div>
+                        <div class="robots"></div>
+                        <div class="robots"></div>
+                        <div class="robots"></div>
+                        <div class="robots"></div>
+                        <div class="robots"></div>
+                    </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="carousel">
-                    <div class="death"></div>
-                    <div class="death"></div>
-                    <div class="death"></div>
-                    <div class="death"></div>
-                    <div class="death"></div>
-                    <div class="death"></div>
-                    <div class="death"></div>
+        </div> -->
+        <div class="flex flex-row justify-between">
+            <% for(i=0;i<4;i++){%>
+                <div class="bg-white rounded-lg">
+                    <div class="max-w-lg p-4 border border-white bg-white rounded-lg shadow animate-pulse ">
+                        <div class="flex items-center justify-center h-48 mb-4 bg-gradient-to-r from-fuchsia-500 to-pink-500 rounded dark:bg-gray-700">
+                            <svg class="w-10 h-10 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 16 20">
+                                <path
+                                    d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
+                                <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
+                            </svg>
+                        </div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-60 mb-4"></div>
+                        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+                        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+                        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                        <div class="flex items-center mt-4">
+                            <div>
+                                <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-2"></div>
+                            </div>
+                            
+                        </div>
+                        <div class="flex flex-row justify-between gap-4 mt-2">
+                            <button class="h-10 bg-gray-200 rounded-lg w-24 mb-2 "></button>
+                            <button class="h-10 bg-gray-200 rounded-lg w-24 mb-2 "></button>
+                            <button class="h-10 bg-gray-200 rounded-lg w-14 mb-2 "></button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="container">
-                <div class="carousel">
-                    <div class="robots"></div>
-                    <div class="robots"></div>
-                    <div class="robots"></div>
-                    <div class="robots"></div>
-                    <div class="robots"></div>
-                    <div class="robots"></div>
-                    <div class="robots"></div>
-                </div>
-            </div>
+                <% }%>
         </div>
-
-    <div class="flex flex-row justify-between">
-        <% for(i=0;i<4;i++){%>
-        <div
-        class="max-w-sm p-4 border border-gray-200 rounded shadow animate-pulse md:p-6 dark:border-gray-700">
-        <div class="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded dark:bg-gray-700">
-            <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
-                <path
-                    d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
-                <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
-            </svg>
-        </div>
-        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
-        <div class="flex items-center mt-4">
-            <svg class="w-10 h-10 me-3 text-gray-200 dark:text-gray-700" aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                <path
-                    d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z" />
-            </svg>
-            <div>
-                <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-2"></div>
-                <div class="w-48 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
-            </div>
-        </div>
-        <span class="sr-only">Loading...</span>
-    </div>
-    <% }%>
-    </div>
 
     </div>
 

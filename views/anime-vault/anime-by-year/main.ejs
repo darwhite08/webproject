@@ -27,37 +27,70 @@
                             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </div>
-                            <input type="text" id="simple-search"
+                            <input id="aby-search-input" type="text" id="simple-search"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 w-full"
                                 placeholder="Search anime name..." required />
                         </div>
-                        <button type="submit"
+                        <button onclick="aby_search_by_text();" type="submit"
                             class="py-2.5 px-5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             <i class="fa-solid fa-magnifying-glass"></i>
                             <span class="sr-only px-">Search</span>
                         </button>
                     </div>
                     <!-- search by category -->
-                    <div id="aby-search-category" class="w-56">
-                        <select id="category"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                            <option selected>Choose Category</option>
-                            <option value="KO">kodomomuke</option>
-                            <option value="SH">Shonen</option>
-                            <option value="">Shoujo</option>
-                            <option value="DE">Seinen</option>
-                            <option value="DE">Josei</option>
-                            <option value="DE">Mecha</option>
-                            <option value="DE">Slice of Life</option>
-                            <option value="DE">Mahou Shoujo</option>
-                            <option value="DE">Isekai</option>
-                            <option value="DE">Yaoi</option>
-                            <option value="DE">Yuri</option>
-                            <option value="DE">Harem</option>
-                            <option value="DE">Ecchi</option>
-                            <option value="DE">Idol</option>
-
-                        </select>
+                    <div id="aby-search-category " class="w-56">
+                        <div id="aby-search-category" class="w-56">
+                            <select id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                <option selected>Choose Category</option>
+                        
+                                <optgroup label="Main Genres" class="text-gray-700">
+                                    <option value="AC">Action</option>
+                                    <option value="AD">Adventure</option>
+                                    <option value="CO">Comedy</option>
+                                    <option value="DR">Drama</option>
+                                    <option value="FA">Fantasy</option>
+                                    <option value="HR">Harem</option>
+                                    <option value="HO">Horror</option>
+                                    <option value="IS">Isekai</option>
+                                    <option value="ME">Mecha</option>
+                                    <option value="MY">Mystery</option>
+                                    <option value="RO">Romance</option>
+                                    <option value="SF">Sci-Fi</option>
+                                    <option value="SL">Slice of Life</option>
+                                    <option value="SP">Sports</option>
+                                    <option value="SU">Supernatural</option>
+                                    <option value="PY">Psychological</option>
+                                    <option value="HI">Historical</option>
+                                    <option value="SH">Superhero</option>
+                                </optgroup>
+                        
+                                <optgroup label="Special Genres" class="text-gray-700">
+                                    <option value="ID">Idol</option>
+                                    <option value="KO">Kodomomuke</option>
+                                    <option value="DE">Seinen</option>
+                                    <option value="JO">Josei</option>
+                                    <option value="EC">Ecchi</option>
+                                    <option value="HT">Hentai</option>
+                                    <option value="PA">Post-Apocalyptic</option>
+                                    <option value="MF">Metafictional</option>
+                                    <option value="MU">Music</option>
+                                    <option value="DF">Dark Fantasy</option>
+                                    <option value="MA">Martial Arts</option>
+                                    <option value="DEMO">Demons</option>
+                                    <option value="PHO">Psychological Horror</option>
+                                    <option value="SU">Survival</option>
+                                    <option value="FA">Family</option>
+                                    <option value="SFH">Sci-Fi Horror</option>
+                                    <option value="FAH">Fantasy Horror</option>
+                                    <option value="BIS">Bishojo</option>
+                                    <option value="BIA">Bishonen</option>
+                                    <option value="GA">Gag</option>
+                                    <option value="SHOAI">Shoujo Ai (Girls Love)</option>
+                                    <option value="SHOAN">Shounen Ai (Boys Love)</option>
+                                    <option value="PYT">Psychological Thriller</option>
+                                </optgroup>
+                            </select>
+                        </div>
                     </div>
                     <!-- search-by-year -->
                     <div id="aby-search-year" class="w-56">
@@ -80,25 +113,36 @@
 
                         </select>
                     </div>
+                    <!--search-by-seaons  -->
                     <div id="aby-search-season" class="w-56">
                         <select
                             class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 ">
                             <option selected>Season </option>
-                            <option value="US">Winter </option>
-                            <option value="CA">spring </option>
-                            <option value="FR">summer </option>
-                            <option value="DE">fall </option>
+                            <option value="winter">Winter </option>
+                            <option value="spring">spring </option>
+                            <option value="summer">summer </option>
+                            <option value="fall">fall </option>
                         </select>
                     </div>
-                    <div id="aby-search-genere" class="w-56">
-                        <select
-                            class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 ">
-                            <option selected>Genere</option>
-                            <option value="US">Action</option>
-                            <option value="CA">comedy</option>
-                            <option value="FR">romance</option>
-                            <option value="DE">fight</option>
-                        </select>
+                    <div id="aby-search-types" class="w-56">
+                    <select 
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                    <option selected>Choose Anime Type</option>
+                    <option value="TV">TV Series (TV Anime)</option>
+                    <option value="MOV">Movies (Anime Films)</option>
+                    <option value="OVA">OVA (Original Video Animation)</option>
+                    <option value="ONA">ONA (Original Net Animation)</option>
+                    <option value="SP">Specials</option>
+                    <option value="TS">Theatrical Shorts</option>
+                    <option value="RE">Recap Episodes</option>
+                    <option value="AN">Anthology</option>
+                    <option value="WE">Web Anime (Web Series)</option>
+                    <option value="MV">Music Videos (Anime PVs/MVs)</option>
+                    <option value="DA">Doujin Anime</option>
+                    <option value="CR">Crossover Anime</option>
+                    <option value="PI">Pilots</option>
+                </select>
+                
                     </div>
                     <div>
                         <button class="bg-black text-white px-4 py-2 rounded-lg">
@@ -165,5 +209,12 @@
 </div>
 <script src="../../../public/responsive/anime-vault/anime-by-year/anime-by-year-main.js"></script>
 <script src="../../../public/responsive/anime-vault/anime-by-year/anime-by-year-readmore.js"></script>
+<script src="../../../public/responsive/anime-vault/anime-by-year/search-action/search-types-handle.js"></script>
+<script src="../../../public/responsive/anime-vault/anime-by-year/search-action/not-found.js"></script>
 <script src="../../../public/responsive/anime-vault/anime-by-year/load-aby-cards.js"></script>
 <script src="../../../public/responsive/anime-vault/anime-by-year/search-action/search-by-year.js"></script>
+<script src="../../../public/responsive/anime-vault/anime-by-year/search-action/search-by-season.js"></script>
+<script src="../../../public/responsive/anime-vault/anime-by-year/search-action/by-category.js"></script>
+<script src="../../../public/responsive/anime-vault/anime-by-year/search-action/search-by-text.js"></script>
+<script src="../../../public/responsive/anime-vault/anime-by-year/search-action/search-by-type.js"></script>
+

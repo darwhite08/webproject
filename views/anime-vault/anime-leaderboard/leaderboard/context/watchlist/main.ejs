@@ -1,0 +1,137 @@
+<div class="w-full pt-24 px-10">
+    <div class=" ml-96 flex flex-col ">
+        <div>
+            <div>
+                <h1 class="text-3xl font-bold text-gray-600">Top Watchlist</h1>
+            </div>
+            <div class="flex flex-row gap-16  pt-10">
+                <div class="basis-1/2 w-full border rounded-3xl px-10 py-4 ">
+                    <div class="flex flex-row gap-2">
+                        <%for(i=0;i<3;i++){%>
+                            <div class="flex flex-col h-full">
+                                <div >
+                                    <img class="rounded-3xl" src="../../../../../../public/media/bestAnimeList/img/animeListBackground.jpg"
+                                        alt="">
+                                </div>
+                                <div class="w-full h-full bg-black">
+
+                                </div>
+                            </div>
+                            <%}%>
+                    </div>
+                </div>
+                <div class="basis-1/2 border rounded-3xl px-10 py-4">
+                    <div class="flex pb-4 px-4 flex-row justify-between">
+                        <h1 class="text-md text-gray-500">Random Facts</h1>
+                        <div>
+                            <a class="underline" href="">see all</a>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-6 gap-4 ">
+                        <div class="bg-blue-100 col-span-4 text-blue-600 text-sm px-4 py-2 rounded-3xl">
+                            <p class="px-2 mb-2 bg-red-300 text-red-800 w-fit rounded-lg"><span>Positon</span></p>
+                        </div>
+                        <!-- Become a member -->
+                        <div class="col-span-2" >
+                            <button class="bg-green-100 text-green-600 text-center text-sm px-3 py-2 rounded-3xl">Become a member</button>
+                        </div>
+                        <div class="bg-violet-100 col-span-3 text-violet-600 text-sm px-4 py-2 rounded-3xl">
+                            <p class="px-2 mb-2 bg-red-300 text-red-800 w-fit rounded-lg"><span>Notice</span></p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam aperiam laborum odio
+                                reprehenderit doloribus odio.</p>
+                        </div>
+                        <div class="bg-yellow-100 col-span-3 text-yellow-600 text-sm px-4 py-2 rounded-3xl">
+                            <p class="px-2 mb-2 bg-red-300 text-red-800 w-fit rounded-lg"><span>Notice</span></p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam aperiam laborum odio
+                                reprehenderit doloribus odio.</p>
+                        </div>
+                        <div class="w-full col-span-6 bg-red-100 text-red-600 text-sm px-6 py-4 rounded-3xl ">
+                            <p>The anime leaderboard is determined by several key metrics: the number of people who have
+                                added the anime to their watchlist, the number of likes it has received, and how many
+                                individuals have already watched it. These factors contribute to ranking the anime and
+                                reflecting its popularity within the community.</p>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="pt-10 w-full">
+            <div class="relative overflow-x-auto   sm:rounded-lg">
+                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="w-32 px-6 py-3  inline-flex gap-2">
+                                <span>Position </span>
+                                <span><i class="fa-solid fa-sort"></i></span>
+                            </th>
+                            <th scope="col" class="w-72 px-6 py-3">
+                                <span>Anime Name </span>
+                            </th>
+                            <th scope="col" class="w-40 px-6 py-3">
+                                Category
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Total Adds
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                <span class="inline-flex gap-2"><span>Changes </span><i
+                                        class="fa-solid fa-plus-minus"></i></span>
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                watchlist it
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(i=0;i<10;i++){%>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap inline-flex gap-2 dark:text-white">
+                                    <span><i class="fa-solid fa-1"></i></span><span><i
+                                            class="fa-solid fa-arrow-trend-up text-green-500"></i></span>
+                                </th>
+                                <td class="px-6 py-4">
+
+                                    <div class="flex items-center gap-4">
+                                        <img class="w-8 h-8 rounded-full"
+                                            src="../../../../../../public/media/bestAnimeList/img/animeListBackground.jpg"
+                                            alt="">
+                                        <div class="font-medium dark:text-white">
+                                            <p>Demon slayer</p>
+                                        </div>
+                                    </div>
+
+                                </td>
+                                <td class="px-6 py-4">
+                                    Isekai
+                                </td>
+                                <td class="px-6 py-4">
+                                    100+
+                                </td>
+                                <td class="px-6 py-4">
+                                    <!-- <p class="inline-flex items-center gap-2 bg-green-200 font-medium text-green-600 rounded-lg text-xs py-1 px-2"><span><i class="fa-solid fa-caret-up"></i></span>2.4%<span></span></p> -->
+                                    <p
+                                        class="inline-flex items-center gap-2 bg-red-200 font-medium text-red-600 rounded-lg text-xs py-1 px-2">
+                                        <span><i class="fa-solid fa-caret-down"></i></span>2.4%<span></span>
+                                    </p>
+                                </td>
+                                <td class="px-6 py-4 ">
+                                    <div class="inline-flex gap-2">
+                                        <button
+                                            class="text-xl bg-blue-200 py-1 px-4 rounded-xl text-blue-600 font-bold">+</button>
+                                        <button
+                                            class="text-xl bg-red-200 py-1 px-4 rounded-xl text-red-600 font-bold text-xs"><i
+                                                class="fa-solid fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <%}%>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

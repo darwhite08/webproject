@@ -1,0 +1,158 @@
+<div class=" pt-5 pb-8 border-b border-dashed ">
+    <div class="">
+        <h1 class="text-5xl font-semibold">leaderboard</h1>
+    </div>
+    <div class="flex flex-row justify-between gap-8 pt-6">
+        <div class="flex flex-row  gap-8">
+            <div>
+                <form class="max-w-sm mx-auto">
+                    <div class="flex">
+                        <select id=""
+                            class=" w-24 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-l-lg border-gray-100 dark:border-s-gray-700 border-s-2 focus:ring-blue-500 focus:border-blue-500 block p-2.5  ">
+                            <option selected>Type</option>
+                            <option value="TV">TV Series (TV Anime)</option>
+                            <option value="MOV"> Movies (Anime Films)</option>
+                            <option value="OVA">OVA (Original Video Animation)</option>
+                            <option value="ONA">ONA (Original Net Animation)</option>
+                            <option value="SP">Specials</option>
+                            <option value="TS">Theatrical Shorts</option>
+                            <option value="RE">Recap Episodes</option>
+                            <option value="AN">Anthology</option>
+                            <option value="WE">Web Anime (Web Series)</option>
+                            <option value="MV">Music Videos (Anime PVs/MVs)</option>
+                            <option value="DA">Doujin Anime</option>
+                            <option value="CR">Crossover Anime</option>
+                            <option value="PI">Pilots</option>
+                        </select>
+                        <select id=""
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-r-lg  border-r  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                            <option selected>Select anime category</option>
+                            <optgroup label="Main Genres" class="text-gray-700">
+                                <option>All</option>
+                                <option value="AC">Action</option>
+                                <option value="AD">Adventure</option>
+                                <option value="CO">Comedy</option>
+                                <option value="DR">Drama</option>
+                                <option value="FA">Fantasy</option>
+                                <option value="HR">Harem</option>
+                                <option value="HO">Horror</option>
+                                <option value="IS">Isekai</option>
+                                <option value="ME">Mecha</option>
+                                <option value="MY">Mystery</option>
+                                <option value="RO">Romance</option>
+                                <option value="SF">Sci-Fi</option>
+                                <option value="SL">Slice of Life</option>
+                                <option value="SP">Sports</option>
+                                <option value="SU">Supernatural</option>
+                                <option value="PY">Psychological</option>
+                                <option value="HI">Historical</option>
+                                <option value="SH">Superhero</option>
+                            </optgroup>
+
+                            <optgroup label="Special Genres" class="text-gray-700">
+                                <option value="ID">Idol</option>
+                                <option value="KO">Kodomomuke</option>
+                                <option value="DE">Seinen</option>
+                                <option value="JO">Josei</option>
+                                <option value="EC">Ecchi</option>
+                                <option value="HT">Hentai</option>
+                                <option value="PA">Post-Apocalyptic</option>
+                                <option value="MF">Metafictional</option>
+                                <option value="MU">Music</option>
+                                <option value="DF">Dark Fantasy</option>
+                                <option value="MA">Martial Arts</option>
+                                <option value="DEMO">Demons</option>
+                                <option value="PHO">Psychological Horror</option>
+                                <option value="SU">Survival</option>
+                                <option value="FA">Family</option>
+                                <option value="SFH">Sci-Fi Horror</option>
+                                <option value="FAH">Fantasy Horror</option>
+                                <option value="BIS">Bishojo</option>
+                                <option value="BIA">Bishonen</option>
+                                <option value="GA">Gag</option>
+                                <option value="SHOAI">Shoujo Ai (Girls Love)</option>
+                                <option value="SHOAN">Shounen Ai (Boys Love)</option>
+                                <option value="PYT">Psychological Thriller</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </form>
+
+            </div>
+            <div>
+                <div class=" flex flex-row items-center gap-2 max-w-sm">
+                    <button type="button"
+                        class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"><i
+                            class="fa-solid fa-angle-left"></i></button>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-2 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                            </svg>
+                        </div>
+                        <input id="datepicker-format" datepicker datepicker-format="mm-dd-yyyy" type="text"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Select date">
+                    </div>
+                    <button type="button"
+                        class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"><i
+                            class="fa-solid fa-angle-right"></i></button>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- become a memmber -->
+        <div class="flex flex-row items-center gap-4">
+            <div class="flex -space-x-4 rtl:space-x-reverse border-r border-gray-300 border-dashed pr-4">
+                <img class="w-10 h-10 p-0.5 border-2 border-white bg-white rounded-full "
+                    src="../../../../public/media/bestAnimeList/img/animeListBackground.jpg" alt="">
+                <img class="w-10 h-10 p-0.5 border-2 border-white bg-white rounded-full "
+                    src="../../../../public/media/bestAnimeList/img/animeListBackground.jpg" alt="">
+                <img class="w-10 h-10 p-0.5 p-0.5 border-2 border-white bg-white rounded-full "
+                    src="../../../../public/media/bestAnimeList/img/animeListBackground.jpg" alt="">
+                <a class="flex items-center  justify-center w-10 h-10 text-xs font-bold text-gray-700 bg-gray-300 border-2 border-white rounded-full hover:bg-gray-600 dark:border-gray-800"
+                    href="#">+99</a>
+            </div>
+            <div>
+                <button
+                    class="bg-green-300 text-green-700 py-2  px-4 font-medium rounded-xl  focus:z-10 focus:ring-4 focus:ring-green-100"><span>Become
+                        amember</span><span>+</span></button>
+            </div>
+        </div>
+    </div>
+    <div>
+
+    </div>
+</div>
+<div class="pt-5 pb-5 border-b border-dashed">
+    <div class="flex flex-row justify-between items-center">
+        <div>
+            <h1 class="text-2xl font-medium text-gray-600">All Anime</h1>
+        </div>
+        <div class="flex flex-row">
+            <div class="flex flex-row items-center">
+                <!-- Clock button -->
+                <div class="bg-gray-50 py-2.5 px-4 border text-sm rounded-l-lg">
+                    <i class="fa-regular fa-clock"></i>
+                </div>
+                
+                <!-- Select form -->
+                <form class="max-w-sm mx-auto">
+                    <select id="timeframe"
+                        class="bg-gray-50 border-t border-b border-r border-gray-300 text-gray-900 text-sm rounded-r-lg  block w-full p-2.5 ">
+                        <option value="Monthly" selected>Monthly</option>
+                        <option value="Yearly">Yearly</option>
+                        <option value="Weekly">Weekly</option>
+                    </select>
+                </form>
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -22,6 +22,7 @@ const { marked } = require('marked');
 const userIdGenerator = require("./custom-modules/unique_id_generator");
 const animeByYearSearch = require("./custom-modules/anime-by-year/aby-searched-result");
 const { start } = require("repl");
+const { constrainedMemory } = require("process");
 
 
 const app = express();
@@ -644,22 +645,64 @@ app.get('/anime-by-year', async (req, res) => {
 app.post('/api/search',async(req,res)=>{
   const searchType = req.body.searchType; 
   const databaseName = 'anime_by_year'; 
-   if (searchType == 'year') {
-    const startYear = req.body.startYear;
-    const endYear =  req.body.endYear;
-    
-    const result = await animeByYearSearch.year_wise_searched_items(databaseName,'release_year',parseInt(startYear),parseInt(endYear));
+  if (searchType == 'text') {
+    const text = req.body.text;
+    const result = await animeByYearSearch.text_based_searched_items(databaseName,text);
     console.log(result)
     res.json({
+      searchType:'text',
+      animeData:result
+    });
+  } 
+  else if (searchType == 'year') {
+    const startYear = req.body.startYear;
+    const endYear =  req.body.endYear;
+    const databaseColumn = 'release_year'
+    
+    const result = await animeByYearSearch.year_wise_searched_items(databaseName,databaseColumn,parseInt(startYear),parseInt(endYear));
+    console.log(result)
+    res.json({
+      searchType:'year',
       animeData: result
     })
    }
-   else if(searchType == 'genere'){
+   else if(searchType == 'season'){
+    const season = req.body.season;
+    const databaseColumn = 'release_season';
+    const result = await animeByYearSearch.season_wise_searched_items(databaseName,databaseColumn ,season)
+    res.json({
+      searchType:'season',
+      animeData:result
+    });
+   }
+   else if(searchType == 'category'){
+    const category = req.body.category;
+    const databaseColumn = 'anime_category';
+    const result = await animeByYearSearch.category_wise_searched_items(databaseName,databaseColumn,category);
+    res.json({
+      searchType:'category',
+      animeData:result
+    });
+   }
+   else if(searchType == 'Type'){
+    const type = req.body.type;
+    const databaseColumn = 'anime_type';
+    const result = await animeByYearSearch.type_wise_searched_items(databaseName,databaseColumn,type);
+    res.json({
+      searchType:'type',
+      animeData:result
+    });
+    
 
    }
  
 });
 
+// Anime LeaderBoard
+
+app.get('/anime-leaderboard',async(req,res)=>{
+  res.render('main',{tab:'anime-leaderboard',value:false})
+});
 
 // login
 app.get('/login', async (req, res) => {
@@ -839,7 +882,8 @@ passport.serializeUser(function (user, cb) {
       username: user.user_name,
       profile_picture: user.user_image,
       email: user.email,
-      google_id: user.google_id
+      google_id: user.google_id,
+      au_user_id:user.au_user_id
     });
   });
 });

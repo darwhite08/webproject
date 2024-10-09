@@ -46,6 +46,11 @@
                             <% } else if (tab==="anime-by-year"){ %>
                                 <%- include('navigations/top-bar',{value:value}) %>
                                 <%- include('anime-vault/anime-by-year/main' ,{value:value,anime_data:anime_data}) %>
+                                <%- include('navigations/mobile-navigation' ) %>
+                             <!-- anime Leaderboad -->
+                            <% }else if (tab==="anime-leaderboard"){ %>
+                                <%- include('navigations/top-bar',{value:value}) %>
+                                <%- include('anime-vault/anime-leaderboard/leaderboard/main' ,{value:value}) %>
                                 <%- include('navigations/mobile-navigation' ) %>  
                                     <% } %> 
 <%- include('main-comp/footer') %>
